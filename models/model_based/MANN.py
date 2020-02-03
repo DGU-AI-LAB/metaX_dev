@@ -5,7 +5,7 @@ import numpy as np
 import random
 tf.enable_eager_execution()
 
-class DataGenerator():
+class MAML():
     def __init__(self, image_size, N, meta_lr=1e-4, train_lr=1e-3):
         self.image_size = image_size
         self.N = N
