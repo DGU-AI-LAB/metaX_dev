@@ -3,8 +3,8 @@ import time
 from Siamese_network_tf import SiameseNetwork
 from data_generator_tf import DataGenerator
 
-train_dataset = DataGenerator(image_size = (105, 105, 1), N=2, K=1, batch_size=3)
-test_dataset = DataGenerator(image_size = (105, 105, 1), N=5, K=1, batch_size=10)
+train_dataset = DataGenerator(image_size = (105, 105, 1), batch_size=3)
+test_dataset = DataGenerator(image_size = (105, 105, 1), batch_size=10)
 
 print("data prepared")
 

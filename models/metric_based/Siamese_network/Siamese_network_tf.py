@@ -8,10 +8,8 @@ from Siamese_block_tf import ConvBlock
 from data_generator_tf import DataGenerator
 
 class SiameseNetwork(Model):
-    def __init__(self, way = 2, shot = 1, input_shape = (105, 105, 1)):
+    def __init__(self, input_shape = (105, 105, 1)):
         super(SiameseNetwork, self).__init__()
-        self.way = way
-        self.shot = shot
         
         self.conv1 = ConvBlock(filters = 64, kernel_size = 10, input_shape=input_shape)
         self.conv2 = ConvBlock(filters = 128, kernel_size = 7)
