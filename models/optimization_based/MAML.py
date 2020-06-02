@@ -58,9 +58,9 @@ class MiniImagenetModel(tf.keras.Model):
         self.conv4 = tf.keras.layers.Conv2D(32, 3, name='conv4')
         self.bn4 = tf.keras.layers.BatchNormalization(momentum=0.0, center=True, scale=False, name='bn4')
         # self.bn4 = tf.keras.layers.LayerNormalization(center=True, scale=False, name='bn4')
-        self.flatten = Flatten(name='flatten')
-        self.dense1 = Dense(32, activation=None, name='dense1')
-        self.bn_dense1 = tf.keras.layers.BatchNormalization(momentum=0.0, center=True, scale=False, name='bn_dense1')
+        # self.flatten = Flatten(name='flatten')
+        # self.dense1 = Dense(32, activation=None, name='dense1')
+        # self.bn_dense1 = tf.keras.layers.BatchNormalization(momentum=0.0, center=True, scale=False, name='bn_dense1')
 
         self.dense = Dense(num_classes, activation=None, name='dense')
 
@@ -79,8 +79,9 @@ class MiniImagenetModel(tf.keras.Model):
         c3 = self.conv_block(c2, self.conv3, self.bn3, training=training)
         c4 = self.conv_block(c3, self.conv4, self.bn4, training=training)
         c4 = tf.reshape(c4, [-1, np.prod([int(dim) for dim in c4.get_shape()[1:]])])
-        f = self.flatten(c4)
-        out = self.dense(f)
+        # f = self.flatten(c4)
+        # out = self.dense(f)
+        out = self.dense(c4)
 
         return out
 
@@ -228,10 +229,10 @@ class ModelAgnosticMetaLearningModel(BaseModel):
         for i in range(len(model.layers)):
             if isinstance(model.layers[i], tf.keras.layers.Conv2D) or \
                     isinstance(model.layers[i], tf.keras.layers.Dense):
+                model.layers[i].kernel - self.lr_inner_ml * gradients[k]
                 updated_model.layers[i].kernel = model.layers[i].kernel - self.lr_inner_ml * gradients[k]
                 k += 1
                 variables.append(updated_model.layers[i].kernel)
-
                 updated_model.layers[i].bias = model.layers[i].bias - self.lr_inner_ml * gradients[k]
                 k += 1
                 variables.append(updated_model.layers[i].bias)
@@ -530,7 +531,6 @@ class ModelAgnosticMetaLearningModel(BaseModel):
     def predict(self, epochs_to_load_from=None, iterations = 5):
         self.test_dataset = self.get_test_dataset()
         self.load_model(epochs=epochs_to_load_from)
-        
 
         for tmb, lmb in self.test_dataset:
             for task, labels in zip(tmb, lmb):
