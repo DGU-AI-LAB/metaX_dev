@@ -4,7 +4,9 @@ from abc import ABC, abstractmethod
 import random
 import utils
 import tensorflow as tf
-
+from collections import defaultdict
+from glob import glob
+from PIL import Image
 
 class Database(ABC):
     def __init__(self, raw_database_address, database_address, random_seed=-1):
@@ -19,6 +21,15 @@ class Database(ABC):
         self.train_folders, self.val_folders, self.test_folders = self.get_train_val_test_folders()
 
         self.input_shape = self.get_input_shape()
+
+    @abstractmethod
+    def get_class(self):
+        pass
+
+    @abstractmethod
+    def preview_image(self):
+        pass
+
 
     @abstractmethod
     def get_input_shape(self):
@@ -84,7 +95,7 @@ class Database(ABC):
         labels_dataset = self.make_labels_dataset(n, k, meta_batch_size, steps_per_epoch, one_hot_labels)
 
         dataset = tf.data.Dataset.from_tensor_slices(classes)
-        print(len(folders))
+        # print(len(folders))
         dataset = dataset.shuffle(buffer_size=len(folders), reshuffle_each_iteration=reshuffle_each_iteration)
         dataset = dataset.interleave(
             self._get_instances(k),
@@ -161,6 +172,30 @@ class OmniglotDatabase(Database):
             random_seed=random_seed,
         )
 
+    def get_class(self):
+        train_dict = defaultdict(list)
+        val_dict = defaultdict(list)
+        test_dict = defaultdict(list)
+        for train_class in self.train_folders:
+            for train_image_path in glob(train_class + '/*.*'):
+                train_dict[train_class.split('\\')[-1]].append(train_image_path)
+
+        for val_class in self.train_folders:
+            for val_image_path in glob(val_class+'/*.*'):
+                val_dict[val_class.split('\\')[-1]].append(val_image_path)
+
+        for test_class in self.train_folders:
+            for test_image_path in glob(test_class+'/*.*'):
+                test_dict[test_class.split('\\')[-1]].append(test_image_path)
+
+        return train_dict, val_dict, test_dict
+
+    def preview_image(self, image_path):
+        image = Image.open(image_path)
+        # image.show()
+
+        return image
+
     def get_input_shape(self):
         return 28, 28, 1
 
@@ -175,7 +210,7 @@ class OmniglotDatabase(Database):
         val_folders = folders[num_train_classes:num_train_classes + num_val_classes]
         test_folders = folders[num_train_classes + num_val_classes:]
 
-        print(len(train_folders))
+        # print(len(train_folders))
 
         return train_folders, val_folders, test_folders
 
@@ -205,9 +240,33 @@ class MiniImagenetDatabase(Database):
     def __init__(self, raw_data_address, random_seed=-1, config=None):
         super(MiniImagenetDatabase, self).__init__(
             raw_data_address,
-            os.getcwd() + '/dataset/data/mini-imagenet',
+            os.getcwd() + '/dataset/data/mini_imagenet',
             random_seed=random_seed,
         )
+
+    def get_class(self):
+        train_dict = defaultdict(list)
+        val_dict = defaultdict(list)
+        test_dict = defaultdict(list)
+        for train_class in self.train_folders:
+            for train_image_path in glob(train_class + '/*.*'):
+                train_dict[train_class.split('\\')[-1]].append(train_image_path)
+
+        for val_class in self.train_folders:
+            for val_image_path in glob(val_class + '/*.*'):
+                val_dict[val_class.split('\\')[-1]].append(val_image_path)
+
+        for test_class in self.train_folders:
+            for test_image_path in glob(test_class + '/*.*'):
+                test_dict[test_class.split('\\')[-1]].append(test_image_path)
+
+        return train_dict, val_dict, test_dict
+
+    def preview_image(self, image_path):
+        image = Image.open(image_path)
+        image.show()
+
+        return image
 
     def get_input_shape(self):
         return 84, 84, 3
@@ -235,3 +294,5 @@ class MiniImagenetDatabase(Database):
     def prepare_database(self):
         if not os.path.exists(self.database_address):
             shutil.copytree(self.raw_database_address, self.database_address)
+
+
