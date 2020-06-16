@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Conv2D, Flatten, Dense, Input, BatchNormaliz
 from dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
 
 class OmniglotModel(tf.keras.Model):
-    name = 'SimpleModel'
+    name = 'OmniglotModel'
 
     def __init__(self, num_classes):
         super(OmniglotModel, self).__init__(name='omniglot_model')
@@ -127,6 +127,7 @@ class ModelAgnosticMetaLearningModel(BaseModel):
             # Make sure the validaiton and test dataset pick at least this many tasks.
             clip_gradients=False
     ):
+        self.args = args
         self.n = args.n
         self.k = args.k
         self.meta_batch_size = args.meta_batch_size
@@ -329,11 +330,33 @@ class ModelAgnosticMetaLearningModel(BaseModel):
 
     def save_model(self, epochs):
         self.model.save_weights(os.path.join(self.checkpoint_dir, f'model.ckpt-{epochs}'))
+        self.save_args(epochs)
 
+    def save_args(self, epochs):
+        f = open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs}.txt'), 'w')
+        f.write('self.n =' + str(self.n) + '\n'
+                'self.k =' + str(self.k) + '\n'
+                'self.meta_batch_size =' + str(self.meta_batch_size) + '\n'
+                'self.num_steps_ml =' + str(self.num_steps_ml) + '\n'
+                'self.lr_inner_ml =' + str(self.lr_inner_ml) + '\n'
+                'self.num_steps_validation =' + str(self.num_steps_validation) + '\n'
+                'self.save_after_epochs =' + str(self.save_after_epochs) + '\n'
+                'self.log_train_images_after_iteration =' + str(self.log_train_images_after_iteration) + '\n'
+                'self.report_validation_frequency =' + str(self.report_validation_frequency) + '\n'
+                'self.meta_learning_rate =' + str(self.meta_learning_rate) + '\n'
+                'self.least_number_of_tasks_val_test =' + str(self.least_number_of_tasks_val_test) + '\n'
+                'self.clip_gradients =' + str(self.clip_gradients) + '\n')
     def load_model(self, epochs=None):
         epoch_count = 0
         if epochs is not None:
+            f = open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs}.txt'))
             checkpoint_path = os.path.join(self.checkpoint_dir, f'model.ckpt-{epochs}')
+
+            while True:
+                line = f.readline()
+                if not line: break
+                eval(line)
+
             epoch_count = epochs
         else:
             checkpoint_path = tf.train.latest_checkpoint(self.checkpoint_dir)
@@ -374,8 +397,8 @@ class ModelAgnosticMetaLearningModel(BaseModel):
             self.log_metric(test_summary_writer, 'Loss', test_loss_metric, step=1)
             self.log_metric(test_summary_writer, 'Accuracy', test_accuracy_metric, step=1)
 
-            print('Test Loss: {}'.format(test_loss_metric.result().numpy()))
-            print('Test Accuracy: {}'.format(test_accuracy_metric.result().numpy()))
+        print('Test Loss: {}'.format(test_loss_metric.result().numpy()))
+        print('Test Accuracy: {}'.format(test_accuracy_metric.result().numpy()))
 
         return test_accuracy_metric.result().numpy()
 
@@ -396,7 +419,7 @@ class ModelAgnosticMetaLearningModel(BaseModel):
                 )
 
     def update_loss_and_accuracy(self, logits, labels, loss_metric, accuracy_metric):
-        print(tf.argmax(logits, axis=-1))
+        # print(tf.argmax(logits, axis=-1))
         val_loss = tf.reduce_sum(
             tf.losses.categorical_crossentropy(labels, logits, from_logits=True))
         loss_metric.update_state(val_loss)
@@ -528,11 +551,25 @@ class ModelAgnosticMetaLearningModel(BaseModel):
                 ))
                 pbar.update(1)
 
-    def predict(self, epochs_to_load_from=None, iterations = 5):
-        self.test_dataset = self.get_test_dataset()
+    def predict(self, predict_path, epochs_to_load_from=None, iterations = 5):
+        predict_path = os.getcwd() + predict_path
+        dataset_folders = [
+            os.path.join(predict_path, class_name) for class_name in os.listdir(predict_path)
+        ]
+
+
+        predict_dataset = self.database.get_supervised_meta_learning_dataset(
+            dataset_folders,
+            n=self.n,
+            k=self.k,
+            meta_batch_size=1,
+        )
         self.load_model(epochs=epochs_to_load_from)
 
-        for tmb, lmb in self.test_dataset:
+        steps_per_epoch = max(predict_dataset.steps_per_epoch, self.least_number_of_tasks_val_test)
+        test_dataset = predict_dataset.repeat(-1)
+        test_dataset = test_dataset.take(steps_per_epoch)
+        for tmb, lmb in test_dataset:
             for task, labels in zip(tmb, lmb):
                 train_ds, val_ds, train_labels, val_labels = self.get_task_train_and_val_ds(task, labels)
                 updated_model = self.inner_train_loop(train_ds, train_labels, iterations)
@@ -540,11 +577,29 @@ class ModelAgnosticMetaLearningModel(BaseModel):
                 # In that paper the assumption is that we have access to all of test data together and we can evaluate
                 # mean and variance from the batch which is given. Make sure to do the same thing in validation.
                 updated_model_logits = updated_model(val_ds, training=False)
-                
+
                 result = tf.argmax(updated_model_logits, axis=-1)
                 break
             break
         return result
+
+
+    # def predict(self, epochs_to_load_from=None, iterations = 5):
+    #     self.test_dataset = self.get_test_dataset()
+    #
+    #     for tmb, lmb in self.test_dataset:
+    #         for task, labels in zip(tmb, lmb):
+    #             train_ds, val_ds, train_labels, val_labels = self.get_task_train_and_val_ds(task, labels)
+    #             updated_model = self.inner_train_loop(train_ds, train_labels, iterations)
+    #             # If you want to compare with MAML paper, please set the training=True in the following line
+    #             # In that paper the assumption is that we have access to all of test data together and we can evaluate
+    #             # mean and variance from the batch which is given. Make sure to do the same thing in validation.
+    #             updated_model_logits = updated_model(val_ds, training=False)
+    #
+    #             result = tf.argmax(updated_model_logits, axis=-1)
+    #             break
+    #         break
+    #     return result
 
 def run_omniglot(raw_data_address):
     omniglot_database = OmniglotDatabase(
