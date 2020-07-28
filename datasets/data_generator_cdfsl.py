@@ -20,8 +20,26 @@ class Database(ABC):
         self.raw_database_address = raw_database_address
         self.database_address = database_address
 
-        self.train_folders, self.val_folders, self.test_folders = self.get_train_val_test_folders()
         self.input_shape = self.get_input_shape()
+
+        self.train_folders, self.val_folders, self.test_folders = self.get_train_val_test_folders()
+
+        self.train_folders = self.convert_to_dict(self.train_folders)
+        self.val_folders = self.convert_to_dict(self.val_folders)
+        self.test_folders = self.convert_to_dict(self.test_folders)
+
+        if random_seed != -1:
+            random.seed(None)
+
+    def convert_to_dict(self, folders):
+        if type(folders) == list:
+            classes = dict()
+            for folder in folders:
+                instances = [os.path.join(folder, file_name) for file_name in os.listdir(folder)]
+                classes[folder] = instances
+
+            folders = classes
+        return folders
 
     @abstractmethod
     def get_class(self):
