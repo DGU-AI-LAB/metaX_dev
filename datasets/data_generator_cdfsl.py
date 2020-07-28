@@ -32,6 +32,9 @@ class Database(ABC):
             random.seed(None)
 
     def convert_to_dict(self, folders):
+        """ This returns alll instances of a partition of dataset
+            Partition can be 'train', 'val', 'test' or 'all'
+        """
         if type(folders) == list:
             classes = dict()
             for folder in folders:
