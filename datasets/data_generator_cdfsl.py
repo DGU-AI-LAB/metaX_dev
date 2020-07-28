@@ -241,7 +241,7 @@ class CropDiseaseDatabase(Database):
 
         return parse_function
         
-    def get_input_shape(self) -> Tuple:
+    def get_input_shape(self):
         return 84, 84, 3
 
     def preview_image(self, image_path):
@@ -276,7 +276,7 @@ class EuroSatDatabase(Database):
 
         return parse_function
 
-    def get_input_shape(self) -> Tuple:
+    def get_input_shape(self):
         return 64, 64, 3
 
     def preview_image(self, image_path):
