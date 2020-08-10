@@ -1,7 +1,7 @@
-
+# metaX_Library
 <img src="https://github.com/DGU-AI-LAB/metaX_dev/blob/master/logo_transparent.png" width="500">
 
-# metaX_Library
+
 metaX library is a python library with deep neural networks and datasets for meta learning and multi-view learning base on Tensorflow 2.0.
 
 We provide...
