@@ -4,8 +4,6 @@
 # metaX_Library
 metaX library is a python library with deep neural networks and datasets for meta learning and multi-view learning base on Tensorflow 2.0.
 
---------------------------------------------------------------------------------------------------------------------------------------------
-
 We provide...
 - Deep neural networks for meta learning that can solve one-shot or few-shot problems.
 - Deep neural networks for multi-view learning
