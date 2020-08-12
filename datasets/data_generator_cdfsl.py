@@ -5,11 +5,11 @@ import random
 import os
 
 from glob import glob
-from typing import Tuple, List
 from PIL import Image
 from collections import defaultdict
 from abc import ABC, abstractmethod
 from datetime import datetime
+
 
 
 class Database(ABC):
@@ -91,6 +91,76 @@ class Database(ABC):
 
         return instances
 
+    def load_dumped_features(self, name):
+        dir_path = os.path.join(self.database_address, name)
+        if not os.path.exists(dir_path):
+            raise Exception('Requested features are not dumped yet.')
+
+        files_names_address = os.path.join(dir_path, 'files_names.npy')
+        features_address = os.path.join(dir_path, 'features.npy')
+        all_files = np.load(files_names_address)
+        features = np.load(features_address)
+
+        return all_files, features
+
+    def dump_features(
+            self, 
+            dataset_partition,
+            name, 
+            model,
+            input_shape,
+            feature_size,
+            preprocess_fn
+    ):
+        if dataset_partition == 'train':
+            files_dir = self.train_folders
+        elif dataset_partition == 'val':
+            files_dir = self.val_folders
+        elif dataset_partition == 'test':
+            files_dir = self.test_folders
+        else:
+            raise Exception('Partition is not in train, val or test!')
+
+        assert(dataset_partition in ('train', 'val', 'test'))
+
+        dir_path = os.path.join(self.database_address, f'{name}_{dataset_partition}')
+        if not os.path.exists(dir_path):
+            os.mkdir(dir_path)
+
+        all_files = list()
+
+        for class_name in files_dir:
+            all_files.extend([os.path.join(class_name, file_name) for file_name in os.listdir(class_name)])
+
+        files_names_address = os.path.join(dir_path, 'files_names.npy')
+        np.save(files_names_address, all_files)
+
+        features_address = os.path.join(dir_path, 'features.npy')
+
+        n = len(all_files)
+        m = feature_size
+        features = np.zeros(shape=(n, m))
+
+        begin_time = datetime.now()
+
+        for index, sampled_file in enumerate(all_files):
+            if index % 1000 == 0:
+                print(f'{index}/{len(all_files)} images have been dumped')
+
+            img = tf.keras.preprocessing.image.load_img(sampled_file, target_size=(input_shape[:2]))
+            img = tf.keras.preprocessing.image.img_to_array(img)
+            img = np.expand_dims(img, axis = 0)
+            if preprocess_fn is not None:
+                img = preprocess_fn(img)
+
+            features[index, :] = model.predict(img).reshape(-1)
+
+        np.save(features_address, features)
+        end_time = datetime.now()
+        print('Features have been dumped!')
+        print(f'Time to dump features: {str(end_time - begin_time)}')
+
+
 
 class CropDiseaseDatabase(Database):
     def __init__(self, raw_data_address, random_seed=-1):
@@ -129,6 +199,7 @@ class CropDiseaseDatabase(Database):
         return image
 
 
+
 class EuroSatDatabase(Database):
     def __init__(self, raw_data_address, random_seed=-1):
         super(EuroSatDatabase, self).__init__(
@@ -159,6 +230,7 @@ class EuroSatDatabase(Database):
     def preview_image(self, image_path):
         image = Image.open(image_path)
         return image
+
 
 
 class ISICDatabase(Database):
@@ -208,6 +280,7 @@ class ISICDatabase(Database):
     def preview_image(self, image_path):
         image = Image.open(image_path)
         return image
+
 
 
 class ChestXRay8Database(Database):
