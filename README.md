@@ -15,14 +15,14 @@ We provide...
 <pre>
 <code>
 dataset/
-	data_generator.py (Omniglot, mini-ImageNet) (Completed)    
-        KTS_data_generator.py                       (Completed)                    
-	FLOWER_data_generator.py                    (In progress)             
-	KMSCOCO_data_generator.py                   (In progress)           
-	KVQA_data_generator.py                      (In progress)              
+	data_generator.py (Omniglot, mini-ImageNet) (Completed)
+        KTS_data_generator.py                       (Completed)
+	FLOWER_data_generator.py                    (In progress)
+	KMSCOCO_data_generator.py                   (In progress)
+	KVQA_data_generator.py                      (In progress)
 	CropDisease.py                              (Completed)
-	EuroSAT.py                                  (Completed) 
-	ISIC.py                                     (Completed)   
+	EuroSAT.py                                  (Completed)
+	ISIC.py                                     (Completed)
  	ChestX.py                                   (Completed)
   data/
   raw_data/
