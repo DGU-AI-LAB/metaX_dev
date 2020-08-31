@@ -37,13 +37,15 @@ if __name__ == '__main__':
     # 타입 : tf.data.Dataset
     if args.benchmark_dataset == "omniglot":
         database = OmniglotDatabase(
-            raw_data_address="dataset\omniglot",
+		     # 200831 changed path, add raw_data folder
+            raw_data_address="dataset\raw_data\omniglot",
             random_seed=47,
             num_train_classes=1200,
             num_val_classes=100)
     elif args.benchmark_dataset == "mini_imagenet":
         database=MiniImagenetDatabase(
-            raw_data_address="\dataset\mini_imagenet",
+		    # 200831 changed path, add raw_data folder
+            raw_data_address="\dataset\raw_data\mini_imagenet",
             random_seed=-1)
 
     # 모델 객체를 생성합니다.
