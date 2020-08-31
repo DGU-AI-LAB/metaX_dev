@@ -30,19 +30,19 @@ dataset/
 model/
 	LearningType.py 
 	metric_based/
-		Relation_network.py                      (In progress)
-		Prototypical_network.py                  (In progress)
-		Siamese_network.py                       (Completed)
+		Relation_network.py                 (In progress)
+		Prototypical_network.py             (In progress)
+		Siamese_network.py                  (Completed)
 	model_based/
-		MANN.py                                  (Completed)
+		MANN.py                             (Completed)
 		SNAIL.py
 	optimization_based/
-		MAML.py                                  (Completed)
+		MAML.py                             (Completed)
 		MetaSGD.py
-		Reptile.py                               (In progress)
+		Reptile.py                          (In progress)
 	heterogeneous_data_analysis/
-		image_text_embeding.py                   (In progress)
-		Vis_LSTM.py                              (In progress)
-    Modified_mCNN.py                                     (In progress)
+		image_text_embeding.py              (In progress)
+		Vis_LSTM.py                         (In progress)
+    Modified_mCNN.py                                (In progress)
 train.py
 utils.py (accuracy, mse)
