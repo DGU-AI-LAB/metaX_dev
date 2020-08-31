@@ -16,7 +16,7 @@ We provide...
 <code>
 dataset/
 	data_generator.py (Omniglot, mini-ImageNet) (Completed)    
-        KTS_data_generator.py                 (Completed)                    
+        KTS_data_generator.py                       (Completed)                    
 	FLOWER_data_generator.py                    (In progress)             
 	KMSCOCO_data_generator.py                   (In progress)           
 	KVQA_data_generator.py                      (In progress)              
@@ -43,6 +43,6 @@ model/
 	heterogeneous_data_analysis/
 		image_text_embeding.py                   (In progress)
 		Vis_LSTM.py                              (In progress)
-    Modified_mCNN.py                         (In progress)
+    Modified_mCNN.py                                     (In progress)
 train.py
 utils.py (accuracy, mse)
