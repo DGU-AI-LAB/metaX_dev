@@ -2,6 +2,7 @@ import tensorflow as tf
 import numpy as np
 from abc import ABC, abstractmethod
 import os
+import pickle
 from tqdm import tqdm
 from utils import combine_first_two_axes, createFolder
 from tensorflow.keras.layers import Conv2D, Flatten, Dense, Input, BatchNormalization
@@ -45,6 +46,7 @@ class OmniglotModel(tf.keras.Model):
 
         return out
 
+
 class MiniImagenetModel(tf.keras.Model):
     name = 'MiniImagenetModel'
 
@@ -79,9 +81,6 @@ class MiniImagenetModel(tf.keras.Model):
         return out
 
 
-    
-
-        
 class ModelAgnosticMetaLearning(MetaLearning):
     def __init__(
             self,
@@ -144,12 +143,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
             createFolder(self.val_log_dir)
             self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
 
-        self.checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models/')
-
-
-
-
-
+        self.checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models') # 20.09.03
 
 
     def get_root(self):
@@ -303,35 +297,47 @@ class ModelAgnosticMetaLearning(MetaLearning):
             return copy_model
 
     def save_model(self, epochs):
-        self.model.save_weights(os.path.join(self.checkpoint_dir, f'model.ckpt-{epochs}'))
+        # print("save model at ", os.path.join(self.checkpoint_dir, f'model_{epochs}_.ckpt'))
+        self.model.save_weights(os.path.join(self.checkpoint_dir, f'model_{epochs}_.ckpt'))
         self.save_args(epochs)
 
     def save_args(self, epochs):
-        f = open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs}.txt'), 'w')
-        f.write('self.n =' + str(self.n) + '\n'
-                'self.k =' + str(self.k) + '\n'
-                'self.meta_batch_size =' + str(self.meta_batch_size) + '\n'
-                'self.num_steps_ml =' + str(self.num_steps_ml) + '\n'
-                'self.lr_inner_ml =' + str(self.lr_inner_ml) + '\n'
-                'self.num_steps_validation =' + str(self.num_steps_validation) + '\n'
-                'self.save_after_epochs =' + str(self.save_after_epochs) + '\n'
-                'self.log_train_images_after_iteration =' + str(self.log_train_images_after_iteration) + '\n'
-                'self.report_validation_frequency =' + str(self.report_validation_frequency) + '\n'
-                'self.meta_learning_rate =' + str(self.meta_learning_rate) + '\n'
-                'self.least_number_of_tasks_val_test =' + str(self.least_number_of_tasks_val_test) + '\n'
-                'self.clip_gradients =' + str(self.clip_gradients) + '\n')
+        arg_dict = {'self.n' :  self.n,
+                    'self.k' :  self.k,
+                    'self.meta_batch_size' :  self.meta_batch_size,
+                    'self.num_steps_ml' :  self.num_steps_ml,
+                    'self.lr_inner_ml' :  self.lr_inner_ml,
+                    'self.num_steps_validation' :  self.num_steps_validation,
+                    'self.save_after_epochs' :  self.save_after_epochs,
+                    'self.log_train_images_after_iteration' :  self.log_train_images_after_iteration,
+                    'self.report_validation_frequency' :  self.report_validation_frequency,
+                    'self.meta_learning_rate' :  self.meta_learning_rate,
+                    'self.least_number_of_tasks_val_test' :  self.least_number_of_tasks_val_test,
+                    'self.clip_gradients' :  self.clip_gradients}
+        with open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs}_.bin'), 'wb') as f:
+            pickle.dump(arg_dict, f)
+        
     def load_model(self, epochs=None):
         epoch_count = 0
         if epochs is not None:
             try:
-                f = open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs-1}.txt'))
-                checkpoint_path = os.path.join(self.checkpoint_dir, f'model.ckpt-{epochs-1}')
+                with open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs-1}_.bin'), 'rb') as f:
+                    arg_dict_load = pickle.load(f)
+                self.n = arg_dict_load['self.n']
+                self.k = arg_dict_load['self.k']
+                self.meta_batch_size = arg_dict_load['self.meta_batch_size']
+                self.num_steps_ml = arg_dict_load['self.num_steps_ml']
+                self.lr_inner_ml = arg_dict_load['self.lr_inner_ml']
+                self.num_steps_validation = arg_dict_load['self.num_steps_validation']
+                self.save_after_epochs = arg_dict_load['self.save_after_epochs']
+                self.log_train_images_after_iteration = arg_dict_load['self.log_train_images_after_iteration']
+                self.report_validation_frequency = arg_dict_load['self.report_validation_frequency']
+                self.meta_learning_rate = arg_dict_load['self.meta_learning_rate']
+                self.least_number_of_tasks_val_test = arg_dict_load['self.least_number_of_tasks_val_test']
+                self.clip_gradients = arg_dict_load['self.clip_gradients']
 
-                while True:
-                    line = f.readline()
-                    if not line: break
-                    eval(line)
-
+                checkpoint_path = os.path.join(self.checkpoint_dir, f'model_{epochs-1}_.ckpt')
+                print("checkpoint_path : ", checkpoint_path)
                 epoch_count = epochs
             except:
                 print('not find checkpoint')
@@ -340,9 +346,9 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
         if checkpoint_path is not None:
             try:
-                self.model.load_weights(self.checkpoint_path)
-                print('==================\nResuming Training\n==================')
-                epoch_count = int(checkpoint_path[checkpoint_path.rindex('-') + 1:])
+                self.model.load_weights(checkpoint_path)
+                epoch_count = int(checkpoint_path.split("_")[-2])
+                print('==================\nLoad Checkpoint\n(epoch : {})\n=================='.format(epoch_count))
             except Exception as e:
                 print('Could not load the previous checkpoint!')
 
