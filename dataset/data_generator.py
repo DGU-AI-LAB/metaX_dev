@@ -141,11 +141,11 @@ class OmniglotDatabase(Database):
             for train_image_path in glob(train_class + '/*.*'):
                 train_dict[train_class.split('\\')[-1]].append(train_image_path)
 
-        for val_class in self.train_folders:
+        for val_class in self.val_folders:
             for val_image_path in glob(val_class+'/*.*'):
                 val_dict[val_class.split('\\')[-1]].append(val_image_path)
 
-        for test_class in self.train_folders:
+        for test_class in self.test_folders:
             for test_image_path in glob(test_class+'/*.*'):
                 test_dict[test_class.split('\\')[-1]].append(test_image_path)
 
@@ -213,12 +213,12 @@ class MiniImagenetDatabase(Database):
             for train_image_path in glob(train_class + '/*.*'):
                 train_dict[train_class.split('\\')[-1]].append(train_image_path)
 
-        for val_class in self.train_folders:
-            for val_image_path in glob(val_class + '/*.*'):
+        for val_class in self.val_folders:
+            for val_image_path in glob(val_class+'/*.*'):
                 val_dict[val_class.split('\\')[-1]].append(val_image_path)
 
-        for test_class in self.train_folders:
-            for test_image_path in glob(test_class + '/*.*'):
+        for test_class in self.test_folders:
+            for test_image_path in glob(test_class+'/*.*'):
                 test_dict[test_class.split('\\')[-1]].append(test_image_path)
 
         return train_dict, val_dict, test_dict
