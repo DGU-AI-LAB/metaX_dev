@@ -1,3 +1,5 @@
 dataset/raw_data/
 dataset/data/
 .vscode/
+dataset/__pycache__
+__pycache__/

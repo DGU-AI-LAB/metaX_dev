@@ -3,6 +3,8 @@ import shutil
 from abc import ABC, abstractmethod
 import random
 import utils
+import pprint
+
 import tensorflow as tf
 from collections import defaultdict
 from glob import glob
@@ -123,13 +125,18 @@ class OmniglotDatabase(Database):
             random_seed,
             num_train_classes,
             num_val_classes,
+            is_preview=False,
     ):
         self.num_train_classes = num_train_classes
         self.num_val_classes = num_val_classes
+        if is_preview == True:
+            self.is_preview = True
+        else:
+            self.is_preview = False
 
         super(OmniglotDatabase, self).__init__(
             raw_data_address,
-            os.getcwd()+'/dataset/data/omniglot',
+            os.getcwd()+'/dataset/data/omniglot', # database_address
             random_seed=random_seed,
         )
 
@@ -195,6 +202,83 @@ class OmniglotDatabase(Database):
                     destination_address = os.path.join(self.database_address, alphabet + '_' + character)
                     if not os.path.exists(destination_address):
                         shutil.copytree(character_address, destination_address)
+
+    # 20.10.07. For Preivew step
+    def get_statistic(self):
+        if not self.is_preview:
+            return
+        else:
+            # Get the paths of classes
+            path_class_train = defaultdict(list)
+            path_class_val = defaultdict(list)
+            path_class_test = defaultdict(list)
+
+            for train_class in self.train_folders:
+                path_class_train[train_class.split(os.sep)[-1]] = train_class
+
+            for val_class in self.val_folders:
+                path_class_val[val_class.split(os.sep)[-1]] = val_class
+
+            for test_class in self.test_folders:
+                path_class_test[test_class.split(os.sep)[-1]] = test_class
+
+            # Get the paths of each samples(type : dict)
+            path_sample_train, path_sample_val, path_sample_test = self.get_class()
+
+            # Get the stat of classes (N of each class)
+            def _stat_dict(x):
+                stat_dict = {}
+                for key, value in x.items():
+                    stat_dict[key] = len(value)
+                return stat_dict
+            
+            n_of_samples_per_calss_train = _stat_dict(path_sample_train)
+            n_of_samples_per_calss_val = _stat_dict(path_sample_val)
+            n_of_samples_per_calss_test = _stat_dict(path_sample_test)
+
+            n_of_class_train = len(n_of_samples_per_calss_train.keys())
+            n_of_class_val = len(n_of_samples_per_calss_val.keys())
+            n_of_class_test = len(n_of_samples_per_calss_test.keys())
+            total_n_of_samples_train = sum(list(n_of_samples_per_calss_train.values()))
+            total_n_of_samples_val = sum(list(n_of_samples_per_calss_val.values()))
+            total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
+
+            # Saving stat and paths
+            path_of_stats = os.path.join(os.getcwd(),'dataset/data/stat/omniglot')
+            os.makedirs(path_of_stats, exist_ok=True)
+            with open(os.path.join(path_of_stats, 'stat.txt'), 'w') as f:
+                print('''Statistic of the dataset
+The number of the classes / The total number of samples
+    Train : {0:>7}/{1:>7}
+    Val   : {2:>7}/{3:>7}
+    Test  : {4:>7}/{5:>7}'''.format(n_of_class_train, total_n_of_samples_train,
+                n_of_class_val, total_n_of_samples_val,
+                n_of_class_test, total_n_of_samples_test
+                ), file=f)
+            exit()
+
+
+            import json
+
+            def _save_json(data, output_filename:str):
+                path_out = os.path.join(path_of_stats, output_filename)
+                with open(path_out, 'w') as outfile:
+                    json.dump(data, outfile, indent="\t")
+                print('[JSON file Saved] : \n', path_out)
+            
+            _save_json(path_class_train, 'path_class_train.json')
+            _save_json(path_class_val, 'path_class_val.json')
+            _save_json(path_class_test, 'path_class_test.json')
+
+            # Paths of samples
+            _save_json(path_sample_train, 'path_sample_train.json')
+            _save_json(path_sample_val, 'path_sample_val.json')
+            _save_json(path_sample_test, 'path_sample_test.json')
+
+            # Stat of classes
+            _save_json(n_of_samples_per_calss_train, 'n_of_samples_per_calss_train.json')
+            _save_json(n_of_samples_per_calss_val, 'n_of_samples_per_calss_val.json')
+            _save_json(n_of_samples_per_calss_test, 'n_of_samples_per_calss_test.json')
 
 
 class MiniImagenetDatabase(Database):

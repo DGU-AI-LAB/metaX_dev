@@ -1,0 +1,86 @@
+{
+  "task1": {
+    "supports": {
+      "class11": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ],
+      "class12": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ],
+      "class13": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ]
+    },
+    "query": {
+      "class12": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ]
+    }
+  },
+  "task2": {
+    "supports": {
+      "class21": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ],
+      "class22": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ],
+      "class23": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        },
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ]
+    },
+    "query": {
+      "class23": [
+        {
+          "name": "1232_15.png",
+          "path": "/home/istream3/matrix/apps/tomcat-8.5.39/webapps/bizmdl/metax/prj_data/M01/P10/raw/Kannada_character28/1232_15.png"
+        }
+      ]
+    }
+  }
+}
