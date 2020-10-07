@@ -77,6 +77,8 @@ if __name__ == '__main__':
             raw_data_address="\dataset\raw_data\mini_imagenet",
             random_seed=-1)
 
+    # -> N-way K-shot 프리뷰 보여줄 수 있게 코드 추가
+
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":
         network_cls=OmniglotModel
