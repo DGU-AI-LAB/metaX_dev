@@ -1,5 +1,6 @@
 dataset/raw_data/
 dataset/data/omniglot/
+dataset/data/stat/omniglot/
 dataset/data/oxfordflower/images/
 dataset/data/oxfordflower/pretrained/
 dataset/data/oxfordflower/texts/
