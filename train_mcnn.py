@@ -47,6 +47,7 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
 
+    # 1 & 2. Preview & Preprocessing
     # 데이터셋 객체를 생성합니다.
     # 타입 : tf.data.Dataset
     if args.benchmark_dataset == "omniglot":
@@ -64,7 +65,7 @@ if __name__ == '__main__':
             config_path="./dataset/data/oxfordflower/args.ini",
             random_seed=47)
             
-
+    # 3. Training 
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":
         network_cls=OmniglotModel
@@ -73,14 +74,28 @@ if __name__ == '__main__':
     elif args.network_cls == "modified_mcnn":
         network_cls=Modified_m_CNN
         
-    
     if network_cls in [OmniglotModel,MiniImagenetModel]:
         maml = ModelAgnosticMetaLearning(args, database, network_cls)
         maml.meta_train(epochs = args.epochs)
     elif network_cls in [Modified_m_CNN]:
         hetero = Hetero(args,"./dataset/data/oxfordflower/args.ini",database,network_cls)
         hetero.train()
-    
+
+    # 4. Test (Evaluation)
+    # Model Load : [TODO] Load from ckpt is required...
+    # 각 단계별로 코드 파일을 분할해야하기 때문에 저장된 모델을 불러오는 기능 필요
+    # input으로 epochs를 받아 해당 epoch에 저장된 모델 불러오기
+    # None일 시 최종 학습한 모델을 불러옵니다.
+    # hetero.load_model()
+
+    # Evaluation
+    hetero.evaluate() # [TODO] Change the method name -> hetero.test()
+
+    # 5. Prediction
+    # [TODO] input으로 path를 받도록 변경 (현재는 dictionary)
+    hetero.predict()
+
+
 """
     # 학습을 위한 클래스를 생성합니다.
     maml = ModelAgnosticMetaLearning(args, database, network_cls)
