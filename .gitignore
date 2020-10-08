@@ -3,3 +3,5 @@ dataset/data/
 .vscode/
 dataset/__pycache__
 __pycache__/
+model/heterogeneous_data_analysis/model_log/
+model/heterogeneous_data_analysis/pretrained/

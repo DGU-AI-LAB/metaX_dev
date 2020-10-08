@@ -9,56 +9,56 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 
 if __name__ == '__main__':
-    # 빠른 테스트를 위한 세팅
-    parser = argparse.ArgumentParser()
-    #parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet') # 20.09.03
-    #parser.add_argument('--network_cls', type=str, default='mini_imagenet')       # 20.09.03
-    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
-    parser.add_argument('--network_cls', type=str, default='omniglot')             # 20.09.03
-    parser.add_argument('--n', type=int, default=5)
-    parser.add_argument('--epochs', type=int, default=3) # 5
-    parser.add_argument('--iterations', type=int, default=1) # 5
-    parser.add_argument('--k', type=int, default=1)
-    # parser.add_argument('--meta_batch_size', type=int, default=32)
-    parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
-    parser.add_argument('--num_steps_ml', type=int, default=1) # 10
-    parser.add_argument('--lr_inner_ml', type=float, default=0.4)
-    parser.add_argument('--num_steps_validation', type=int, default=1) # 10
-    # parser.add_argument('--save_after_epochs', type=int, default=500)
-    parser.add_argument('--save_after_epochs', type=int, default=1)
-    parser.add_argument('--meta_learning_rate', type=float, default=0.001)
-    parser.add_argument('--report_validation_frequency', type=int, default=50)
-    parser.add_argument('--log_train_images_after_iteration', type=int, default=1)
-
-
-    # # 학습에 필요한 인자를 입력으로 받습니다.
-    # # 아래 인자들은 메타러닝 세팅에 대한 것으로 일반 학습에 대한 세팅은 다를 수 있습니다.
+    # # 빠른 테스트를 위한 세팅
     # parser = argparse.ArgumentParser()
-    # # parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
-    # # parser.add_argument('--network_cls', type=str, default='mini_imagenet')
-
-    # # Argument for Common Deep Learning
-    # # It take user input & It also have default values
-    # parser.add_argument('--benchmark_dataset', type=str, default='omniglot')
-    # parser.add_argument('--network_cls', type=str, default='omniglot')
-    # parser.add_argument('--epochs', type=int, default=5)
-    # parser.add_argument('--meta_learning_rate', type=float, default=0.001) # Corresponds to learning rate in general deep learning
-
-    # # Argument for Meta-Learning
-    # # It take user input & It also have default values
-    # parser.add_argument('--n', type=int, default=5) 
+    # #parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet') # 20.09.03
+    # #parser.add_argument('--network_cls', type=str, default='mini_imagenet')       # 20.09.03
+    # parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
+    # parser.add_argument('--network_cls', type=str, default='omniglot')             # 20.09.03
+    # parser.add_argument('--n', type=int, default=5)
+    # parser.add_argument('--epochs', type=int, default=3) # 5
+    # parser.add_argument('--iterations', type=int, default=1) # 5
     # parser.add_argument('--k', type=int, default=1)
-    # parser.add_argument('--meta_batch_size', type=int, default=5)
-    # parser.add_argument('--num_steps_ml', type=int, default=10)
+    # # parser.add_argument('--meta_batch_size', type=int, default=32)
+    # parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
+    # parser.add_argument('--num_steps_ml', type=int, default=1) # 10
     # parser.add_argument('--lr_inner_ml', type=float, default=0.4)
-    # parser.add_argument('--iterations', type=int, default=5)
-    # parser.add_argument('--num_steps_validation', type=int, default=10)
-    
-    # # Argument for wrting log & save file
-    # # It take user input & It also have default values
+    # parser.add_argument('--num_steps_validation', type=int, default=1) # 10
+    # # parser.add_argument('--save_after_epochs', type=int, default=500)
     # parser.add_argument('--save_after_epochs', type=int, default=1)
+    # parser.add_argument('--meta_learning_rate', type=float, default=0.001)
     # parser.add_argument('--report_validation_frequency', type=int, default=50)
     # parser.add_argument('--log_train_images_after_iteration', type=int, default=1)
+
+
+    # 학습에 필요한 인자를 입력으로 받습니다.
+    # 아래 인자들은 메타러닝 세팅에 대한 것으로 일반 학습에 대한 세팅은 다를 수 있습니다.
+    parser = argparse.ArgumentParser()
+    # parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
+    # parser.add_argument('--network_cls', type=str, default='mini_imagenet')
+
+    # Argument for Common Deep Learning
+    # It take user input & It also have default values
+    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')
+    parser.add_argument('--network_cls', type=str, default='omniglot')
+    parser.add_argument('--epochs', type=int, default=5)
+    parser.add_argument('--meta_learning_rate', type=float, default=0.001) # Corresponds to learning rate in general deep learning
+
+    # Argument for Meta-Learning
+    # It take user input & It also have default values
+    parser.add_argument('--n', type=int, default=5) 
+    parser.add_argument('--k', type=int, default=1)
+    parser.add_argument('--meta_batch_size', type=int, default=5)
+    parser.add_argument('--num_steps_ml', type=int, default=10)
+    parser.add_argument('--lr_inner_ml', type=float, default=0.4)
+    parser.add_argument('--iterations', type=int, default=5)
+    parser.add_argument('--num_steps_validation', type=int, default=10)
+    
+    # Argument for wrting log & save file
+    # It take user input & It also have default values
+    parser.add_argument('--save_after_epochs', type=int, default=1)
+    parser.add_argument('--report_validation_frequency', type=int, default=50)
+    parser.add_argument('--log_train_images_after_iteration', type=int, default=1)
 
     args = parser.parse_args()
 
