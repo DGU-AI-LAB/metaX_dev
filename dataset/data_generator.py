@@ -104,7 +104,9 @@ class Database(ABC):
             block_length=k,
             num_parallel_calls=tf.data.experimental.AUTOTUNE
         )
-        dataset = dataset.map(self._get_parse_function(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        
+        if not self.is_preview:
+            dataset = dataset.map(self._get_parse_function(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
 
         dataset = tf.data.Dataset.zip((dataset, labels_dataset))
 
