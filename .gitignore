@@ -1,5 +1,15 @@
 dataset/raw_data/
-dataset/data/
+dataset/data/omniglot/
+dataset/data/stat/omniglot/
+dataset/data/oxfordflower/images/
+dataset/data/oxfordflower/pretrained/
+dataset/data/oxfordflower/texts/
+dataset/data/oxfordflower/tfrecord/
+dataset/data/oxfordflower/*.json
+*.pkl
+*.whl
 .vscode/
 dataset/__pycache__
 __pycache__/
+model/hetero/model_log/
+model/hetero/pretrained/

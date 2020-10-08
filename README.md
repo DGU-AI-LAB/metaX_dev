@@ -16,8 +16,8 @@ We provide...
 <code>
 dataset/
 	data_generator.py (Omniglot, mini-ImageNet) (Completed)
+	data_generator_oxfordflower.py              (Completed)
         KTS_data_generator.py                       (Completed)
-	FLOWER_data_generator.py                    (In progress)
 	KMSCOCO_data_generator.py                   (In progress)
 	KVQA_data_generator.py                      (In progress)
 	CropDisease.py                              (Completed)
@@ -25,8 +25,13 @@ dataset/
 	ISIC.py                                     (Completed)
  	ChestX.py                                   (Completed)
   data/
+    omiglot/
+    oxfordflower/
+    stat/
+      omniglot/
   raw_data/
-  
+    omniglot/
+    omniglot_resized/
 model/
 	LearningType.py 
 	metric_based/
@@ -40,9 +45,15 @@ model/
 		MAML.py                             (Completed)
 		MetaSGD.py
 		Reptile.py                          (In progress)
-	heterogeneous_data_analysis/
+	hetero/
 		image_text_embeding.py              (In progress)
-		Vis_LSTM.py                         (In progress)
-    Modified_mCNN.py                                (In progress)
+		mcnn.py                             (Completed)
+
 train.py
+train_mcnn.py
 utils.py (accuracy, mse)
+step01_preview.py
+step02_preprocess.py
+step03_meta-train.py
+step04_meta-test.py
+step05_predict.py
