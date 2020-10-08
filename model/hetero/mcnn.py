@@ -1,8 +1,8 @@
 import tensorflow as tf
 from tensorflow.keras import layers,optimizers,losses
-from dataset.oxfordflower.tf_utils import *
+from dataset.data.oxfordflower.tf_utils import * # 20.10.08. Modifyed for path matching
 from model.LearningType import Learning
-from dataset.oxfordflower.data_utils import parse_config
+from dataset.data.oxfordflower.data_utils import parse_config # 20.10.08. Modifyed for path matching
 import os
 import pickle
 

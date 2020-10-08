@@ -10,8 +10,8 @@ from glob import glob
 from PIL import Image
 
 # Utilities functions for OxfordFlower
-from dataset.oxfordflower.data_utils import parse_config, tokenizer,build_vocab,txt2Token,img2Raw,load_json,save_json,match_and_write
-from dataset.oxfordflower.tf_utils import config_wrapper_parse_funcs
+from dataset.data.oxfordflower.data_utils import parse_config, tokenizer,build_vocab,txt2Token,img2Raw,load_json,save_json,match_and_write
+from dataset.data.oxfordflower.tf_utils import config_wrapper_parse_funcs
 
 class Database(ABC):
     def __init__(self, raw_database_address, database_address, random_seed=-1):
@@ -314,9 +314,15 @@ class OxfordFlower(Database):
         _tokenizer = tokenizer("Okt") # argparser로 줄것 
         
         # build and save vocab
-        vocab=build_vocab(config,_tokenizer)
-        with open(os.path.join(config["data_path"],config["vocab"]),"wb") as f:
-            pickle.dump(vocab,f)
+        # 20.10.08. modified : before build vocab, check whether there is the vocab.pkl or not.
+        vocab_path = os.path.join(config["data_path"],config["vocab"])
+        if os.path.isfile(vocab_path):
+            with open(vocab_path,"rb") as f:
+                vocab = pickle.load(f)
+        else:
+            vocab=build_vocab(config,_tokenizer)
+            with open(vocab_path,"wb") as f:
+                vocab = pickle.dump(vocab, f)
         
         # Tokenize according to a vocab
         name2token = txt2Token(config,_tokenizer,vocab)

@@ -1,6 +1,6 @@
-from model.optimization_based.MAML import OmniglotModel, MiniImagenetModel, ModelAgnosticMetaLearning
+from model.optimization_based.maml import OmniglotModel, MiniImagenetModel, ModelAgnosticMetaLearning
 from model.hetero.mcnn import Hetero,Modified_m_CNN
-from dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase, OxfordFlower
+from dataset.data_generator_oxfordflower import OmniglotDatabase, MiniImagenetDatabase, OxfordFlower
 import argparse
 
 import logging, os
@@ -14,20 +14,20 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
     # parser.add_argument('--network_cls', type=str, default='mini_imagenet')
-    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')
-    parser.add_argument('--network_cls', type=str, default='omniglot')
-    parser.add_argument('--n', type=int, default=5) # 필요없음
+    parser.add_argument('--benchmark_dataset', type=str, default='oxford_flower')
+    parser.add_argument('--network_cls', type=str, default='modified_mcnn')
+    # parser.add_argument('--n', type=int, default=5) # 필요없음
     parser.add_argument('--epochs', type=int, default=5) # 중복됌
     # parser.add_argument('--iterations', type=int, default=5) # 필요없음
     # parser.add_argument('--k', type=int, default=1) # 필요없음
     # parser.add_argument('--meta_batch_size', type=int, default=32)
-    parser.add_argument('--meta_batch_size', type=int, default=2)
-    parser.add_argument('--num_steps_ml', type=int, default=10)
+    # parser.add_argument('--meta_batch_size', type=int, default=2)
+    # parser.add_argument('--num_steps_ml', type=int, default=10)
     parser.add_argument('--lr_inner_ml', type=float, default=0.4)
-    parser.add_argument('--num_steps_validation', type=int, default=10)
+    # parser.add_argument('--num_steps_validation', type=int, default=10)
     # parser.add_argument('--save_after_epochs', type=int, default=500)
     parser.add_argument('--save_after_epochs', type=int, default=1)
-    parser.add_argument('--meta_learning_rate', type=float, default=0.001)
+    # parser.add_argument('--meta_learning_rate', type=float, default=0.001)
     parser.add_argument('--report_validation_frequency', type=int, default=50)
     parser.add_argument('--log_train_images_after_iteration', type=int, default=1)
     
@@ -61,7 +61,7 @@ if __name__ == '__main__':
             random_seed=-1)
     elif args.benchmark_dataset == "oxford_flower":
         database = OxfordFlower(
-            config_path="./dataset/oxfordflower/args.ini",
+            config_path="./dataset/data/oxfordflower/args.ini",
             random_seed=47)
             
 
@@ -78,7 +78,7 @@ if __name__ == '__main__':
         maml = ModelAgnosticMetaLearning(args, database, network_cls)
         maml.meta_train(epochs = args.epochs)
     elif network_cls in [Modified_m_CNN]:
-        hetero = Hetero(args,"./dataset/oxfordflower/args.ini",database,network_cls)
+        hetero = Hetero(args,"./dataset/data/oxfordflower/args.ini",database,network_cls)
         hetero.train()
     
 """
