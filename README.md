@@ -16,8 +16,8 @@ We provide...
 <code>
 dataset/
 	data_generator.py (Omniglot, mini-ImageNet) (Completed)
-        KTS_data_generator.py                       (Completed)
 	data_generator_oxfordflower.py              (Completed)
+        KTS_data_generator.py                       (Completed)
 	KMSCOCO_data_generator.py                   (In progress)
 	KVQA_data_generator.py                      (In progress)
 	CropDisease.py                              (Completed)
