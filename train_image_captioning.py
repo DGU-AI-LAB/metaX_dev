@@ -54,8 +54,8 @@ if __name__ == '__main__':
             random_seed=-1)
     elif args.benchmark_dataset == "MSKOKOKR":
         database = MSCOCOKRDatabase(
-            train_address = "dataset\MSCOCOKR_data\train",
-            test_address = "dataset\MSCOCOKR_data\test")
+            train_address = "dataset\data\MSCOCOKR_data\train",
+            test_address = "dataset\data\MSCOCOKR_data\test")
 
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":
