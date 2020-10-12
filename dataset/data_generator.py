@@ -246,9 +246,10 @@ class OmniglotDatabase(Database):
             total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
 
             # Saving stat and paths
-            path_of_stats = os.path.join(os.getcwd(),'dataset/data/stat/omniglot')
-            os.makedirs(path_of_stats, exist_ok=True)
-            with open(os.path.join(path_of_stats, 'stat.txt'), 'w') as f:
+            path_of_ui_output = os.path.join(os.getcwd(),'dataset/data/ui_output/omniglot')
+            print(path_of_ui_output)
+            os.makedirs(path_of_ui_output, exist_ok=True)
+            with open(os.path.join(path_of_ui_output, 'stat.txt'), 'w') as f:
                 print('''Statistic of the dataset
 The number of the classes / The total number of samples
     Train : {0:>7}/{1:>7}

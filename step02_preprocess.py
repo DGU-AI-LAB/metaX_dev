@@ -134,7 +134,9 @@ if __name__ == '__main__':
     ###############################################################################
     
     # Save the N-way K-shot task json file (for tarin set)
-    json_save_path = os.path.join(cache_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
+    path_of_ui_output = os.path.join(os.getcwd(),'dataset/data/ui_output/omniglot')
+    os.makedirs(path_of_ui_output, exist_ok=True)
+    json_save_path = os.path.join(path_of_ui_output, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
     save_nwaykshot(train_dataset, json_save_path, class2num)
 
     # [TODO] For Mini ImageNet Setting

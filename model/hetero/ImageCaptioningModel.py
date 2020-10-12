@@ -58,7 +58,7 @@ class ImageCaptioningModel(Learning):
             generator = self.get_train_dataset()
             model.fit_generator(generator, epochs=1, steps_per_epoch= iterations, verbose=1)
         
-        model.save("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        model.save("dataset/data/MSCOCOKR/train/ImagecaptioningModel.h5")
         
 
     def get_train_dataset(self):
@@ -76,8 +76,8 @@ class ImageCaptioningModel(Learning):
         print(model.summary())
         
     def evaluate(self):
-        test_image_path = "dataset/data/MSCOCOKR_data/test/test_images"
-        token_split = pd.read_csv("dataset/data/MSCOCOKR_data/test/token_dataframe.csv', encoding='cp949')
+        test_image_path = "dataset/data/MSCOCOKR/test/test_images"
+        token_split = pd.read_csv("dataset/data/MSCOCOKR/test/token_dataframe.csv', encoding='cp949')
         
         inception_model = Xception(include_top=False, pooling="avg")
         test_image_name = os.listdir(test_image_path)
@@ -90,7 +90,7 @@ class ImageCaptioningModel(Learning):
         bleu_all=[]
         max_length= self.max_lenght
         # @ load_model 을 별도의 메서드로 만들어 주시기 바랍니다(라이브러리 형식 맞추기위함)
-        model = load_model("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        model = load_model("dataset/data/MSCOCOKR/train/ImagecaptioningModel.h5")
         
         for i in tqdm(range(len(test_image_full_name)), desc = "test_image_caption"):
             img_path = test_image_full_name[i]
@@ -136,7 +136,7 @@ class ImageCaptioningModel(Learning):
     # @ test_image_path를 train.py로 빼고, 이 메서드의 인자로 받게 해주시기 바랍니다.
     def predict(self):
         #폰트 경로
-        font_path = "dataset/data/MSCOCOKR_data/test/NanumGothicLight.TTF"
+        font_path = "dataset/data/MSCOCOKR/test/NanumGothicLight.TTF"
         
         #폰트 이름 얻어오기
         font_name = font_manager.FontProperties(fname=font_path).get_name()
@@ -146,7 +146,7 @@ class ImageCaptioningModel(Learning):
         
         
         
-        test_image_path = "dataset/data/MSCOCOKR_data/test/test_images"
+        test_image_path = "dataset/data/MSCOCOKR/test/test_images"
 
         test_image_name = os.listdir(test_image_path)
         
@@ -160,9 +160,9 @@ class ImageCaptioningModel(Learning):
                 
         inception_model = Xception(include_top=False, pooling="avg")
         
-        model = load_model("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        model = load_model("dataset/data/MSCOCOKR/train/ImagecaptioningModel.h5")
         
-        result_path = "dataset/data/MSCOCOKR_data/test/test_images_result"
+        result_path = "dataset/data/MSCOCOKR/test/test_images_result"
         
         if not os.path.exists(result_path):
             os.mkdir(result_path)
