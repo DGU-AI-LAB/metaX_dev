@@ -2,7 +2,7 @@ from metaX.models.optimization_based.MAML import OmniglotModel, MiniImagenetMode
 from metaX.dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
 
 from metaX.models.heterogeneous_data_analysis.ImageCaptioningModel import ImageCaptioningModel
-from metaX.dataset.MSCOCOKR_data_generator import MSCOCOKRDatabase
+from metaX.dataset.data_generator_MSCOCOKR import MSCOCOKRDatabase
 import argparse
 
 import logging, os

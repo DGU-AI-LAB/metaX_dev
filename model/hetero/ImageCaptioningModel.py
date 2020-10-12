@@ -6,7 +6,7 @@ from tqdm import tqdm
 from utils import combine_first_two_axes, createFolder
 from tensorflow.keras.layers import Conv2D, Flatten, Dense, Input, BatchNormalization
 
-from metaX.dataset.MSCOCOKR_data_generator import MSCOCOKRDatabase
+from metaX.dataset.data.MSCOCOKR_data_generator import MSCOCOKRDatabase
 from metaX.models.LearningType import Learning
 from keras.preprocessing.text import Tokenizer
 from PIL import Image
@@ -27,7 +27,7 @@ import matplotlib.pyplot as plt
 
 class ImageCaptioningModel(Learning):
 
-    
+    # @ network_cls 인자로 자기자신을 입력받기만 하고 실제로는 쓰지 않습니다.
     def __init__(self, args, database, network_cls):
         
         super(ImageCaptioningModel, self).__init__(
@@ -37,6 +37,7 @@ class ImageCaptioningModel(Learning):
             )
         
         self.max_length = 38
+        # @ vocab_size를 설정해주시기 바랍니다. 코드가 동작하지 않습니다.
         self.vocab_size = ???
         self.tokenizer = database.load_tokenizer()
         self.clean_descriptions_path = database.train_address + "/ms_coco_2014_kr_train_token_clean.txt"
@@ -48,7 +49,7 @@ class ImageCaptioningModel(Learning):
         self.epochs = args.epochs
         self.iterations = args.iterations
 
-                       
+    # @ ??? 의 값을 지정해줄 것
     def train(self, epoch=10, iterations=???):
         model = self.define_model(self.vocab_size, self.max_length)
         
@@ -56,7 +57,7 @@ class ImageCaptioningModel(Learning):
             generator = self.get_train_dataset()
             model.fit_generator(generator, epochs=1, steps_per_epoch= iterations, verbose=1)
         
-        model.save("dataset/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        model.save("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
         
 
     def get_train_dataset(self):
@@ -74,8 +75,8 @@ class ImageCaptioningModel(Learning):
         print(model.summary())
         
     def evaluate(self):
-        test_image_path = "dataset/MSCOCOKR_data/test/test_images"
-        token_split = pd.read_csv("dataset/MSCOCOKR_data/test/token_dataframe.csv', encoding='cp949')
+        test_image_path = "dataset/data/MSCOCOKR_data/test/test_images"
+        token_split = pd.read_csv("dataset/data/MSCOCOKR_data/test/token_dataframe.csv', encoding='cp949')
         
         inception_model = Xception(include_top=False, pooling="avg")
         test_image_name = os.listdir(test_image_path)
@@ -87,8 +88,8 @@ class ImageCaptioningModel(Learning):
         
         bleu_all=[]
         max_length= self.max_lenght
-        
-        model = load_model("dataset/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        # @ load_model 을 별도의 메서드로 만들어 주시기 바랍니다(라이브러리 형식 맞추기위함)
+        model = load_model("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
         
         for i in tqdm(range(len(test_image_full_name)), desc = "test_image_caption"):
             img_path = test_image_full_name[i]
@@ -131,10 +132,10 @@ class ImageCaptioningModel(Learning):
               "BLEU 3 : ", bleu_3_mean, "\n",
               "BLEU 4 : ", bleu_4_mean)
         
-        
+    # @ test_image_path를 train.py로 빼고, 이 메서드의 인자로 받게 해주시기 바랍니다.
     def predict(self):
         #폰트 경로
-        font_path = "dataset/MSCOCOKR_data/test/NanumGothicLight.TTF"
+        font_path = "dataset/data/MSCOCOKR_data/test/NanumGothicLight.TTF"
         
         #폰트 이름 얻어오기
         font_name = font_manager.FontProperties(fname=font_path).get_name()
@@ -144,7 +145,7 @@ class ImageCaptioningModel(Learning):
         
         
         
-        test_image_path = "dataset/MSCOCOKR_data/test/test_images"
+        test_image_path = "dataset/data/MSCOCOKR_data/test/test_images"
 
         test_image_name = os.listdir(test_image_path)
         
@@ -158,9 +159,9 @@ class ImageCaptioningModel(Learning):
                 
         inception_model = Xception(include_top=False, pooling="avg")
         
-        model = load_model("dataset/MSCOCOKR_data/train/ImagecaptioningModel.h5")
+        model = load_model("dataset/data/MSCOCOKR_data/train/ImagecaptioningModel.h5")
         
-        result_path = "dataset/MSCOCOKR_data/test/test_images_result"
+        result_path = "dataset/data/MSCOCOKR_data/test/test_images_result"
         
         if not os.path.exists(result_path):
             os.mkdir(result_path)
@@ -235,6 +236,8 @@ class ImageCaptioningModel(Learning):
                 input_image, input_sequence, output_word = self.create_sequences(tokenizer, max_length, description_list, feature)
                 yield [[input_image, input_sequence], output_word]
     
+    # @ 이걸 위의 OmniglotModel처럼 밖으로 빼주시면 됩니다.
+    #   그리고 train.py에서 이걸 network_cls로 받아 주시면 됩니다.
     def define_model(self, vocab_size, max_length):
         inputs1 = Input(shape=(2048,))
         fe1 = Dropout(0.5)(inputs1)
