@@ -1,6 +1,9 @@
 dataset/raw_data/
+dataset/data/cache/
+dataset/data/MSCOCOKR/
 dataset/data/omniglot/
-dataset/data/stat/omniglot/
+dataset/data/ui_output/maml_omniglot/step3/model-OmniglotModel_mbs-2_n-5_k-1_stp-1/saved_models/*
+
 dataset/data/oxfordflower/images/
 dataset/data/oxfordflower/pretrained/
 dataset/data/oxfordflower/texts/
@@ -8,6 +11,7 @@ dataset/data/oxfordflower/tfrecord/
 dataset/data/oxfordflower/*.json
 *.pkl
 *.whl
+*.v2
 .vscode/
 dataset/__pycache__
 __pycache__/

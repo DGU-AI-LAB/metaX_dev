@@ -184,6 +184,7 @@ class Hetero(Learning):
         network_cls : tf.keras.Model(Modified_m_CNN or VQA)￣s
         #encoder_name : (string)image classfication model, one of tf.keras.applications
     """
+    
     def __init__(self,args,config_path,database,network_cls):
        
         self.config = parse_config(config_path)
@@ -208,14 +209,22 @@ class Hetero(Learning):
         else:
             self.loss_func = losses.SparseCategoricalCrossentropy(from_logits=True)
         
+        # @ Log and model file path
+        # 3세부에서 UI 출력 화면을 위한 데이터를 쉽게 받아올 수 있도록
+        # 'dataset/data/ui_output/mcnn/' 내에 Step 별로 저장하도록 수정 부탁드립니다.
+        # 아래는 예시를 위해 csv log path만 수정해보았습니다.
+        # e.g. 학습 기록 출력 - Train Step -> mcnn/step3/log.csv
+        # self.csv_log_cb = tf.keras.callbacks.CSVLogger(
+        #     os.path.join('dataset/data/ui_output/mcnn/',config["csv_path"],"log.csv"))
+ㄴ
+        # @ Changed path to dataset/data/ui_output/mcnn/
         self.ckpt_cb = tf.keras.callbacks.ModelCheckpoint(
             os.path.join(config["model_path"],config["log_path"],config["ckpt_path"],f"{args.encoder_name}.ckpt"))
         self.csv_log_cb = tf.keras.callbacks.CSVLogger(
             os.path.join(config["model_path"],config["log_path"],config["csv_path"],"log.csv"))
         self.tb_cb = tf.keras.callbacks.TensorBoard(
-            os.path.join(config["model_path"],config["log_path"],config["tb_path"]))        
-
-        # super(Hetero,self).__init__(args) # 아직 구현하지 못했는데, 여러상황들 고려해서 다시 구성할 예정입니다.
+            os.path.join(config["model_path"],config["log_path"],config["tb_path"]))    
+        super(Hetero,self).__init__(args) # 아직 구현하지 못했는데, 여러상황들 고려해서 다시 구성할 예정입니다.
         
     def get_train_dataset(self):
         return self.database.data_loader("train","both",self.args.batch_size,self.args.batch_size*10)
@@ -277,6 +286,13 @@ class Hetero(Learning):
         preset_model.compile(**kwargs)
         preset_model.fit(dataset,epochs=epochs,validation_data = eval_dataset)
         
+
+        # 학습된 모델이 저장되는 부분을 
+        # dataset/data/ui_output/[모델명]/[모델이 저장되는 Step]
+        # 으로 통일하고자 합니다.
+        # 예를 들어 step3가 model training 이면 아래 경로에 학습한 모델 및 pretrained model을 저장합니다.
+        # e.g. dataset/data/ui_output/mcnn/step3/  
+         
         path,_dict = preset_model.save_by_ckpt(
             os.path.join(config["model_path"],config["pretrain_path"],encoder_name,"ck.ckpt"),
             mask_layers=[3]) #mask_layers should be determined more flexibly, for example, mask_layers can be set

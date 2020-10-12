@@ -128,22 +128,24 @@ class ModelAgnosticMetaLearning(MetaLearning):
         self.log_train_images_after_iteration = args.log_train_images_after_iteration # type : int
         self.report_validation_frequency = args.report_validation_frequency           # type : int
 
-        self._root = self.get_root()                                                         # type : string
-        self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'logs/train/') # type : string
+        # self._root = self.get_root()                                                         # type : string
+        self._root = os.path.join(os.getcwd(), 'dataset/data/ui_output', 'maml_{}'.format(self.args.benchmark_dataset), 'step3')
+        print(self._root)
+        self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'train/') # type : string
 
-        try:
-            self.train_summary_writer = tf.summary.create_file_writer(self.train_log_dir)
-        except:
-            createFolder(self.train_log_dir)
-            self.train_summary_writer = tf.summary.create_file_writer(self.train_log_dir)
-        self.val_log_dir = os.path.join(self._root, self.get_config_info(), 'logs/val/')
-        try:
-            self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
-        except:
-            createFolder(self.val_log_dir)
-            self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
+        os.makedirs(self.train_log_dir, exist_ok=True)
+        self.train_summary_writer = tf.summary.create_file_writer(self.train_log_dir)
+        self.val_log_dir = os.path.join(self._root, self.get_config_info(), 'val/')
 
+        os.makedirs(self.val_log_dir, exist_ok=True)
+        self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
         self.checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models') # 20.09.03
+        os.makedirs(self.checkpoint_dir, exist_ok=True)
+
+        self.test_log_dir = os.path.join(self._root, self.get_config_info(), 'test/')
+        os.makedirs(self.test_log_dir, exist_ok=True)
+        self.test_summary_writer = tf.summary.create_file_writer(self.test_log_dir)
+        self.test_count = 0 # 20.10.13. added for test
 
 
     def get_root(self):
@@ -360,8 +362,6 @@ class ModelAgnosticMetaLearning(MetaLearning):
     def meta_test(self, iterations = 5, epochs_to_load_from=None):
         self.test_dataset = self.get_test_dataset()
         self.load_model(epochs=epochs_to_load_from)
-        test_log_dir = os.path.join(self._root, self.get_config_info(), 'logs/test/')
-        test_summary_writer = tf.summary.create_file_writer(test_log_dir)
 
         test_accuracy_metric = tf.metrics.Accuracy()
         test_loss_metric = tf.metrics.Mean()
@@ -377,11 +377,20 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
                 self.update_loss_and_accuracy(updated_model_logits, val_labels, test_loss_metric, test_accuracy_metric)
 
-            self.log_metric(test_summary_writer, 'Loss', test_loss_metric, step=1)
-            self.log_metric(test_summary_writer, 'Accuracy', test_accuracy_metric, step=1)
-
+            self.log_metric(self.test_summary_writer, 'Loss', test_loss_metric, step=1)
+            self.log_metric(self.test_summary_writer, 'Accuracy', test_accuracy_metric, step=1)
+    
         print('Test Loss: {}'.format(test_loss_metric.result().numpy()))
         print('Test Accuracy: {}'.format(test_accuracy_metric.result().numpy()))
+        
+        self.test_csv_path = os.path.join(self.test_log_dir, 'test.csv')
+        if not os.path.isfile(self.test_csv_path):
+            with open(self.test_csv_path, 'w', encoding='utf-8') as f:
+                f.write("'test_count', 'accuracy', 'loss'\n")
+
+        with open(self.test_csv_path, 'a', encoding='utf-8') as f:
+            f.write("{}, {}, {}\n".format(self.test_count, test_accuracy_metric.result().numpy(), test_loss_metric.result().numpy()))
+        self.test_count += 1
 
         return test_accuracy_metric.result().numpy()
 
@@ -440,9 +449,19 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
         self.log_metric(self.val_summary_writer, 'Loss', self.val_loss_metric, step=epoch_count)
         self.log_metric(self.val_summary_writer, 'Accuracy', self.val_accuracy_metric, step=epoch_count)
-
-        print('Validation Loss: {}'.format(self.val_loss_metric.result().numpy()))
-        print('Validation Accuracy: {}'.format(self.val_accuracy_metric.result().numpy()))
+        loss = self.val_loss_metric.result().numpy()
+        acc = self.val_accuracy_metric.result().numpy()
+        print('Validation Loss: {}'.format(loss))
+        print('Validation Accuracy: {}'.format(acc))
+                
+        if self.skip_load_first_epoch_writing_val:
+            # If it’s to continue training from the loaded model,
+            # Need to skip writing first epoch's result 
+            with open(self.val_csv_path, 'a', encoding='utf-8') as f:
+                f.write("{}, {}, {}\n".format(epoch_count, acc, loss))
+        else:
+            self.skip_load_first_epoch_writing_val = True
+            
 
     @tf.function
     def get_losses_of_tasks_batch(self, inputs):
@@ -509,20 +528,56 @@ class ModelAgnosticMetaLearning(MetaLearning):
         self.val_dataset = self.get_val_dataset()
         start_epoch = self.load_model()
         iteration_count = start_epoch * self.train_dataset.steps_per_epoch
+        print("-"*100)
+        print(start_epoch)
+        if start_epoch != 0:
+            self.skip_load_first_epoch_writing_train = False
+            self.skip_load_first_epoch_writing_val = False
+        else:
+            self.skip_load_first_epoch_writing_train = True
+            self.skip_load_first_epoch_writing_val = True
 
         pbar = tqdm(self.train_dataset)
+        
+        self.train_csv_path = os.path.join(self.train_log_dir, 'train.csv')
+        if not os.path.isfile(self.train_csv_path):
+            with open(self.train_csv_path, 'w', encoding='utf-8') as f:
+                f.write("'epoch', 'accuracy', 'loss'\n")
+
+        self.val_csv_path = os.path.join(self.val_log_dir, 'val.csv')
+        if not os.path.isfile(self.val_csv_path):
+            with open(self.val_csv_path, 'w', encoding='utf-8') as f:
+                f.write("'epoch', 'accuracy', 'loss'\n")
 
         for epoch_count in range(start_epoch, epochs):
             if epoch_count != 0:
+                # Save val metrics per report_validation_frequency
                 if epoch_count % self.report_validation_frequency == 0:
                     self.report_validation_loss_and_accuracy(epoch_count)
-                    if epoch_count != 0:
-                        print('Train Loss: {}'.format(self.train_loss_metric.result().numpy()))
-                        print('Train Accuracy: {}'.format(self.train_accuracy_metric.result().numpy()))
+                    loss = self.train_loss_metric.result().numpy()
+                    acc = self.train_accuracy_metric.result().numpy()
+                    print('Train Loss: {}'.format(loss))
+                    print('Train Accuracy: {}'.format(acc))
+                    
+                # Save training metrics
+                loss = self.train_loss_metric.result().numpy()
+                acc = self.train_accuracy_metric.result().numpy()
+                
                 with self.train_summary_writer.as_default():
-                    tf.summary.scalar('Loss', self.train_loss_metric.result(), step=epoch_count)
-                    tf.summary.scalar('Accuracy', self.train_accuracy_metric.result(), step=epoch_count)
-    
+                    tf.summary.scalar('Loss', loss, step=epoch_count)
+                    tf.summary.scalar('Accuracy', acc, step=epoch_count)
+                
+                if self.skip_load_first_epoch_writing_train:
+                    print("Write")
+                    # If it’s to continue training from the loaded model,
+                    # Need to skip writing first epoch's result 
+                    with open(self.train_csv_path, 'a', encoding='utf-8') as f:
+                        f.write("{}, {}, {}\n".format(epoch_count, acc, loss))
+                else:
+                    print("Pass")
+                    self.skip_load_first_epoch_writing_train = True
+
+                    
                 if epoch_count % self.save_after_epochs == 0:
                     self.save_model(epoch_count)
 

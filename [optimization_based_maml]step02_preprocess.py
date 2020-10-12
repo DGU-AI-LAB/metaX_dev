@@ -70,7 +70,6 @@ def save_nwaykshot(dataset, save_path, class2num):
 
 
 if __name__ == '__main__':
-    # 빠른 테스트를 위한 세팅
     parser = argparse.ArgumentParser()
     parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
     parser.add_argument('--n', type=int, default=5)
@@ -79,11 +78,19 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Check & Load the existance of *.pkl database file
-    cache_path = os.path.join(os.getcwd(), 'dataset/data/cache')
-    os.makedirs(cache_path, exist_ok=True)
-    save_path = os.path.join(cache_path, '{}.pkl'.format(args.benchmark_dataset))
-    if os.path.isfile(save_path):
-        with open(save_path, 'rb') as f:
+    base_path_step1 = os.path.join(os.getcwd(),
+     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
+    os.makedirs(base_path_step1, exist_ok=True)
+    save_path_step1 = os.path.join(base_path_step1, '{}.pkl'.format(args.benchmark_dataset))
+
+    base_path = os.path.join(os.getcwd(),
+     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step2')
+    os.makedirs(base_path, exist_ok=True)
+    save_path = os.path.join(base_path, '{}.pkl'.format(args.benchmark_dataset))
+
+    if os.path.isfile(save_path_step1):
+        print("Load dataset")
+        with open(save_path_step1, 'rb') as f:
             database = pickle.load(f)
 
     else:
@@ -92,7 +99,7 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset\\raw_data\\omniglot",
+                raw_data_address="dataset/raw_data/omniglot",
                 random_seed=47,
                 num_train_classes=1200,
                 num_val_classes=100)
@@ -104,9 +111,10 @@ if __name__ == '__main__':
                 random_seed=-1)
 
         # Save the database file
-        with open(save_path, 'wb') as f:
-            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/omniglot/omniglot.pkl
+        with open(save_path_step1, 'wb') as f:
+            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step2/omniglot.pkl
         # -> To laod this file in the next step
+
 
 
     # Saving N-way K-shot JSON
@@ -134,7 +142,7 @@ if __name__ == '__main__':
     ###############################################################################
     
     # Save the N-way K-shot task json file (for tarin set)
-    json_save_path = os.path.join(cache_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
+    json_save_path = os.path.join(base_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
     save_nwaykshot(train_dataset, json_save_path, class2num)
 
     # [TODO] For Mini ImageNet Setting

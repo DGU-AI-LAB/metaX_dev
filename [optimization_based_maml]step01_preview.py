@@ -14,10 +14,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Check & Load the existance of *.pkl database file
-    cache_path = os.path.join(os.getcwd(), 'dataset/data/cache')
-    os.makedirs(cache_path, exist_ok=True)
-    save_path = os.path.join(cache_path, '{}.pkl'.format(args.benchmark_dataset))
+    base_path = os.path.join(os.getcwd(),
+     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
+    os.makedirs(base_path, exist_ok=True)
+    save_path = os.path.join(base_path, '{}.pkl'.format(args.benchmark_dataset))
     if os.path.isfile(save_path):
+        print("Load dataset")
         with open(save_path, 'rb') as f:
             database = pickle.load(f)
 
@@ -27,22 +29,24 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset\\raw_data\\omniglot",
+                raw_data_address="dataset/raw_data/omniglot",
                 random_seed=47,
                 num_train_classes=1200,
-                num_val_classes=100)
+                num_val_classes=100,
+                is_preview=False)
 
         # [TODO] Add get_statistic() method to MiniImagenetDatabase class
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset\\raw_data\\mini_imagenet",
+                raw_data_address="dataset/raw_data/mini_imagenet",
                 random_seed=-1)
 
         # Save the database file
         with open(save_path, 'wb') as f:
-            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/omniglot/omniglot.pkl
+            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step1/omniglot.pkl
         # -> To laod this file in the next step
     
     # This code saves the stat of the dataset and the file path of each class
-    database.get_statistic()
+    database.is_preview = True
+    database.get_statistic(base_path=base_path)
