@@ -16,8 +16,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
     # parser.add_argument('--network_cls', type=str, default='mini_imagenet')
-    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')
-    parser.add_argument('--network_cls', type=str, default='omniglot')
+    parser.add_argument('--benchmark_dataset', type=str, default='MSKOKOKR')
+    parser.add_argument('--network_cls', type=str, default='mscoco_kor')
     # parser.add_argument('--n', type=int, default=5)
     parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--iterations', type=int, default=5)
@@ -44,13 +44,13 @@ if __name__ == '__main__':
     # 타입 : tf.data.Dataset
     if args.benchmark_dataset == "omniglot":
         database = OmniglotDatabase(
-            raw_data_address="dataset\omniglot",
+            raw_data_address="dataset\raw_data\omniglot",
             random_seed=47,
             num_train_classes=1200,
             num_val_classes=100)
     elif args.benchmark_dataset == "mini_imagenet":
         database=MiniImagenetDatabase(
-            raw_data_address="\dataset\mini_imagenet",
+            raw_data_address="\dataset\raw_data\mini_imagenet",
             random_seed=-1)
     elif args.benchmark_dataset == "MSKOKOKR":
         database = MSCOCOKRDatabase(
@@ -71,6 +71,9 @@ if __name__ == '__main__':
     # database : 데이터셋  type : database
     # network_cls : 모델   type : MetaLearning
     
+    # @ 학습을 하는 모델(network_cls)을 다시 자기 자신에게 집어넣는다는게 이상합니다.
+    # @ network_cls는 학습하는 모델이고, 이를 감싸는 class는 학습을 스케쥴링하는 클래스입니다.
+    # @ 1세부 코드를 다시 한 번 참조 부탁드립니다.
     imgcap = ImageCaptioningModel(args, database, network_cls)
     
     
@@ -81,9 +84,11 @@ if __name__ == '__main__':
     
     print("=========================TRAIN")
     imgcap.train(epochs = args.epochs, iterations = args.iterations)
-    
+
+    # @ 각 단계별로 분리하기위해 저장한 모델을 load하는 imcap.load_model(epochs=args.epochs)가 필요합니다.    
     imgcap.evaluate()
     
+    # @ predict를 하기 위한 데이터의 path를 인자로 받아야 할 것 같습니다.
     imgcap.predict()
     
     
