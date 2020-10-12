@@ -1,8 +1,8 @@
-from metaX.models.optimization_based.MAML import OmniglotModel, MiniImagenetModel, ModelAgnosticMetaLearning
-from metaX.dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
+from model.optimization_based.maml import OmniglotModel, MiniImagenetModel, ModelAgnosticMetaLearning
+from dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
 
-from metaX.models.heterogeneous_data_analysis.ImageCaptioningModel import ImageCaptioningModel
-from metaX.dataset.data_generator_MSCOCOKR import MSCOCOKRDatabase
+from model.hetero.ImageCaptioningModel import ImageCaptioningModel
+from dataset.data_generator_MSCOCOKR import MSCOCOKRDatabase
 import argparse
 
 import logging, os
@@ -85,7 +85,8 @@ if __name__ == '__main__':
     print("=========================TRAIN")
     imgcap.train(epochs = args.epochs, iterations = args.iterations)
 
-    # @ 각 단계별로 분리하기위해 저장한 모델을 load하는 imcap.load_model(epochs=args.epochs)가 필요합니다.    
+    # @ 각 단계별로 분리하기위해 저장한 모델을 load하는 imcap.load_model(epochs=args.epochs)가 필요합니다.
+    #   2세부에서 evaluate 로 통일을 해주셨는데 1세부의 meta_test와 메서드 이름을 통일하고자 메서드 명을 test() 로 변경부탁드립니다. 
     imgcap.evaluate()
     
     # @ predict를 하기 위한 데이터의 path를 인자로 받아야 할 것 같습니다.

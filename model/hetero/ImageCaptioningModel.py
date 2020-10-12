@@ -6,8 +6,8 @@ from tqdm import tqdm
 from utils import combine_first_two_axes, createFolder
 from tensorflow.keras.layers import Conv2D, Flatten, Dense, Input, BatchNormalization
 
-from metaX.dataset.data.MSCOCOKR_data_generator import MSCOCOKRDatabase
-from metaX.models.LearningType import Learning
+from dataset.data.MSCOCOKR_data_generator import MSCOCOKRDatabase
+from model.LearningType import Learning
 from keras.preprocessing.text import Tokenizer
 from PIL import Image
 from keras.preprocessing.sequence import pad_sequences
@@ -40,6 +40,7 @@ class ImageCaptioningModel(Learning):
         # @ vocab_size를 설정해주시기 바랍니다. 코드가 동작하지 않습니다.
         self.vocab_size = ???
         self.tokenizer = database.load_tokenizer()
+        # @ 아래 두 path의 text file이 없습니다. 
         self.clean_descriptions_path = database.train_address + "/ms_coco_2014_kr_train_token_clean.txt"
         self.image_filename_path = database.train_address + "/ms_coco_2014_kr_train_images.txt"
         self.train_imgs = database.load_photos(image_filename_path)
