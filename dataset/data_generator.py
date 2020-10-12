@@ -206,7 +206,7 @@ class OmniglotDatabase(Database):
                         shutil.copytree(character_address, destination_address)
 
     # 20.10.07. For Preivew step
-    def get_statistic(self):
+    def get_statistic(self, base_path):
         if not self.is_preview:
             return
         else:
@@ -246,10 +246,7 @@ class OmniglotDatabase(Database):
             total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
 
             # Saving stat and paths
-            path_of_ui_output = os.path.join(os.getcwd(),'dataset/data/ui_output/omniglot')
-            print(path_of_ui_output)
-            os.makedirs(path_of_ui_output, exist_ok=True)
-            with open(os.path.join(path_of_ui_output, 'stat.txt'), 'w') as f:
+            with open(os.path.join(base_path, 'stat.txt'), 'w') as f:
                 print('''Statistic of the dataset
 The number of the classes / The total number of samples
     Train : {0:>7}/{1:>7}
@@ -258,13 +255,11 @@ The number of the classes / The total number of samples
                 n_of_class_val, total_n_of_samples_val,
                 n_of_class_test, total_n_of_samples_test
                 ), file=f)
-            exit()
-
 
             import json
 
             def _save_json(data, output_filename:str):
-                path_out = os.path.join(path_of_stats, output_filename)
+                path_out = os.path.join(base_path, output_filename)
                 with open(path_out, 'w') as outfile:
                     json.dump(data, outfile, indent="\t")
                 print('[JSON file Saved] : \n', path_out)

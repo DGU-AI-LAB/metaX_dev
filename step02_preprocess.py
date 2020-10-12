@@ -79,9 +79,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Check & Load the existance of *.pkl database file
-    cache_path = os.path.join(os.getcwd(), 'dataset/data/cache')
-    os.makedirs(cache_path, exist_ok=True)
-    save_path = os.path.join(cache_path, '{}.pkl'.format(args.benchmark_dataset))
+    base_path = os.path.join(os.getcwd(),
+     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step2')
+    os.makedirs(base_path, exist_ok=True)
+    save_path = os.path.join(base_path, '{}.pkl'.format(args.benchmark_dataset))
     if os.path.isfile(save_path):
         with open(save_path, 'rb') as f:
             database = pickle.load(f)
@@ -105,7 +106,7 @@ if __name__ == '__main__':
 
         # Save the database file
         with open(save_path, 'wb') as f:
-            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/omniglot/omniglot.pkl
+            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step2/omniglot.pkl
         # -> To laod this file in the next step
 
 
@@ -134,9 +135,7 @@ if __name__ == '__main__':
     ###############################################################################
     
     # Save the N-way K-shot task json file (for tarin set)
-    path_of_ui_output = os.path.join(os.getcwd(),'dataset/data/ui_output/omniglot')
-    os.makedirs(path_of_ui_output, exist_ok=True)
-    json_save_path = os.path.join(path_of_ui_output, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
+    json_save_path = os.path.join(base_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
     save_nwaykshot(train_dataset, json_save_path, class2num)
 
     # [TODO] For Mini ImageNet Setting
