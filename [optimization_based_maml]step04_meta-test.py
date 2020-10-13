@@ -111,7 +111,7 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="\dataset/raw_data/mini_imagenet",
+                raw_data_address="dataset/raw_data/mini_imagenet",
                 random_seed=-1)
 
         # Save the database file

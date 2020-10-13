@@ -11,7 +11,6 @@ from model.LearningType import MetaLearning
 
 
 
-
 class OmniglotModel(tf.keras.Model):
     name = 'OmniglotModel'
 
