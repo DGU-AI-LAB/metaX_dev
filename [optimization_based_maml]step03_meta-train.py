@@ -4,6 +4,9 @@ import argparse
 
 import logging, os
 import pickle
+from configparser import ConfigParser
+
+config = ConfigParser()
 
 logging.disable(logging.WARNING)
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -11,14 +14,14 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 if __name__ == '__main__':
 
-        # 빠른 테스트를 위한 세팅
+    # 빠른 테스트를 위한 세팅
     parser = argparse.ArgumentParser()
     #parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet') # 20.09.03
     #parser.add_argument('--network_cls', type=str, default='mini_imagenet')       # 20.09.03
     parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
     parser.add_argument('--network_cls', type=str, default='omniglot')             # 20.09.03
     parser.add_argument('--n', type=int, default=5)
-    parser.add_argument('--epochs', type=int, default=5) # 5
+    parser.add_argument('--epochs', type=int, default=7) # 5
     parser.add_argument('--iterations', type=int, default=1) # 5
     parser.add_argument('--k', type=int, default=1)
     parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
@@ -61,6 +64,32 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+
+    # Create config file
+    config['common_DL'] = {
+        'benchmark_dataset' : args.benchmark_dataset,
+        'network_cls' : args.network_cls,
+        'epochs' : args.epochs,
+        'meta_learning_rate' : args.meta_learning_rate,
+    }
+
+    config['MetaLearning'] = {
+        'n' : args.n,
+        'k' : args.k,
+        'meta_batch_size' : args.meta_batch_size,
+        'num_steps_ml' : args.num_steps_ml,
+        'lr_inner_ml' : args.lr_inner_ml,
+        'iterations' : args.iterations,
+        'num_steps_validation' : args.num_steps_validation,
+    }
+
+    config['LogSave'] = {
+        'save_after_epochs' : args.save_after_epochs,
+        'report_validation_frequency' : args.report_validation_frequency,
+        'log_train_images_after_iteration' : args.log_train_images_after_iteration,
+    }
+
+
     # Check & Load the existance of *.pkl database file
     base_path_step1 = os.path.join(os.getcwd(),
      'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
@@ -71,6 +100,20 @@ if __name__ == '__main__':
      'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step3')
     os.makedirs(base_path, exist_ok=True)
 
+    def _get_config_info(args):
+        return f'model-{args.network_cls}_' \
+            f'mbs-{args.meta_batch_size}_' \
+            f'n-{args.n}_' \
+            f'k-{args.k}_' \
+            f'stp-{args.num_steps_ml}'
+    
+    # Save Step3 argments
+    step3_args_base_path = os.path.join(base_path, 'args') 
+    os.makedirs(step3_args_base_path, exist_ok=True)
+    step3_args_path = os.path.join(base_path, 'args', 'args_{}.ini'.format(_get_config_info(args)))
+    with open(step3_args_path, 'w') as f:
+        config.write(f)
+    print("Step3 args are saved")
 
     if os.path.isfile(save_path_step1):
         print("Load dataset")
@@ -97,22 +140,6 @@ if __name__ == '__main__':
         with open(save_path_step1, 'wb') as f:
             pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step1/omniglot.pkl
         # -> To laod this file in the next step
-
-
-    # 데이터셋 객체를 생성합니다.
-    # 타입 : tf.data.Dataset
-    if args.benchmark_dataset == "omniglot":
-        database = OmniglotDatabase(
-		     # 200831 changed path, add raw_data folder
-            raw_data_address="dataset/raw_data/omniglot",
-            random_seed=47,
-            num_train_classes=1200,
-            num_val_classes=100)
-    elif args.benchmark_dataset == "mini_imagenet":
-        database=MiniImagenetDatabase(
-		    # 200831 changed path, add raw_data folder
-            raw_data_address="dataset/raw_data/mini_imagenet",
-            random_seed=-1)
 
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":

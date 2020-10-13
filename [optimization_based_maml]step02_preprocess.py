@@ -5,6 +5,7 @@ import pickle
 import tqdm
 import json
 import numpy as np
+from configparser import ConfigParser
 
 logging.disable(logging.WARNING)
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
@@ -70,23 +71,55 @@ def save_nwaykshot(dataset, save_path, class2num):
 
 
 if __name__ == '__main__':
+    # User Input Argument
+    # - n : The number of the sampled class
+    # - k : The number of the samples per each class
+    # - meta_batch_size : The number of the n-way k-shot tasks in one batch
     parser = argparse.ArgumentParser()
-    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
+    
+    # Config File Load : Step 1 Config file
+    config_parser = ConfigParser()
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    args_path = os.path.join(maml_path, 'args') 
+    step1_args_path = os.path.join(args_path, 'step1.ini')
+    config_parser.read(step1_args_path)
+    print("Load Step1 arguments from : {}".format(step1_args_path))
+
+    # Config File Writing and save : Step 2 Config file
+    parser.add_argument('--benchmark_dataset', type=str, default=config_parser['common_DL']['benchmark_dataset'])       # 20.09.03
     parser.add_argument('--n', type=int, default=5)
     parser.add_argument('--k', type=int, default=1)
     parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
     args = parser.parse_args()
 
-    # Check & Load the existance of *.pkl database file
-    base_path_step1 = os.path.join(os.getcwd(),
-     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
-    os.makedirs(base_path_step1, exist_ok=True)
-    save_path_step1 = os.path.join(base_path_step1, '{}.pkl'.format(args.benchmark_dataset))
+    config_parser['MetaLearning'] = {
+        'n' : args.n,
+        'k' : args.k,
+        'meta_batch_size' : args.meta_batch_size
+        }
+    
+    step2_args_path = os.path.join(args_path, 'step2.ini')
+    with open(step2_args_path, 'w') as f:
+        config_parser.write(f)
+    print("Step2 args are saved")
 
-    base_path = os.path.join(os.getcwd(),
-     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step2')
-    os.makedirs(base_path, exist_ok=True)
-    save_path = os.path.join(base_path, '{}.pkl'.format(args.benchmark_dataset))
+    # Setup paths
+    # 1. Step1's database.pkl path
+    base_path_step1 = os.path.join(maml_path, 'step1')
+    os.makedirs(base_path_step1, exist_ok=True)
+
+    base_dataset_path_step1 = os.path.join(base_path_step1, args.benchmark_dataset)
+    os.makedirs(base_dataset_path_step1, exist_ok=True)
+    save_path_step1 = os.path.join(base_dataset_path_step1, '{}.pkl'.format(args.benchmark_dataset))
+    
+    # 2. Step2 base path
+    base_path_step = os.path.join(maml_path, 'step2')
+    os.makedirs(base_path_step, exist_ok=True)
+
+    base_dataset_path = os.path.join(base_path_step, args.benchmark_dataset)
+    os.makedirs(base_dataset_path, exist_ok=True)
+
+    save_path = os.path.join(base_dataset_path, '{}.pkl'.format(args.benchmark_dataset))
 
     if os.path.isfile(save_path_step1):
         print("Load dataset")
@@ -116,7 +149,6 @@ if __name__ == '__main__':
         # -> To laod this file in the next step
 
 
-
     # Saving N-way K-shot JSON
 
     database.is_preview = True
@@ -142,7 +174,7 @@ if __name__ == '__main__':
     ###############################################################################
     
     # Save the N-way K-shot task json file (for tarin set)
-    json_save_path = os.path.join(base_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
+    json_save_path = os.path.join(base_dataset_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
     save_nwaykshot(train_dataset, json_save_path, class2num)
 
     # [TODO] For Mini ImageNet Setting

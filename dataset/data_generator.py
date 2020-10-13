@@ -207,6 +207,8 @@ class OmniglotDatabase(Database):
 
     # 20.10.07. For Preivew step
     def get_statistic(self, base_path):
+        os.makedirs(base_path, exist_ok=True)
+
         if not self.is_preview:
             return
         else:
@@ -280,10 +282,15 @@ The number of the classes / The total number of samples
 
 
 class MiniImagenetDatabase(Database):
+    # https://github.com/yaoyao-liu/mini-imagenet-tools
+    # Download link : 
+    # https://mtl.yyliu.net/download/Lmzjm9tX.html
+    # https://drive.google.com/drive/folders/17a09kkqVivZQFggCw9I_YboJ23tcexNM
+
     def __init__(self, raw_data_address, random_seed=-1, config=None):
         super(MiniImagenetDatabase, self).__init__(
             raw_data_address,
-            os.getcwd() + '/dataset/data/mini_imagenet',
+            os.getcwd() + '/dataset/data/mini_imagenet', # self.database_address
             random_seed=random_seed,
         )
 
@@ -338,4 +345,75 @@ class MiniImagenetDatabase(Database):
         if not os.path.exists(self.database_address):
             shutil.copytree(self.raw_database_address, self.database_address)
 
+    def get_statistic(self, base_path):
+        os.makedirs(base_path, exist_ok=True)
+        if not self.is_preview:
+            return
+        else:
+            # Get the paths of classes
+            path_class_train = defaultdict(list)
+            path_class_val = defaultdict(list)
+            path_class_test = defaultdict(list)
 
+            for train_class in self.train_folders:
+                path_class_train[train_class.split(os.sep)[-1]] = train_class
+
+            for val_class in self.val_folders:
+                path_class_val[val_class.split(os.sep)[-1]] = val_class
+
+            for test_class in self.test_folders:
+                path_class_test[test_class.split(os.sep)[-1]] = test_class
+
+            # Get the paths of each samples(type : dict)
+            path_sample_train, path_sample_val, path_sample_test = self.get_class()
+
+            # Get the stat of classes (N of each class)
+            def _stat_dict(x):
+                stat_dict = {}
+                for key, value in x.items():
+                    stat_dict[key] = len(value)
+                return stat_dict
+            
+            n_of_samples_per_calss_train = _stat_dict(path_sample_train)
+            n_of_samples_per_calss_val = _stat_dict(path_sample_val)
+            n_of_samples_per_calss_test = _stat_dict(path_sample_test)
+
+            n_of_class_train = len(n_of_samples_per_calss_train.keys())
+            n_of_class_val = len(n_of_samples_per_calss_val.keys())
+            n_of_class_test = len(n_of_samples_per_calss_test.keys())
+            total_n_of_samples_train = sum(list(n_of_samples_per_calss_train.values()))
+            total_n_of_samples_val = sum(list(n_of_samples_per_calss_val.values()))
+            total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
+
+            # Saving stat and paths
+            with open(os.path.join(base_path, 'stat.txt'), 'w') as f:
+                print('''Statistic of the dataset
+The number of the classes / The total number of samples
+    Train : {0:>7}/{1:>7}
+    Val   : {2:>7}/{3:>7}
+    Test  : {4:>7}/{5:>7}'''.format(n_of_class_train, total_n_of_samples_train,
+                n_of_class_val, total_n_of_samples_val,
+                n_of_class_test, total_n_of_samples_test
+                ), file=f)
+
+            import json
+
+            def _save_json(data, output_filename:str):
+                path_out = os.path.join(base_path, output_filename)
+                with open(path_out, 'w') as outfile:
+                    json.dump(data, outfile, indent="\t")
+                print('[JSON file Saved] : \n', path_out)
+            
+            _save_json(path_class_train, 'path_class_train.json')
+            _save_json(path_class_val, 'path_class_val.json')
+            _save_json(path_class_test, 'path_class_test.json')
+
+            # Paths of samples
+            _save_json(path_sample_train, 'path_sample_train.json')
+            _save_json(path_sample_val, 'path_sample_val.json')
+            _save_json(path_sample_test, 'path_sample_test.json')
+
+            # Stat of classes
+            _save_json(n_of_samples_per_calss_train, 'n_of_samples_per_calss_train.json')
+            _save_json(n_of_samples_per_calss_val, 'n_of_samples_per_calss_val.json')
+            _save_json(n_of_samples_per_calss_test, 'n_of_samples_per_calss_test.json')

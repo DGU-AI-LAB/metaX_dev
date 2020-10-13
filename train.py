@@ -101,9 +101,6 @@ if __name__ == '__main__':
 
     # 입력받은 파라미터를 통해 해당 epochs의 저장된 모델을 불러옵니다.
     maml.load_model(epochs = args.epochs)
-    print(maml)
-    # epochs : 몇번 학습한 모델을 불러올 지  type : int
-    # None일 시 최종 학습한 모델을 불러옵니다.
 
     # 예측한 결과를 보여줍니다.
     # print(maml.predict_with_support(meta_test_path='/dataset/data/omniglot_test'))
