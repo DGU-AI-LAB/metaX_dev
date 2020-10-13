@@ -23,6 +23,7 @@ class Database(ABC):
         self.train_folders, self.val_folders, self.test_folders = self.get_train_val_test_folders()
 
         self.input_shape = self.get_input_shape()
+        self.is_preview = False
 
     @abstractmethod
     def get_class(self):
@@ -131,16 +132,18 @@ class OmniglotDatabase(Database):
     ):
         self.num_train_classes = num_train_classes
         self.num_val_classes = num_val_classes
-        if is_preview == True:
-            self.is_preview = True
-        else:
-            self.is_preview = False
+
 
         super(OmniglotDatabase, self).__init__(
             raw_data_address,
             os.getcwd()+'/dataset/data/omniglot', # database_address
             random_seed=random_seed,
         )
+
+        if is_preview == True:
+            self.is_preview = True
+        else:
+            self.is_preview = False
 
     def get_class(self):
         train_dict = defaultdict(list)
@@ -287,12 +290,16 @@ class MiniImagenetDatabase(Database):
     # https://mtl.yyliu.net/download/Lmzjm9tX.html
     # https://drive.google.com/drive/folders/17a09kkqVivZQFggCw9I_YboJ23tcexNM
 
-    def __init__(self, raw_data_address, random_seed=-1, config=None):
+    def __init__(self, raw_data_address, random_seed=-1, is_preview=False,  config=None):
         super(MiniImagenetDatabase, self).__init__(
             raw_data_address,
             os.getcwd() + '/dataset/data/mini_imagenet', # self.database_address
-            random_seed=random_seed,
+            random_seed=random_seed
         )
+        if is_preview == True:
+            self.is_preview = True
+        else:
+            self.is_preview = False
 
     def get_class(self):
         train_dict = defaultdict(list)

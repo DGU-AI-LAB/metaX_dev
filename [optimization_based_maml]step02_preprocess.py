@@ -140,13 +140,13 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="\dataset\\raw_data\\mini_imagenet",
+                raw_data_address="/dataset/raw_data/mini_imagenet",
                 random_seed=-1)
 
-        # Save the database file
-        with open(save_path_step1, 'wb') as f:
-            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step2/omniglot.pkl
-        # -> To laod this file in the next step
+    # Save the database file
+    with open(save_path, 'wb') as f:
+        pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step2/omniglot.pkl
+    # -> To laod this file in the next step
 
 
     # Saving N-way K-shot JSON

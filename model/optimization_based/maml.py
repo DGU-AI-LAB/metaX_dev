@@ -86,6 +86,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
             args,
             database,
             network_cls,
+            base_dataset_path, # 20.10.13. for ui output file path 
             least_number_of_tasks_val_test=-1,
             # Make sure the validaiton and test dataset pick at least this many tasks.
             clip_gradients=False
@@ -128,20 +129,21 @@ class ModelAgnosticMetaLearning(MetaLearning):
         self.report_validation_frequency = args.report_validation_frequency           # type : int
 
         # self._root = self.get_root()                                                         # type : string
-        self._root = os.path.join(os.getcwd(), 'dataset/data/ui_output', 'maml_{}'.format(self.args.benchmark_dataset), 'step3')
+        # self._root = os.path.join(os.getcwd(), 'dataset/data/ui_output', 'maml_{}'.format(self.args.benchmark_dataset), 'step3')
+        self._root = base_dataset_path
         print(self._root)
-        self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'train/') # type : string
-
+        self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'train') # type : string
         os.makedirs(self.train_log_dir, exist_ok=True)
-        self.train_summary_writer = tf.summary.create_file_writer(self.train_log_dir)
-        self.val_log_dir = os.path.join(self._root, self.get_config_info(), 'val/')
 
+        self.train_summary_writer = tf.summary.create_file_writer(self.train_log_dir)
+        self.val_log_dir = os.path.join(self._root, self.get_config_info(), 'val')
         os.makedirs(self.val_log_dir, exist_ok=True)
+
         self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
         self.checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models') # 20.09.03
         os.makedirs(self.checkpoint_dir, exist_ok=True)
 
-        self.test_log_dir = os.path.join(self._root, self.get_config_info(), 'test/')
+        self.test_log_dir = os.path.join(self._root, self.get_config_info(), 'test')
         os.makedirs(self.test_log_dir, exist_ok=True)
         self.test_summary_writer = tf.summary.create_file_writer(self.test_log_dir)
         self.test_count = 0 # 20.10.13. added for test

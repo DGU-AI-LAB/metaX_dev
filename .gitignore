@@ -3,7 +3,9 @@ dataset/data/cache/
 dataset/data/MSCOCOKR/
 dataset/data/omniglot/
 dataset/data/mini_imagenet/
-dataset/data/ui_output/maml_omniglot/step3/model-OmniglotModel_mbs-2_n-5_k-1_stp-1/saved_models/*
+
+dataset/data/ui_output/maml/step3/mini_imagenet/*
+dataset/data/ui_output/maml/step3/omniglot/*
 *.zip
 dataset/data/oxfordflower/images/
 dataset/data/oxfordflower/pretrained/
