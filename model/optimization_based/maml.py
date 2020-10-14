@@ -324,6 +324,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
         epoch_count = 0
         if epochs is not None:
             try:
+                print("Load model from : ", os.path.join(self.checkpoint_dir, f'model_arg_{epochs-1}_.bin'))
                 with open(os.path.join(self.checkpoint_dir, f'model_arg_{epochs-1}_.bin'), 'rb') as f:
                     arg_dict_load = pickle.load(f)
                 self.n = arg_dict_load['self.n']
@@ -362,7 +363,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
     def meta_test(self, iterations = 5, epochs_to_load_from=None):
         self.test_dataset = self.get_test_dataset()
-        self.load_model(epochs=epochs_to_load_from)
+        epoch_count = self.load_model(epochs=epochs_to_load_from)
 
         test_accuracy_metric = tf.metrics.Accuracy()
         test_loss_metric = tf.metrics.Mean()
@@ -392,6 +393,25 @@ class ModelAgnosticMetaLearning(MetaLearning):
         with open(self.test_csv_path, 'a', encoding='utf-8') as f:
             f.write("{}, {}, {}\n".format(self.test_count, test_accuracy_metric.result().numpy(), test_loss_metric.result().numpy()))
         self.test_count += 1
+        
+        # Save Adapted 
+        step4_checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models')
+        updated_model.save_weights(os.path.join(step4_checkpoint_dir, f'model_{epoch_count}_.ckpt'))
+        arg_dict = {'self.n' :  self.n,
+                    'self.k' :  self.k,
+                    'self.meta_batch_size' :  self.meta_batch_size,
+                    'self.num_steps_ml' :  self.num_steps_ml,
+                    'self.lr_inner_ml' :  self.lr_inner_ml,
+                    'self.num_steps_validation' :  self.num_steps_validation,
+                    'self.save_after_epochs' :  self.save_after_epochs,
+                    'self.log_train_images_after_iteration' :  self.log_train_images_after_iteration,
+                    'self.report_validation_frequency' :  self.report_validation_frequency,
+                    'self.meta_learning_rate' :  self.meta_learning_rate,
+                    'self.least_number_of_tasks_val_test' :  self.least_number_of_tasks_val_test,
+                    'self.clip_gradients' :  self.clip_gradients}
+        with open(os.path.join(step4_checkpoint_dir, f'model_arg_{epoch_count}_.bin'), 'wb') as f:
+            pickle.dump(arg_dict, f)
+        
 
         return test_accuracy_metric.result().numpy()
 
@@ -597,9 +617,9 @@ class ModelAgnosticMetaLearning(MetaLearning):
                     self.train_accuracy_metric.result().numpy()
                 ))
                 pbar.update(1)
-
-    def predict_with_support(self, meta_test_path, iterations = 5, epochs_to_load_from=None):
-        meta_test_path = os.getcwd() + meta_test_path
+    # 20.10.14. Change the method name : predict_with_support -> meta_predict
+    def predict_with_support(self, save_path, meta_test_path, iterations = 5, epochs_to_load_from=None):
+        meta_test_path = os.path.join(os.getcwd(), meta_test_path)
         dataset_folders = [
             os.path.join(meta_test_path, class_name) for class_name in os.listdir(meta_test_path)
         ]
@@ -616,16 +636,58 @@ class ModelAgnosticMetaLearning(MetaLearning):
         steps_per_epoch = max(predict_dataset.steps_per_epoch, self.least_number_of_tasks_val_test)
         test_dataset = predict_dataset.repeat(-1)
         test_dataset = test_dataset.take(steps_per_epoch)
+        save_path_base = os.path.join(save_path, 'output')
+        os.makedirs(save_path_base, exist_ok=True)
+
         for tmb, lmb in test_dataset:
-            for task, labels in zip(tmb, lmb):
+            for idx, (task, labels) in enumerate(zip(tmb, lmb)):
                 train_ds, val_ds, train_labels, val_labels = self.get_task_train_and_val_ds(task, labels)
                 updated_model = self.inner_train_loop(train_ds, train_labels, iterations)
                 # If you want to compare with MAML paper, please set the training=True in the following line
                 # In that paper the assumption is that we have access to all of test data together and we can evaluate
                 # mean and variance from the batch which is given. Make sure to do the same thing in validation.
-                updated_model_logits = updated_model(val_ds, training=False)
 
+                support_targets_ = tf.argmax(train_labels, axis=-1)
+                val_targets_ = tf.argmax(val_labels, axis=-1)
+
+                updated_model_logits = updated_model(val_ds, training=False)
                 result = tf.argmax(updated_model_logits, axis=-1)
+
+                task_name = "task{}".format(idx)
+                result_ = result.numpy()
+
+                for img, label in zip(train_ds, support_targets_):
+                    save_path_ = os.path.join(save_path_base, "[support_set]{}_{}.png".format(task_name, label))
+                    tf.keras.preprocessing.image.save_img(save_path_, img, data_format='channels_last', file_format=None, scale=True)
+
+                for img, label, predict in zip(val_ds, val_targets_, result_):
+                    save_path_ = os.path.join(save_path_base, "[query_set]{}_{}_{}.png".format(task_name, label, predict))
+                    tf.keras.preprocessing.image.save_img(save_path_, img, data_format='channels_last', file_format=None, scale=True)
+
                 break
             break
+
+        # Saving N-way K-shot JSON
+        from utils import save_nwaykshot
+
+        self.database.is_preview = True
+
+        predict_dataset = self.database.get_supervised_meta_learning_dataset(
+            dataset_folders,
+            n=self.n,
+            k=self.k,
+            meta_batch_size=1,
+        )
+
+        # Numbering the classees
+        folders = sorted(dataset_folders)
+        
+        class2num = { i.split(os.sep)[-1]: 'class{}'.format(n) for n, i in enumerate(folders) }
+        print(class2num)
+        num2class = {v : k for k, v in class2num.items()}
+        
+        # Save the N-way K-shot task json file (for tarin set)
+        json_save_path = os.path.join(self._root, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset))
+        save_nwaykshot(predict_dataset, json_save_path, class2num)
+
         return result

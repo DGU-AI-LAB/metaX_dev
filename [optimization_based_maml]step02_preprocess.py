@@ -6,69 +6,10 @@ import tqdm
 import json
 import numpy as np
 from configparser import ConfigParser
+from utils import save_nwaykshot
 
 logging.disable(logging.WARNING)
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-
-def save_nwaykshot(dataset, save_path, class2num):
-    dataset = list(dataset)
-    dataset= np.array(dataset)
-    # dataset.shape
-    # (N of meta-batch, data&label, meta-batch, support&query, N, K)
-    # - meta-batch : Number of N-way K-shot Tasks per outer loop update
-    # - number of tasks : N of meta-batch * meta-batch
-
-    # Select only data part
-    # (N of meta-batch, meta-batch, support&query, N, K)
-    dataset = dataset[:,0,:,:,:, :]
-    # Flatten the meta-batches
-    # (N of meta-batch * meta-batch, support&query, N, K)
-    dataset = dataset.reshape(-1, *dataset.shape[2:])
-
-    json_file = {}
-    logging.info("Preparing N-way K-shot json files")
-    for i, task in tqdm.tqdm(enumerate(dataset)):
-        key_name = 'task{}'.format(i+1)
-        # Task
-        json_file[key_name] = {'supports' : {},
-                            "query"    : {} }
-        
-        support, query = task
-        
-        for n_class in support:
-            class_path = bytes.decode(n_class[0].numpy())
-            classnum = class2num[class_path.split(os.sep)[-2]]
-            json_file[key_name]['supports'][classnum] = []
-
-            for k_sample in n_class:
-                path = bytes.decode(k_sample.numpy())
-                name = path.split(os.sep)[-1]
-
-                json_file[key_name]['supports'][classnum].append(
-                    {'name' : name, 'path' : path}
-                )
-
-        for n_class in query:
-            # print("n_class")
-            class_path = bytes.decode(n_class[0].numpy())
-            classnum = class2num[class_path.split(os.sep)[-2]]
-            json_file[key_name]['query'][classnum] = []
-
-            for k_sample in n_class:
-                path = bytes.decode(k_sample.numpy())
-                name = path.split(os.sep)[-1]
-
-                json_file[key_name]['query'][classnum].append(
-                    {'name' : name, 'path' : path}
-                )
-
-    logging.info("Start Saving N-way K-shot json file")
-    print("the N-way K-Shot JSON file has been saved in ", save_path)
-    with open(save_path, 'w') as f:
-        json.dump(json_file, f, indent='\t')
-    logging.info("Saving completed.")
-
-
 
 if __name__ == '__main__':
     # User Input Argument
@@ -160,7 +101,6 @@ if __name__ == '__main__':
         meta_batch_size = args.meta_batch_size
     )
 
-    ######### This Part Maybe be differnet for miniImageNet dataset #############
     # Numbering the classees
     train_folders = sorted(database.train_folders)
     val_folders = sorted(database.val_folders)
@@ -171,10 +111,7 @@ if __name__ == '__main__':
     
     class2num = { i.split(os.sep)[-1]: 'class{}'.format(n) for n, i in enumerate(folders) }
     num2class = {v : k for k, v in class2num.items()}
-    ###############################################################################
     
     # Save the N-way K-shot task json file (for tarin set)
     json_save_path = os.path.join(base_dataset_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
     save_nwaykshot(train_dataset, json_save_path, class2num)
-
-    # [TODO] For Mini ImageNet Setting

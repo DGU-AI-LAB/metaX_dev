@@ -132,11 +132,11 @@ if __name__ == '__main__':
     os.makedirs(base_dataset_path_step2, exist_ok=True)
     save_path_step2 = os.path.join(base_dataset_path_step2, '{}.pkl'.format(args.benchmark_dataset))
 
+    # 2. Step3's path : to load the model
     base_path_step3 = os.path.join(maml_path, 'step3')
     base_dataset_path_step3 = os.path.join(base_path_step3, args.benchmark_dataset)
 
-
-    # 2. Step4 base path
+    # 3. Step4 base path
     base_path_step = os.path.join(maml_path, 'step4')
     os.makedirs(base_path_step, exist_ok=True)
 
@@ -186,7 +186,8 @@ if __name__ == '__main__':
     # None일 시 최종 학습한 모델을 불러옵니다.
     
     # 모델 불러오기 위해 checkpoint의 경로를 step3의 경로로 변경
-    maml.checkpoint_dir = os.path.join(base_dataset_path_step3, maml.get_config_info(), 'saved_models') # 20.09.03
+    maml.checkpoint_dir = os.path.join(base_dataset_path_step3, maml.get_config_info(), 'saved_models')
+    print(maml.checkpoint_dir)
 
     epoch_count = maml.load_model(epochs = args.epochs)
     print("Load the {}th epoch model".format(epoch_count))

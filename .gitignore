@@ -6,6 +6,10 @@ dataset/data/mini_imagenet/
 
 dataset/data/ui_output/maml/step3/mini_imagenet/*
 dataset/data/ui_output/maml/step3/omniglot/*
+dataset/data/ui_output/maml/step4/mini_imagenet/*
+dataset/data/ui_output/maml/step4/omniglot/*
+dataset/data/ui_output/maml/step5/mini_imagenet/*
+dataset/data/ui_output/maml/step5/omniglot/*
 *.zip
 dataset/data/oxfordflower/images/
 dataset/data/oxfordflower/pretrained/

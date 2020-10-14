@@ -84,7 +84,7 @@ class Database(ABC):
             k,
             meta_batch_size,
             one_hot_labels=True,
-            reshuffle_each_iteration=True,
+            reshuffle_each_iteration=True, # For demo output, set to false
     ):
         for class_name in folders:
             assert (len(os.listdir(class_name)) > 2 * k), f'The number of instances in each class should be larger ' \
