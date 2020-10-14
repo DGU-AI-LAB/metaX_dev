@@ -1,0 +1,5 @@
+Statistic of the dataset
+The number of the classes / The total number of samples
+    Train :      64/  38400
+    Val   :      16/   9600
+    Test  :      20/  12000

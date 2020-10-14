@@ -23,6 +23,7 @@ class Database(ABC):
         self.train_folders, self.val_folders, self.test_folders = self.get_train_val_test_folders()
 
         self.input_shape = self.get_input_shape()
+        self.is_preview = False
 
     @abstractmethod
     def get_class(self):
@@ -62,6 +63,15 @@ class Database(ABC):
 
         return parse_function
 
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
+
+        return parse_function
+
     def make_labels_dataset(self, n, k, meta_batch_size, steps_per_epoch, one_hot_labels):
         labels_dataset = tf.data.Dataset.range(n)
         if one_hot_labels:
@@ -83,7 +93,7 @@ class Database(ABC):
             k,
             meta_batch_size,
             one_hot_labels=True,
-            reshuffle_each_iteration=True,
+            reshuffle_each_iteration=True, # For demo output, set to false
     ):
         for class_name in folders:
             assert (len(os.listdir(class_name)) > 2 * k), f'The number of instances in each class should be larger ' \
@@ -118,6 +128,48 @@ class Database(ABC):
         setattr(dataset, 'steps_per_epoch', steps_per_epoch)
         return dataset
 
+    def get_supervised_meta_learning_dataset_predict(
+            self,
+            folders,
+            n,
+            k,
+            meta_batch_size,
+            one_hot_labels=True,
+            reshuffle_each_iteration=True, # For demo output, set to false
+    ):
+        for class_name in folders:
+            assert (len(os.listdir(class_name)) > 2 * k), f'The number of instances in each class should be larger ' \
+                f'than {2 * k}, however, the number of instances in' \
+                f' {class_name} are: {len(os.listdir(class_name))}'
+
+        classes = [class_name + '/*' for class_name in folders]
+        steps_per_epoch = len(classes) // n // meta_batch_size
+
+        labels_dataset = self.make_labels_dataset(n, k, meta_batch_size, steps_per_epoch, one_hot_labels)
+
+        dataset = tf.data.Dataset.from_tensor_slices(classes)
+        # print(len(folders))
+        dataset = dataset.shuffle(buffer_size=len(folders), reshuffle_each_iteration=reshuffle_each_iteration)
+        dataset = dataset.interleave(
+            self._get_instances(k),
+            cycle_length=n,
+            block_length=k,
+            num_parallel_calls=tf.data.experimental.AUTOTUNE
+        )
+        
+        dataset_path = dataset.map(self._get_parse_function_path(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        dataset_img = dataset.map(self._get_parse_function(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+
+        dataset = tf.data.Dataset.zip((dataset_img, labels_dataset, dataset_path))
+
+        dataset = dataset.batch(k, drop_remainder=False)
+        dataset = dataset.batch(n, drop_remainder=True)
+        dataset = dataset.batch(2, drop_remainder=True)
+        dataset = dataset.batch(meta_batch_size, drop_remainder=True)
+
+        setattr(dataset, 'steps_per_epoch', steps_per_epoch)
+        return dataset
+
 
 
 class OmniglotDatabase(Database):
@@ -131,16 +183,18 @@ class OmniglotDatabase(Database):
     ):
         self.num_train_classes = num_train_classes
         self.num_val_classes = num_val_classes
-        if is_preview == True:
-            self.is_preview = True
-        else:
-            self.is_preview = False
+
 
         super(OmniglotDatabase, self).__init__(
             raw_data_address,
             os.getcwd()+'/dataset/data/omniglot', # database_address
             random_seed=random_seed,
         )
+
+        if is_preview == True:
+            self.is_preview = True
+        else:
+            self.is_preview = False
 
     def get_class(self):
         train_dict = defaultdict(list)
@@ -194,6 +248,15 @@ class OmniglotDatabase(Database):
 
         return parse_function
 
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
+
+        return parse_function
+
     def prepare_database(self):
         for item in ('images_background', 'images_evaluation'):
             alphabets = os.listdir(os.path.join(self.raw_database_address, item))
@@ -207,6 +270,8 @@ class OmniglotDatabase(Database):
 
     # 20.10.07. For Preivew step
     def get_statistic(self, base_path):
+        os.makedirs(base_path, exist_ok=True)
+
         if not self.is_preview:
             return
         else:
@@ -280,12 +345,21 @@ The number of the classes / The total number of samples
 
 
 class MiniImagenetDatabase(Database):
-    def __init__(self, raw_data_address, random_seed=-1, config=None):
+    # https://github.com/yaoyao-liu/mini-imagenet-tools
+    # Download link : 
+    # https://mtl.yyliu.net/download/Lmzjm9tX.html
+    # https://drive.google.com/drive/folders/17a09kkqVivZQFggCw9I_YboJ23tcexNM
+
+    def __init__(self, raw_data_address, random_seed=-1, is_preview=False,  config=None):
         super(MiniImagenetDatabase, self).__init__(
             raw_data_address,
-            os.getcwd() + '/dataset/data/mini_imagenet',
-            random_seed=random_seed,
+            os.getcwd() + '/dataset/data/mini_imagenet', # self.database_address
+            random_seed=random_seed
         )
+        if is_preview == True:
+            self.is_preview = True
+        else:
+            self.is_preview = False
 
     def get_class(self):
         train_dict = defaultdict(list)
@@ -334,8 +408,88 @@ class MiniImagenetDatabase(Database):
 
         return parse_function
 
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
+
+        return parse_function
+
     def prepare_database(self):
         if not os.path.exists(self.database_address):
             shutil.copytree(self.raw_database_address, self.database_address)
 
+    def get_statistic(self, base_path):
+        os.makedirs(base_path, exist_ok=True)
+        if not self.is_preview:
+            return
+        else:
+            # Get the paths of classes
+            path_class_train = defaultdict(list)
+            path_class_val = defaultdict(list)
+            path_class_test = defaultdict(list)
 
+            for train_class in self.train_folders:
+                path_class_train[train_class.split(os.sep)[-1]] = train_class
+
+            for val_class in self.val_folders:
+                path_class_val[val_class.split(os.sep)[-1]] = val_class
+
+            for test_class in self.test_folders:
+                path_class_test[test_class.split(os.sep)[-1]] = test_class
+
+            # Get the paths of each samples(type : dict)
+            path_sample_train, path_sample_val, path_sample_test = self.get_class()
+
+            # Get the stat of classes (N of each class)
+            def _stat_dict(x):
+                stat_dict = {}
+                for key, value in x.items():
+                    stat_dict[key] = len(value)
+                return stat_dict
+            
+            n_of_samples_per_calss_train = _stat_dict(path_sample_train)
+            n_of_samples_per_calss_val = _stat_dict(path_sample_val)
+            n_of_samples_per_calss_test = _stat_dict(path_sample_test)
+
+            n_of_class_train = len(n_of_samples_per_calss_train.keys())
+            n_of_class_val = len(n_of_samples_per_calss_val.keys())
+            n_of_class_test = len(n_of_samples_per_calss_test.keys())
+            total_n_of_samples_train = sum(list(n_of_samples_per_calss_train.values()))
+            total_n_of_samples_val = sum(list(n_of_samples_per_calss_val.values()))
+            total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
+
+            # Saving stat and paths
+            with open(os.path.join(base_path, 'stat.txt'), 'w') as f:
+                print('''Statistic of the dataset
+The number of the classes / The total number of samples
+    Train : {0:>7}/{1:>7}
+    Val   : {2:>7}/{3:>7}
+    Test  : {4:>7}/{5:>7}'''.format(n_of_class_train, total_n_of_samples_train,
+                n_of_class_val, total_n_of_samples_val,
+                n_of_class_test, total_n_of_samples_test
+                ), file=f)
+
+            import json
+
+            def _save_json(data, output_filename:str):
+                path_out = os.path.join(base_path, output_filename)
+                with open(path_out, 'w') as outfile:
+                    json.dump(data, outfile, indent="\t")
+                print('[JSON file Saved] : \n', path_out)
+            
+            _save_json(path_class_train, 'path_class_train.json')
+            _save_json(path_class_val, 'path_class_val.json')
+            _save_json(path_class_test, 'path_class_test.json')
+
+            # Paths of samples
+            _save_json(path_sample_train, 'path_sample_train.json')
+            _save_json(path_sample_val, 'path_sample_val.json')
+            _save_json(path_sample_test, 'path_sample_test.json')
+
+            # Stat of classes
+            _save_json(n_of_samples_per_calss_train, 'n_of_samples_per_calss_train.json')
+            _save_json(n_of_samples_per_calss_val, 'n_of_samples_per_calss_val.json')
+            _save_json(n_of_samples_per_calss_test, 'n_of_samples_per_calss_test.json')
