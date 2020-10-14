@@ -45,9 +45,9 @@ def save_nwaykshot(dataset, save_path, class2num):
     json_file = {}
     logging.info("Preparing N-way K-shot json files")
     for i, task in tqdm.tqdm(enumerate(dataset)):
-        key_name = 'task{}'.format(i+1)
+        task_name = 'task{}'.format(i+1)
         # Task
-        json_file[key_name] = {'supports' : {},
+        json_file[task_name] = {'supports' : {},
                             "query"    : {} }
         
         support, query = task
@@ -55,13 +55,13 @@ def save_nwaykshot(dataset, save_path, class2num):
         for n_class in support:
             class_path = bytes.decode(n_class[0].numpy())
             classnum = class2num[class_path.split(os.sep)[-2]]
-            json_file[key_name]['supports'][classnum] = []
+            json_file[task_name]['supports'][classnum] = []
 
             for k_sample in n_class:
                 path = bytes.decode(k_sample.numpy())
                 name = path.split(os.sep)[-1]
 
-                json_file[key_name]['supports'][classnum].append(
+                json_file[task_name]['supports'][classnum].append(
                     {'name' : name, 'path' : path}
                 )
 
@@ -69,13 +69,13 @@ def save_nwaykshot(dataset, save_path, class2num):
             # print("n_class")
             class_path = bytes.decode(n_class[0].numpy())
             classnum = class2num[class_path.split(os.sep)[-2]]
-            json_file[key_name]['query'][classnum] = []
+            json_file[task_name]['query'][classnum] = []
 
             for k_sample in n_class:
                 path = bytes.decode(k_sample.numpy())
                 name = path.split(os.sep)[-1]
 
-                json_file[key_name]['query'][classnum].append(
+                json_file[task_name]['query'][classnum].append(
                     {'name' : name, 'path' : path}
                 )
 

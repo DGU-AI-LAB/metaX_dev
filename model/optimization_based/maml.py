@@ -257,6 +257,20 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
         return train_ds, val_ds, train_labels, val_labels
 
+    def get_task_train_and_val_ds_predict(self, task, labels, paths):
+        train_ds, val_ds = tf.split(task, num_or_size_splits=2)
+        train_labels, val_labels = tf.split(labels, num_or_size_splits=2)
+        train_paths, val_paths = tf.split(paths, num_or_size_splits=2)
+
+        train_ds = combine_first_two_axes(tf.squeeze(train_ds, axis=0))
+        val_ds = combine_first_two_axes(tf.squeeze(val_ds, axis=0))
+        train_labels = combine_first_two_axes(tf.squeeze(train_labels, axis=0))
+        val_labels = combine_first_two_axes(tf.squeeze(val_labels, axis=0))
+        train_paths = combine_first_two_axes(tf.squeeze(train_paths, axis=0))
+        val_paths = combine_first_two_axes(tf.squeeze(val_paths, axis=0))
+
+        return train_ds, val_ds, train_labels, val_labels, train_paths, val_paths
+
     def inner_train_loop(self, train_ds, train_labels, num_iterations=-1):
         if num_iterations == -1:
             num_iterations = self.num_steps_ml
@@ -619,75 +633,121 @@ class ModelAgnosticMetaLearning(MetaLearning):
                 pbar.update(1)
     # 20.10.14. Change the method name : predict_with_support -> meta_predict
     def predict_with_support(self, save_path, meta_test_path, iterations = 5, epochs_to_load_from=None):
+        
+        # Set Dataset path
         meta_test_path = os.path.join(os.getcwd(), meta_test_path)
         dataset_folders = [
             os.path.join(meta_test_path, class_name) for class_name in os.listdir(meta_test_path)
         ]
 
+        # Get Class name to save the n-way k-shot json files
+        class_names = sorted(os.listdir(meta_test_path))
+        class2num = { n : 'class{}'.format(i) for i, n in enumerate(class_names) }
+        num2class = {v : k for k, v in class2num.items()}
+        print(meta_test_path)
+        print("-"*50)
+        print(dataset_folders)
+        print("-"*50)
 
-        predict_dataset = self.database.get_supervised_meta_learning_dataset(
+        json_save_path = os.path.join(save_path, 'nwaykshot_task.json')
+
+
+        # Make dataset
+        predict_dataset = self.database.get_supervised_meta_learning_dataset_predict(
             dataset_folders,
             n=self.n,
             k=self.k,
             meta_batch_size=1,
         )
-        self.load_model(epochs=epochs_to_load_from)
         # Load whole test dataset and predict 
         steps_per_epoch = max(predict_dataset.steps_per_epoch, self.least_number_of_tasks_val_test)
         test_dataset = predict_dataset.repeat(-1)
         test_dataset = test_dataset.take(steps_per_epoch)
+
         save_path_base = os.path.join(save_path, 'output')
         os.makedirs(save_path_base, exist_ok=True)
 
-        for tmb, lmb in test_dataset:
-            for idx, (task, labels) in enumerate(zip(tmb, lmb)):
-                train_ds, val_ds, train_labels, val_labels = self.get_task_train_and_val_ds(task, labels)
+        self.load_model(epochs=epochs_to_load_from)
+
+        import json
+
+        json_file = {}
+        for idx, (tmb, lmb, pmb) in enumerate(test_dataset):
+            task_name = "task{}".format(str(idx+1).zfill(3))
+            # Task
+            json_file[task_name] = {'supports' : {},
+                                "query"    : {} }
+            save_path_task = os.path.join(save_path_base, task_name)
+            os.makedirs(save_path_task, exist_ok=True)
+
+            for task, labels, paths in zip(tmb, lmb, pmb):
+                train_ds, val_ds, train_labels, val_labels, train_paths, val_paths = self.get_task_train_and_val_ds_predict(task, labels, paths)
                 updated_model = self.inner_train_loop(train_ds, train_labels, iterations)
                 # If you want to compare with MAML paper, please set the training=True in the following line
                 # In that paper the assumption is that we have access to all of test data together and we can evaluate
                 # mean and variance from the batch which is given. Make sure to do the same thing in validation.
 
-                support_targets_ = tf.argmax(train_labels, axis=-1)
+                train_targets_ = tf.argmax(train_labels, axis=-1)
                 val_targets_ = tf.argmax(val_labels, axis=-1)
 
                 updated_model_logits = updated_model(val_ds, training=False)
-                result = tf.argmax(updated_model_logits, axis=-1)
+                predict_result = tf.argmax(updated_model_logits, axis=-1)
+                predict_result_ = predict_result.numpy()
 
-                task_name = "task{}".format(idx)
-                result_ = result.numpy()
+                # Print support set
+                for img, label, path in zip(train_ds, train_targets_, train_paths):
+                    path = bytes.decode(path.numpy())
+                    class_name = path.split(os.sep)[-2]
+                    file_name = path.split(os.sep)[-1]
+                    classnum = class2num[class_name]
 
-                for img, label in zip(train_ds, support_targets_):
-                    save_path_ = os.path.join(save_path_base, "[support_set]{}_{}.png".format(task_name, label))
-                    tf.keras.preprocessing.image.save_img(save_path_, img, data_format='channels_last', file_format=None, scale=True)
+                    print("path", path)
+                    save_path_img = os.path.join(save_path_task, "[support_set]{}_{}.png".format(label, class_name))
+                    tf.keras.preprocessing.image.save_img(save_path_img, img, data_format='channels_last', file_format=None, scale=True)
 
-                for img, label, predict in zip(val_ds, val_targets_, result_):
-                    save_path_ = os.path.join(save_path_base, "[query_set]{}_{}_{}.png".format(task_name, label, predict))
-                    tf.keras.preprocessing.image.save_img(save_path_, img, data_format='channels_last', file_format=None, scale=True)
+                    json_file[task_name]['supports'][classnum] = [
+                         {
+                          'name' : file_name,
+                          'path' : save_path_img,
+                          'label': label
+                          }
+                          ]
 
+                for img, label, predict, path in zip(val_ds, val_targets_, predict_result_, val_paths):
+                    path = bytes.decode(path.numpy())
+                    class_name = path.split(os.sep)[-2]
+                    file_name = path.split(os.sep)[-1]
+                    classnum = class2num[class_name]
+
+                    save_path_img = os.path.join(save_path_task, "[query_set]{}-{}_{}.png".format(label, predict, class_name))
+                    tf.keras.preprocessing.image.save_img(save_path_img, img, data_format='channels_last', file_format=None, scale=True)
+
+                    json_file[task_name]['query'][classnum] = [
+                         {
+                          'name' : file_name,
+                          'path' : save_path_img,
+                          'label': label,
+                          'predict' : predict
+                          }
+                          ]
                 break
             break
 
-        # Saving N-way K-shot JSON
-        from utils import save_nwaykshot
-
-        self.database.is_preview = True
-
-        predict_dataset = self.database.get_supervised_meta_learning_dataset(
-            dataset_folders,
-            n=self.n,
-            k=self.k,
-            meta_batch_size=1,
-        )
-
-        # Numbering the classees
-        folders = sorted(dataset_folders)
         
-        class2num = { i.split(os.sep)[-1]: 'class{}'.format(n) for n, i in enumerate(folders) }
-        print(class2num)
-        num2class = {v : k for k, v in class2num.items()}
-        
-        # Save the N-way K-shot task json file (for tarin set)
-        json_save_path = os.path.join(self._root, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset))
-        save_nwaykshot(predict_dataset, json_save_path, class2num)
+        print("the N-way K-Shot JSON file has been saved in ", json_save_path)
+        with open(json_save_path, 'w') as f:
+            json.dump(json_file, f, indent='\t')
 
-        return result
+        # import pathlib
+        # def _get_supervised_dataset(self, batch_size, folders=dataset_folders, one_hot_label=True, reshuffle_each_iteration=True):
+        #     data_path = [ glob.glob(os.path.join(class_path, "*.jpg")) for class_path in dataset_folders]
+        #     data_path = tf.data.Dataset.from_tensor_slices(data_path)
+        
+        # meta_test_path = pathlib.Path(meta_test_path)
+        # meta_test_path
+        
+        # # Change the output layer
+        # self.model.dense = Dense(n_class, activation=None, name='dense')
+
+
+        return predict_result

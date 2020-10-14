@@ -63,6 +63,15 @@ class Database(ABC):
 
         return parse_function
 
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
+
+        return parse_function
+
     def make_labels_dataset(self, n, k, meta_batch_size, steps_per_epoch, one_hot_labels):
         labels_dataset = tf.data.Dataset.range(n)
         if one_hot_labels:
@@ -110,6 +119,48 @@ class Database(ABC):
             dataset = dataset.map(self._get_parse_function(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
 
         dataset = tf.data.Dataset.zip((dataset, labels_dataset))
+
+        dataset = dataset.batch(k, drop_remainder=False)
+        dataset = dataset.batch(n, drop_remainder=True)
+        dataset = dataset.batch(2, drop_remainder=True)
+        dataset = dataset.batch(meta_batch_size, drop_remainder=True)
+
+        setattr(dataset, 'steps_per_epoch', steps_per_epoch)
+        return dataset
+
+    def get_supervised_meta_learning_dataset_predict(
+            self,
+            folders,
+            n,
+            k,
+            meta_batch_size,
+            one_hot_labels=True,
+            reshuffle_each_iteration=True, # For demo output, set to false
+    ):
+        for class_name in folders:
+            assert (len(os.listdir(class_name)) > 2 * k), f'The number of instances in each class should be larger ' \
+                f'than {2 * k}, however, the number of instances in' \
+                f' {class_name} are: {len(os.listdir(class_name))}'
+
+        classes = [class_name + '/*' for class_name in folders]
+        steps_per_epoch = len(classes) // n // meta_batch_size
+
+        labels_dataset = self.make_labels_dataset(n, k, meta_batch_size, steps_per_epoch, one_hot_labels)
+
+        dataset = tf.data.Dataset.from_tensor_slices(classes)
+        # print(len(folders))
+        dataset = dataset.shuffle(buffer_size=len(folders), reshuffle_each_iteration=reshuffle_each_iteration)
+        dataset = dataset.interleave(
+            self._get_instances(k),
+            cycle_length=n,
+            block_length=k,
+            num_parallel_calls=tf.data.experimental.AUTOTUNE
+        )
+        
+        dataset_path = dataset.map(self._get_parse_function_path(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+        dataset_img = dataset.map(self._get_parse_function(), num_parallel_calls=tf.data.experimental.AUTOTUNE)
+
+        dataset = tf.data.Dataset.zip((dataset_img, labels_dataset, dataset_path))
 
         dataset = dataset.batch(k, drop_remainder=False)
         dataset = dataset.batch(n, drop_remainder=True)
@@ -194,6 +245,15 @@ class OmniglotDatabase(Database):
             image = tf.cast(image, tf.float32)
 
             return 1 - (image / 255.)
+
+        return parse_function
+
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
 
         return parse_function
 
@@ -345,6 +405,15 @@ class MiniImagenetDatabase(Database):
             image = tf.cast(image, tf.float32)
 
             return image / 255.
+
+        return parse_function
+
+    def _get_parse_function_path(self):
+        '''
+        For Step2, and Step5 it return image and its paths
+        '''
+        def parse_function(example_address):
+            return example_address
 
         return parse_function
 

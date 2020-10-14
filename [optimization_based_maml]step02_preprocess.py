@@ -109,7 +109,7 @@ if __name__ == '__main__':
     folders = train_folders + val_folders + test_folders
     folders.sort()
     
-    class2num = { i.split(os.sep)[-1]: 'class{}'.format(n) for n, i in enumerate(folders) }
+    class2num = { n.split(os.sep)[-1]: 'class{}'.format(i) for i, n in enumerate(folders) }
     num2class = {v : k for k, v in class2num.items()}
     
     # Save the N-way K-shot task json file (for tarin set)

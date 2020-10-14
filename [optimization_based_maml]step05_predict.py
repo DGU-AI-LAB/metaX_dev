@@ -193,7 +193,7 @@ if __name__ == '__main__':
     # None일 시 최종 학습한 모델을 불러옵니다.
     
     # 모델 불러오기 위해 checkpoint의 경로를 step4의 경로로 변경
-    maml.checkpoint_dir = os.path.join(base_dataset_path_step4, maml.get_config_info(), 'saved_models')
+    maml.checkpoint_dir = os.path.join(base_dataset_path_step3, maml.get_config_info(), 'saved_models')
     # print(maml.checkpoint_dir)
     # epoch_count = maml.load_model(epochs = args.epochs)
     # print("Load the {}th epoch model".format(epoch_count))
