@@ -27,7 +27,12 @@ def createFolder(directory):
     except OSError:
         print('OS Error')
 
-def save_nwaykshot(dataset, save_path, class2num):
+def save_nwaykshot(dataset, save_path, class2num, change_mini_imagenet_cls_name=False):
+    if change_mini_imagenet_cls_name:
+    # class2name mini imagenet class code -> class name
+        class2name = create_mini_imagenet_class2name()
+        class2name_total = {**class2name['train'], **class2name['val'], **class2name['test']}
+
     dataset = list(dataset)
     dataset= np.array(dataset)
     # dataset.shape
@@ -60,6 +65,8 @@ def save_nwaykshot(dataset, save_path, class2num):
             for k_sample in n_class:
                 path = bytes.decode(k_sample.numpy())
                 name = path.split(os.sep)[-1]
+                if change_mini_imagenet_cls_name:
+                    name = class2name_total[path.split(os.sep)[-2]]
 
                 json_file[task_name]['supports'][classnum].append(
                     {'name' : name, 'path' : path}
@@ -75,6 +82,8 @@ def save_nwaykshot(dataset, save_path, class2num):
                 path = bytes.decode(k_sample.numpy())
                 name = path.split(os.sep)[-1]
 
+                if change_mini_imagenet_cls_name:
+                    name = class2name_total[path.split(os.sep)[-2]]
                 json_file[task_name]['query'][classnum].append(
                     {'name' : name, 'path' : path}
                 )
@@ -84,3 +93,29 @@ def save_nwaykshot(dataset, save_path, class2num):
     with open(save_path, 'w') as f:
         json.dump(json_file, f, indent='\t')
     logging.info("Saving completed.")
+
+def create_mini_imagenet_class2name():
+    
+    base = os.path.join(os.getcwd(), 'dataset/data/mini_imagenet'.replace("/", os.sep))
+    train_path = os.path.join(base, 'class_names_train.txt')
+    test_path = os.path.join(base, 'class_names_test.txt')
+    val_path = os.path.join(base, 'class_names_val.txt')
+
+    with open(train_path, 'r', encoding='utf-8') as f:
+        train_class_names = f.readlines()
+    with open(test_path, 'r', encoding='utf-8') as f:
+        test_class_names = f.readlines()
+    with open(val_path, 'r', encoding='utf-8') as f:
+        val_class_names = f.readlines()
+
+
+    train_class_names = [i.strip().split(" ") for i in train_class_names]
+    test_class_names = [i.strip().split(" ") for i in test_class_names]
+    val_class_names = [i.strip().split(" ") for i in val_class_names]
+
+    train_class2name = { k : v for k, v in train_class_names}
+    test_class2name = { k : v for k, v in test_class_names}
+    val_class2name = { k : v for k, v in val_class_names}
+
+    mini_imagenet_class2name = {'train' : train_class2name, 'val' : val_class2name, 'test' : test_class2name}
+    return mini_imagenet_class2name

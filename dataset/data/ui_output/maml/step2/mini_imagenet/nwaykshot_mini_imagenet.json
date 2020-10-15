@@ -1,792 +1,792 @@
 {
 	"task1": {
 		"supports": {
-			"class41": [
+			"class27": [
 				{
-					"name": "n0268717200001226.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02687172\\n0268717200001226.jpg"
+					"name": "dugong",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700000671.jpg"
 				}
 			],
-			"class29": [
+			"class79": [
 				{
-					"name": "n0209183100000999.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100000999.jpg"
+					"name": "hotdog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700000322.jpg"
 				}
 			],
-			"class54": [
+			"class78": [
 				{
-					"name": "n0347668400001119.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400001119.jpg"
+					"name": "consomme",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000000162.jpg"
 				}
 			],
-			"class80": [
+			"class53": [
 				{
-					"name": "n0774760700000159.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700000159.jpg"
+					"name": "frying_pan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100000697.jpg"
 				}
 			],
-			"class46": [
+			"class42": [
 				{
-					"name": "n0301716800000839.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000839.jpg"
+					"name": "ashcan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000952.jpg"
 				}
 			]
 		},
 		"query": {
-			"class41": [
+			"class27": [
 				{
-					"name": "n0268717200000024.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02687172\\n0268717200000024.jpg"
+					"name": "dugong",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700000361.jpg"
 				}
 			],
-			"class29": [
+			"class79": [
 				{
-					"name": "n0209183100000262.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100000262.jpg"
+					"name": "hotdog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700001164.jpg"
 				}
 			],
-			"class54": [
+			"class78": [
 				{
-					"name": "n0347668400000307.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400000307.jpg"
+					"name": "consomme",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000001154.jpg"
 				}
 			],
-			"class80": [
+			"class53": [
 				{
-					"name": "n0774760700000370.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700000370.jpg"
+					"name": "frying_pan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100001012.jpg"
 				}
 			],
-			"class46": [
+			"class42": [
 				{
-					"name": "n0301716800000867.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000867.jpg"
+					"name": "ashcan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000401.jpg"
 				}
 			]
 		}
 	},
 	"task2": {
 		"supports": {
+			"class51": [
+				{
+					"name": "file",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000579.jpg"
+				}
+			],
 			"class67": [
 				{
-					"name": "n0427554800000562.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800000562.jpg"
+					"name": "spider_web",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800000136.jpg"
 				}
 			],
-			"class23": [
+			"class22": [
 				{
-					"name": "n0174993900000063.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000063.jpg"
+					"name": "triceratops",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300000311.jpg"
 				}
 			],
-			"class25": [
+			"class44": [
 				{
-					"name": "n0184338300001281.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300001281.jpg"
+					"name": "beer_bottle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800000950.jpg"
 				}
 			],
-			"class75": [
+			"class55": [
 				{
-					"name": "n0460464400000256.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400000256.jpg"
-				}
-			],
-			"class65": [
-				{
-					"name": "n0425114400000501.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000501.jpg"
+					"name": "holster",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400000904.jpg"
 				}
 			]
 		},
 		"query": {
+			"class51": [
+				{
+					"name": "file",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000566.jpg"
+				}
+			],
 			"class67": [
 				{
-					"name": "n0427554800000936.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800000936.jpg"
+					"name": "spider_web",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800000861.jpg"
 				}
 			],
-			"class23": [
+			"class22": [
 				{
-					"name": "n0174993900000617.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000617.jpg"
+					"name": "triceratops",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300000920.jpg"
 				}
 			],
-			"class25": [
+			"class44": [
 				{
-					"name": "n0184338300000405.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300000405.jpg"
+					"name": "beer_bottle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800000285.jpg"
 				}
 			],
-			"class75": [
+			"class55": [
 				{
-					"name": "n0460464400001193.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400001193.jpg"
-				}
-			],
-			"class65": [
-				{
-					"name": "n0425114400000950.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000950.jpg"
+					"name": "holster",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400000327.jpg"
 				}
 			]
 		}
 	},
 	"task3": {
 		"supports": {
-			"class56": [
+			"class72": [
 				{
-					"name": "n0367648300000854.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300000854.jpg"
+					"name": "unicycle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000484.jpg"
 				}
 			],
-			"class59": [
+			"class83": [
 				{
-					"name": "n0388860500001195.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03888605\\n0388860500001195.jpg"
+					"name": "ear",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13133613\\n1313361300000051.jpg"
 				}
 			],
 			"class36": [
 				{
-					"name": "n0211371200000769.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000769.jpg"
+					"name": "miniature_poodle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000286.jpg"
 				}
 			],
-			"class69": [
+			"class70": [
 				{
-					"name": "n0438903300001192.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300001192.jpg"
+					"name": "tile_roof",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300000669.jpg"
 				}
 			],
-			"class64": [
+			"class58": [
 				{
-					"name": "n0424354600000608.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600000608.jpg"
+					"name": "organ",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500001069.jpg"
 				}
 			]
 		},
 		"query": {
-			"class56": [
+			"class72": [
 				{
-					"name": "n0367648300000891.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300000891.jpg"
+					"name": "unicycle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000667.jpg"
 				}
 			],
-			"class59": [
+			"class83": [
 				{
-					"name": "n0388860500000020.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03888605\\n0388860500000020.jpg"
+					"name": "ear",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13133613\\n1313361300001241.jpg"
 				}
 			],
 			"class36": [
 				{
-					"name": "n0211371200000225.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000225.jpg"
+					"name": "miniature_poodle",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000373.jpg"
 				}
 			],
-			"class69": [
+			"class70": [
 				{
-					"name": "n0438903300001038.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300001038.jpg"
+					"name": "tile_roof",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300000996.jpg"
 				}
 			],
-			"class64": [
+			"class58": [
 				{
-					"name": "n0424354600000196.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600000196.jpg"
+					"name": "organ",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500000546.jpg"
 				}
 			]
 		}
 	},
 	"task4": {
 		"supports": {
-			"class43": [
+			"class32": [
 				{
-					"name": "n0279516900000219.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02795169\\n0279516900000219.jpg"
+					"name": "boxer",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900000693.jpg"
 				}
 			],
-			"class66": [
+			"class69": [
 				{
-					"name": "n0425813800000144.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800000144.jpg"
+					"name": "tank",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300000086.jpg"
 				}
 			],
-			"class30": [
+			"class57": [
 				{
-					"name": "n0210100600000556.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600000556.jpg"
+					"name": "oboe",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900001133.jpg"
 				}
 			],
-			"class77": [
+			"class25": [
 				{
-					"name": "n0679411000000976.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000000976.jpg"
+					"name": "toucan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300000395.jpg"
 				}
 			],
-			"class39": [
+			"class63": [
 				{
-					"name": "n0245740800000385.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800000385.jpg"
+					"name": "reel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000364.jpg"
 				}
 			]
 		},
 		"query": {
-			"class43": [
+			"class32": [
 				{
-					"name": "n0279516900001125.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02795169\\n0279516900001125.jpg"
+					"name": "boxer",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900000743.jpg"
 				}
 			],
-			"class66": [
+			"class69": [
 				{
-					"name": "n0425813800001172.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800001172.jpg"
+					"name": "tank",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300000667.jpg"
 				}
 			],
-			"class30": [
+			"class57": [
 				{
-					"name": "n0210100600000992.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600000992.jpg"
+					"name": "oboe",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900000928.jpg"
 				}
 			],
-			"class77": [
+			"class25": [
 				{
-					"name": "n0679411000000882.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000000882.jpg"
+					"name": "toucan",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300000837.jpg"
 				}
 			],
-			"class39": [
+			"class63": [
 				{
-					"name": "n0245740800000920.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800000920.jpg"
+					"name": "reel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000675.jpg"
 				}
 			]
 		}
 	},
 	"task5": {
 		"supports": {
-			"class52": [
+			"class73": [
 				{
-					"name": "n0334703700000522.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700000522.jpg"
+					"name": "upright",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300001151.jpg"
 				}
 			],
-			"class42": [
+			"class62": [
 				{
-					"name": "n0274717700000975.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000975.jpg"
+					"name": "prayer_rug",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400001066.jpg"
 				}
 			],
-			"class22": [
+			"class31": [
 				{
-					"name": "n0170432300000291.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300000291.jpg"
+					"name": "komondor",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02105505\\n0210550500000395.jpg"
 				}
 			],
-			"class58": [
+			"class38": [
 				{
-					"name": "n0385406500000866.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500000866.jpg"
+					"name": "ladybug",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600000526.jpg"
 				}
 			],
-			"class34": [
+			"class46": [
 				{
-					"name": "n0210891500001067.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500001067.jpg"
+					"name": "chime",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000852.jpg"
 				}
 			]
 		},
 		"query": {
-			"class52": [
+			"class73": [
 				{
-					"name": "n0334703700001182.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700001182.jpg"
+					"name": "upright",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300000100.jpg"
 				}
 			],
-			"class42": [
+			"class62": [
 				{
-					"name": "n0274717700000944.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000944.jpg"
+					"name": "prayer_rug",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400000298.jpg"
 				}
 			],
-			"class22": [
+			"class31": [
 				{
-					"name": "n0170432300001201.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300001201.jpg"
+					"name": "komondor",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02105505\\n0210550500000630.jpg"
 				}
 			],
-			"class58": [
+			"class38": [
 				{
-					"name": "n0385406500000656.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500000656.jpg"
+					"name": "ladybug",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600000552.jpg"
 				}
 			],
-			"class34": [
+			"class46": [
 				{
-					"name": "n0210891500000457.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500000457.jpg"
+					"name": "chime",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000835.jpg"
 				}
 			]
 		}
 	},
 	"task6": {
 		"supports": {
-			"class60": [
+			"class30": [
 				{
-					"name": "n0390861800001204.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800001204.jpg"
+					"name": "Gordon_setter",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600000923.jpg"
 				}
 			],
-			"class38": [
+			"class24": [
 				{
-					"name": "n0216545600001258.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600001258.jpg"
+					"name": "harvestman",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01770081\\n0177008100000444.jpg"
 				}
 			],
-			"class55": [
+			"class56": [
 				{
-					"name": "n0352744400001041.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400001041.jpg"
+					"name": "lipstick",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300000273.jpg"
 				}
 			],
-			"class21": [
+			"class77": [
 				{
-					"name": "n0155899300000837.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01558993\\n0155899300000837.jpg"
+					"name": "street_sign",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000000340.jpg"
 				}
 			],
-			"class28": [
+			"class39": [
 				{
-					"name": "n0208986700000404.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000404.jpg"
+					"name": "three-toed_sloth",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800000399.jpg"
 				}
 			]
 		},
 		"query": {
-			"class60": [
+			"class30": [
 				{
-					"name": "n0390861800000223.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800000223.jpg"
+					"name": "Gordon_setter",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600000090.jpg"
 				}
 			],
-			"class38": [
+			"class24": [
 				{
-					"name": "n0216545600000077.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600000077.jpg"
+					"name": "harvestman",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01770081\\n0177008100000406.jpg"
 				}
 			],
-			"class55": [
+			"class56": [
 				{
-					"name": "n0352744400000429.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400000429.jpg"
+					"name": "lipstick",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300001266.jpg"
 				}
 			],
-			"class21": [
+			"class77": [
 				{
-					"name": "n0155899300000017.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01558993\\n0155899300000017.jpg"
+					"name": "street_sign",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000001234.jpg"
 				}
 			],
-			"class28": [
+			"class39": [
 				{
-					"name": "n0208986700000974.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000974.jpg"
+					"name": "three-toed_sloth",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800001284.jpg"
 				}
 			]
 		}
 	},
 	"task7": {
 		"supports": {
-			"class70": [
+			"class40": [
 				{
-					"name": "n0443565300001099.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300001099.jpg"
+					"name": "rock_beauty",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02606052\\n0260605200000910.jpg"
 				}
 			],
-			"class48": [
+			"class71": [
 				{
-					"name": "n0306224500000489.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500000489.jpg"
+					"name": "tobacco_shop",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700000321.jpg"
 				}
 			],
-			"class76": [
+			"class54": [
 				{
-					"name": "n0461250400001063.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400001063.jpg"
+					"name": "hair_slide",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400000319.jpg"
 				}
 			],
-			"class44": [
+			"class68": [
 				{
-					"name": "n0282342800000491.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800000491.jpg"
+					"name": "stage",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04296562\\n0429656200000720.jpg"
 				}
 			],
-			"class63": [
+			"class33": [
 				{
-					"name": "n0406747200000435.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000435.jpg"
+					"name": "Tibetan_mastiff",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100000827.jpg"
 				}
 			]
 		},
 		"query": {
-			"class70": [
+			"class40": [
 				{
-					"name": "n0443565300000492.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300000492.jpg"
+					"name": "rock_beauty",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02606052\\n0260605200000460.jpg"
 				}
 			],
-			"class48": [
+			"class71": [
 				{
-					"name": "n0306224500001046.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500001046.jpg"
+					"name": "tobacco_shop",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700000883.jpg"
 				}
 			],
-			"class76": [
+			"class54": [
 				{
-					"name": "n0461250400000116.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400000116.jpg"
+					"name": "hair_slide",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400000065.jpg"
 				}
 			],
-			"class44": [
+			"class68": [
 				{
-					"name": "n0282342800000926.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800000926.jpg"
+					"name": "stage",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04296562\\n0429656200000526.jpg"
 				}
 			],
-			"class63": [
+			"class33": [
 				{
-					"name": "n0406747200000119.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000119.jpg"
+					"name": "Tibetan_mastiff",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100000535.jpg"
 				}
 			]
 		}
 	},
 	"task8": {
 		"supports": {
-			"class62": [
+			"class49": [
 				{
-					"name": "n0399819400000036.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400000036.jpg"
+					"name": "dishrag",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300000458.jpg"
 				}
 			],
-			"class82": [
+			"class37": [
 				{
-					"name": "n1305456000000800.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000000800.jpg"
+					"name": "Arctic_fox",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02120079\\n0212007900001139.jpg"
 				}
 			],
-			"class32": [
+			"class66": [
 				{
-					"name": "n0210808900000185.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900000185.jpg"
+					"name": "solar_dish",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800000696.jpg"
 				}
 			],
-			"class68": [
+			"class80": [
 				{
-					"name": "n0429656200000062.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04296562\\n0429656200000062.jpg"
+					"name": "orange",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700000033.jpg"
 				}
 			],
-			"class81": [
+			"class48": [
 				{
-					"name": "n0924646400000476.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000476.jpg"
+					"name": "cocktail_shaker",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500000717.jpg"
 				}
 			]
 		},
 		"query": {
-			"class62": [
+			"class49": [
 				{
-					"name": "n0399819400000704.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400000704.jpg"
+					"name": "dishrag",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300001253.jpg"
 				}
 			],
-			"class82": [
+			"class37": [
 				{
-					"name": "n1305456000000773.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000000773.jpg"
+					"name": "Arctic_fox",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02120079\\n0212007900000494.jpg"
 				}
 			],
-			"class32": [
+			"class66": [
 				{
-					"name": "n0210808900001266.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900001266.jpg"
+					"name": "solar_dish",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800000192.jpg"
 				}
 			],
-			"class68": [
+			"class80": [
 				{
-					"name": "n0429656200001178.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04296562\\n0429656200001178.jpg"
+					"name": "orange",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700001141.jpg"
 				}
 			],
-			"class81": [
+			"class48": [
 				{
-					"name": "n0924646400000817.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000817.jpg"
+					"name": "cocktail_shaker",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500000710.jpg"
 				}
 			]
 		}
 	},
 	"task9": {
 		"supports": {
+			"class81": [
+				{
+					"name": "cliff",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000747.jpg"
+				}
+			],
+			"class26": [
+				{
+					"name": "jellyfish",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000255.jpg"
+				}
+			],
+			"class82": [
+				{
+					"name": "bolete",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000001187.jpg"
+				}
+			],
+			"class23": [
+				{
+					"name": "green_mamba",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000025.jpg"
+				}
+			],
 			"class20": [
 				{
-					"name": "n0153282900000384.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900000384.jpg"
-				}
-			],
-			"class45": [
-				{
-					"name": "n0296619300000912.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02966193\\n0296619300000912.jpg"
-				}
-			],
-			"class49": [
-				{
-					"name": "n0320774300001048.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300001048.jpg"
-				}
-			],
-			"class78": [
-				{
-					"name": "n0758411000000935.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000000935.jpg"
-				}
-			],
-			"class61": [
-				{
-					"name": "n0392467900000563.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900000563.jpg"
+					"name": "house_finch",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900000262.jpg"
 				}
 			]
 		},
 		"query": {
+			"class81": [
+				{
+					"name": "cliff",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000067.jpg"
+				}
+			],
+			"class26": [
+				{
+					"name": "jellyfish",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000717.jpg"
+				}
+			],
+			"class82": [
+				{
+					"name": "bolete",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000000408.jpg"
+				}
+			],
+			"class23": [
+				{
+					"name": "green_mamba",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000763.jpg"
+				}
+			],
 			"class20": [
 				{
-					"name": "n0153282900000799.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900000799.jpg"
-				}
-			],
-			"class45": [
-				{
-					"name": "n0296619300000459.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02966193\\n0296619300000459.jpg"
-				}
-			],
-			"class49": [
-				{
-					"name": "n0320774300000270.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300000270.jpg"
-				}
-			],
-			"class78": [
-				{
-					"name": "n0758411000000238.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000000238.jpg"
-				}
-			],
-			"class61": [
-				{
-					"name": "n0392467900000505.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900000505.jpg"
+					"name": "house_finch",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900000945.jpg"
 				}
 			]
 		}
 	},
 	"task10": {
 		"supports": {
-			"class40": [
+			"class50": [
 				{
-					"name": "n0260605200000288.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02606052\\n0260605200000288.jpg"
+					"name": "dome",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300000677.jpg"
 				}
 			],
-			"class71": [
+			"class29": [
 				{
-					"name": "n0444325700000724.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700000724.jpg"
+					"name": "Saluki",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100000620.jpg"
 				}
 			],
-			"class26": [
+			"class52": [
 				{
-					"name": "n0191074700000656.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000656.jpg"
+					"name": "fire_screen",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700001236.jpg"
 				}
 			],
-			"class53": [
+			"class47": [
 				{
-					"name": "n0340023100000014.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100000014.jpg"
+					"name": "clog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03047690\\n0304769000000943.jpg"
 				}
 			],
-			"class73": [
+			"class34": [
 				{
-					"name": "n0451500300000161.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300000161.jpg"
+					"name": "French_bulldog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500000858.jpg"
 				}
 			]
 		},
 		"query": {
-			"class40": [
+			"class50": [
 				{
-					"name": "n0260605200000723.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02606052\\n0260605200000723.jpg"
+					"name": "dome",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300000820.jpg"
 				}
 			],
-			"class71": [
+			"class29": [
 				{
-					"name": "n0444325700000185.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700000185.jpg"
+					"name": "Saluki",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100000338.jpg"
 				}
 			],
-			"class26": [
+			"class52": [
 				{
-					"name": "n0191074700000336.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000336.jpg"
+					"name": "fire_screen",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700000191.jpg"
 				}
 			],
-			"class53": [
+			"class47": [
 				{
-					"name": "n0340023100000518.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100000518.jpg"
+					"name": "clog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03047690\\n0304769000000850.jpg"
 				}
 			],
-			"class73": [
+			"class34": [
 				{
-					"name": "n0451500300001094.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300001094.jpg"
+					"name": "French_bulldog",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500000827.jpg"
 				}
 			]
 		}
 	},
 	"task11": {
 		"supports": {
-			"class50": [
+			"class61": [
 				{
-					"name": "n0322051300000443.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300000443.jpg"
-				}
-			],
-			"class72": [
-				{
-					"name": "n0450941700000531.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000531.jpg"
-				}
-			],
-			"class35": [
-				{
-					"name": "n0211127700000127.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700000127.jpg"
+					"name": "photocopier",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900001114.jpg"
 				}
 			],
 			"class74": [
 				{
-					"name": "n0459674200000784.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200000784.jpg"
+					"name": "wok",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200000963.jpg"
 				}
 			],
-			"class24": [
+			"class65": [
 				{
-					"name": "n0177008100000162.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01770081\\n0177008100000162.jpg"
+					"name": "snorkel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000099.jpg"
+				}
+			],
+			"class64": [
+				{
+					"name": "slot",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600000587.jpg"
+				}
+			],
+			"class76": [
+				{
+					"name": "yawl",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400000491.jpg"
 				}
 			]
 		},
 		"query": {
-			"class50": [
+			"class61": [
 				{
-					"name": "n0322051300000447.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300000447.jpg"
-				}
-			],
-			"class72": [
-				{
-					"name": "n0450941700000800.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000800.jpg"
-				}
-			],
-			"class35": [
-				{
-					"name": "n0211127700000101.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700000101.jpg"
+					"name": "photocopier",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900000971.jpg"
 				}
 			],
 			"class74": [
 				{
-					"name": "n0459674200000756.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200000756.jpg"
+					"name": "wok",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200000172.jpg"
 				}
 			],
-			"class24": [
+			"class65": [
 				{
-					"name": "n0177008100000299.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01770081\\n0177008100000299.jpg"
+					"name": "snorkel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000706.jpg"
+				}
+			],
+			"class64": [
+				{
+					"name": "slot",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600000034.jpg"
+				}
+			],
+			"class76": [
+				{
+					"name": "yawl",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400000957.jpg"
 				}
 			]
 		}
 	},
 	"task12": {
 		"supports": {
-			"class33": [
+			"class45": [
 				{
-					"name": "n0210855100001098.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100001098.jpg"
+					"name": "carousel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02966193\\n0296619300000230.jpg"
 				}
 			],
-			"class79": [
+			"class35": [
 				{
-					"name": "n0769753700000861.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700000861.jpg"
+					"name": "Newfoundland",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700001112.jpg"
 				}
 			],
-			"class57": [
+			"class60": [
 				{
-					"name": "n0383889900001019.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900001019.jpg"
+					"name": "pencil_box",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800000254.jpg"
 				}
 			],
-			"class27": [
+			"class75": [
 				{
-					"name": "n0207436700000077.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700000077.jpg"
+					"name": "worm_fence",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400001108.jpg"
 				}
 			],
-			"class51": [
+			"class28": [
 				{
-					"name": "n0333714000000872.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000872.jpg"
+					"name": "Walker_hound",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000569.jpg"
 				}
 			]
 		},
 		"query": {
-			"class33": [
+			"class45": [
 				{
-					"name": "n0210855100000774.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100000774.jpg"
+					"name": "carousel",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02966193\\n0296619300000417.jpg"
 				}
 			],
-			"class79": [
+			"class35": [
 				{
-					"name": "n0769753700000891.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700000891.jpg"
+					"name": "Newfoundland",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700000698.jpg"
 				}
 			],
-			"class57": [
+			"class60": [
 				{
-					"name": "n0383889900000830.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900000830.jpg"
+					"name": "pencil_box",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800001183.jpg"
 				}
 			],
-			"class27": [
+			"class75": [
 				{
-					"name": "n0207436700000013.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700000013.jpg"
+					"name": "worm_fence",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400001140.jpg"
 				}
 			],
-			"class51": [
+			"class28": [
 				{
-					"name": "n0333714000000537.jpg",
-					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000537.jpg"
+					"name": "Walker_hound",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000497.jpg"
 				}
 			]
 		}

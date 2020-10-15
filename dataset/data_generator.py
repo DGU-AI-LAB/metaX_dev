@@ -187,7 +187,7 @@ class OmniglotDatabase(Database):
 
         super(OmniglotDatabase, self).__init__(
             raw_data_address,
-            os.getcwd()+'/dataset/data/omniglot', # database_address
+            os.getcwd() + '/dataset/data/omniglot'.replace('/', os.sep), # database_address
             random_seed=random_seed,
         )
 
@@ -201,16 +201,16 @@ class OmniglotDatabase(Database):
         val_dict = defaultdict(list)
         test_dict = defaultdict(list)
         for train_class in self.train_folders:
-            for train_image_path in glob(train_class + '/*.*'):
-                train_dict[train_class.split('\\')[-1]].append(train_image_path)
+            for train_image_path in glob(os.path.join(train_class,'*.*')):
+                train_dict[train_class.split(os.sep)[-1]].append(train_image_path)
 
         for val_class in self.val_folders:
-            for val_image_path in glob(val_class+'/*.*'):
-                val_dict[val_class.split('\\')[-1]].append(val_image_path)
+            for val_image_path in glob(os.path.join(val_class,'*.*')):
+                val_dict[val_class.split(os.sep)[-1]].append(val_image_path)
 
         for test_class in self.test_folders:
-            for test_image_path in glob(test_class+'/*.*'):
-                test_dict[test_class.split('\\')[-1]].append(test_image_path)
+            for test_image_path in glob(os.path.join(test_class,'*.*')):
+                test_dict[test_class.split(os.sep)[-1]].append(test_image_path)
 
         return train_dict, val_dict, test_dict
 
@@ -353,7 +353,8 @@ class MiniImagenetDatabase(Database):
     def __init__(self, raw_data_address, random_seed=-1, is_preview=False,  config=None):
         super(MiniImagenetDatabase, self).__init__(
             raw_data_address,
-            os.getcwd() + '/dataset/data/mini_imagenet', # self.database_address
+            # If change the below code using os.path.join then, then the path like 'c:\Users\...'  
+            os.getcwd() + '/dataset/data/mini_imagenet'.replace('/', os.sep), # self.database_address
             random_seed=random_seed
         )
         if is_preview == True:
@@ -366,16 +367,16 @@ class MiniImagenetDatabase(Database):
         val_dict = defaultdict(list)
         test_dict = defaultdict(list)
         for train_class in self.train_folders:
-            for train_image_path in glob(train_class + '/*.*'):
-                train_dict[train_class.split('\\')[-1]].append(train_image_path)
+            for train_image_path in glob(os.path.join(train_class,'*.*')):
+                train_dict[train_class.split(os.sep)[-1]].append(train_image_path)
 
         for val_class in self.val_folders:
-            for val_image_path in glob(val_class+'/*.*'):
-                val_dict[val_class.split('\\')[-1]].append(val_image_path)
+            for val_image_path in glob(os.path.join(val_class,'*.*')):
+                val_dict[val_class.split(os.sep)[-1]].append(val_image_path)
 
         for test_class in self.test_folders:
-            for test_image_path in glob(test_class+'/*.*'):
-                test_dict[test_class.split('\\')[-1]].append(test_image_path)
+            for test_image_path in glob(os.path.join(test_class,'*.*')):
+                test_dict[test_class.split(os.sep)[-1]].append(test_image_path)
 
         return train_dict, val_dict, test_dict
 
@@ -422,6 +423,8 @@ class MiniImagenetDatabase(Database):
             shutil.copytree(self.raw_database_address, self.database_address)
 
     def get_statistic(self, base_path):
+
+        class2name = utils.create_mini_imagenet_class2name()
         os.makedirs(base_path, exist_ok=True)
         if not self.is_preview:
             return
@@ -432,16 +435,21 @@ class MiniImagenetDatabase(Database):
             path_class_test = defaultdict(list)
 
             for train_class in self.train_folders:
-                path_class_train[train_class.split(os.sep)[-1]] = train_class
+                path_class_train[class2name['train'][train_class.split(os.sep)[-1]]] = train_class
 
             for val_class in self.val_folders:
-                path_class_val[val_class.split(os.sep)[-1]] = val_class
+                path_class_val[class2name['val'][val_class.split(os.sep)[-1]]] = val_class
 
             for test_class in self.test_folders:
-                path_class_test[test_class.split(os.sep)[-1]] = test_class
+                path_class_test[class2name['test'][test_class.split(os.sep)[-1]]] = test_class
 
             # Get the paths of each samples(type : dict)
+
             path_sample_train, path_sample_val, path_sample_test = self.get_class()
+
+            path_sample_train = {class2name['train'][k] : v for k, v in path_sample_train.items()}
+            path_sample_val = {class2name['val'][k] : v for k, v in path_sample_val.items()}
+            path_sample_test = {class2name['test'][k] : v for k, v in path_sample_test.items()}
 
             # Get the stat of classes (N of each class)
             def _stat_dict(x):
@@ -457,6 +465,7 @@ class MiniImagenetDatabase(Database):
             n_of_class_train = len(n_of_samples_per_calss_train.keys())
             n_of_class_val = len(n_of_samples_per_calss_val.keys())
             n_of_class_test = len(n_of_samples_per_calss_test.keys())
+
             total_n_of_samples_train = sum(list(n_of_samples_per_calss_train.values()))
             total_n_of_samples_val = sum(list(n_of_samples_per_calss_val.values()))
             total_n_of_samples_test = sum(list(n_of_samples_per_calss_test.values()))
@@ -480,6 +489,7 @@ The number of the classes / The total number of samples
                     json.dump(data, outfile, indent="\t")
                 print('[JSON file Saved] : \n', path_out)
             
+            # Path of classes
             _save_json(path_class_train, 'path_class_train.json')
             _save_json(path_class_val, 'path_class_val.json')
             _save_json(path_class_test, 'path_class_test.json')
