@@ -14,18 +14,18 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 if __name__ == '__main__':
     # User Input Argument
-    # - epochs : 학습시 전체 데이터셋 반복 횟수
-    # - network_cls : 메타러닝으로 학습될 모델 - 기본값 : step2에서 저장된 값
-    # - meta_learning_rate : outer loop learning rate
+    # epochs : 학습시 전체 데이터셋 반복 횟수
+    # network_cls : 메타러닝으로 학습될 모델 기본값 : step2에서 저장된 값
+    # meta_learning_rate : outer loop learning rate
 
-    # - meta_batch_size : N of tasks in one meta-batch
-    # - num_steps_ml : N of inner steps
-    # - lr_inner_ml : Inner loop의 learning rate. type : float
-    # - num_steps_validation : validation set에 대한  fine tuning 스텝수
+    # meta_batch_size : N of tasks in one meta-batch
+    # num_steps_ml : N of inner steps
+    # lr_inner_ml : Inner loop의 learning rate. type : float
+    # num_steps_validation : validation set에 대한  fine tuning 스텝수
 
-    # - save_after_epochs : 모델 저장 주기(1인 경우 매 epoch마다 저장)
-    # - report_validation_frequency : validation set에 대한 evaluation 결과 프린트 주기
-    # - log_train_images_after_iteration : 분류된 이미지를 텐서보드에 기록하는 주기(1인 경우 매 meta batch 마다 기록)
+    # save_after_epochs : 모델 저장 주기(1인 경우 매 epoch마다 저장)
+    # report_validation_frequency : validation set에 대한 evaluation 결과 프린트 주기
+    # log_train_images_after_iteration : 분류된 이미지를 텐서보드에 기록하는 주기(1인 경우 매 meta batch 마다 기록)
 
     parser = argparse.ArgumentParser()
 

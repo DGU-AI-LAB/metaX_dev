@@ -20,7 +20,7 @@ if __name__ == '__main__':
     
     # Config File Load : Step 1 Config file
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args') 
     step1_args_path = os.path.join(args_path, 'step1.ini')
     config_parser.read(step1_args_path)
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/omniglot",
+                raw_data_address="dataset/raw_data/omniglot".replace('/', os.sep),
                 random_seed=47,
                 num_train_classes=1200,
                 num_val_classes=100)
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="/dataset/raw_data/mini_imagenet",
+                raw_data_address="/dataset/raw_data/mini_imagenet".replace('/', os.sep),
                 random_seed=-1)
 
     # Save the database file

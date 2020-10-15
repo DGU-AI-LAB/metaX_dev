@@ -21,7 +21,7 @@ if __name__ == '__main__':
     config['common_DL'] = { 'benchmark_dataset' : args.benchmark_dataset}
 
     # Config File Save : Save Step1 argments
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args') 
     os.makedirs(args_path, exist_ok=True)
     step1_args_path = os.path.join(args_path, 'step1.ini')
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/omniglot",
+                raw_data_address="dataset/raw_data/omniglot".replace('/', os.sep),
                 random_seed=47,
                 num_train_classes=1200,
                 num_val_classes=100,
@@ -61,13 +61,13 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/mini_imagenet",
+                raw_data_address="dataset/raw_data/mini_imagenet".replace('/', os.sep),
                 random_seed=-1)
 
         # Save the database file
         with open(save_path, 'wb') as f:
-            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step1/omniglot.pkl
-        # -> To laod this file in the next step
+            pickle.dump(database, f) # e.g. for omniglot, ./dataset/data/ui_output/maml/step1/omniglot/omniglot.pkl
+        # -> To load this file in the next step
     
     # This code saves the stat of the dataset and the file path of each class
     database.is_preview = True
