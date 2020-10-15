@@ -44,18 +44,18 @@ if __name__ == '__main__':
     # 타입 : tf.data.Dataset
     if args.benchmark_dataset == "omniglot":
         database = OmniglotDatabase(
-            raw_data_address="dataset\raw_data\omniglot",
+            raw_data_address="dataset/raw_data/omniglot",
             random_seed=47,
             num_train_classes=1200,
             num_val_classes=100)
     elif args.benchmark_dataset == "mini_imagenet":
         database=MiniImagenetDatabase(
-            raw_data_address="\dataset\raw_data\mini_imagenet",
+            raw_data_address="dataset/raw_data/mini_imagenet",
             random_seed=-1)
     elif args.benchmark_dataset == "MSKOKOKR":
         database = MSCOCOKRDatabase(
-            train_address = "dataset\data\MSCOCOKR\train",
-            test_address = "dataset\data\MSCOCOKR\test")
+            train_address = "dataset/data/MSCOCOKR/train",
+            test_address = "dataset/data/MSCOCOKR/test")
 
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     elif args.network_cls == "mini_imagenet":
         network_cls=MiniImagenetModel
     elif args.network_cls == "mscoco_kor":
-        network_cls = ImageCaptioningModel
+        network_cls = None # ImageCaptioningModel
 
     # 학습을 위한 클래스를 생성합니다.
     #maml = ModelAgnosticMetaLearning(args, database, network_cls)
@@ -75,7 +75,8 @@ if __name__ == '__main__':
     # @ network_cls는 학습하는 모델이고, 이를 감싸는 class는 학습을 스케쥴링하는 클래스입니다.
     # @ 1세부 코드를 다시 한 번 참조 부탁드립니다.
     imgcap = ImageCaptioningModel(args, database, network_cls)
-    
+    print(imgcap.clean_descriptions_path)
+    print(imgcap.image_filename_path)
     
     # print("=======================meta TRAIN")
     # 학습을 위한 클래스를 사용하여 입력받은 파라미터를 통해 meta_train을 수행합니다.

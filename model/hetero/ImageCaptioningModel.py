@@ -6,7 +6,7 @@ from tqdm import tqdm
 from utils import combine_first_two_axes, createFolder
 from tensorflow.keras.layers import Conv2D, Flatten, Dense, Input, BatchNormalization
 
-from dataset.data.MSCOCOKR_data_generator import MSCOCOKRDatabase
+from dataset.data_generator_MSCOCOKR import MSCOCOKRDatabase
 from model.LearningType import Learning
 from keras.preprocessing.text import Tokenizer
 from PIL import Image
@@ -29,29 +29,30 @@ class ImageCaptioningModel(Learning):
 
     # @ network_cls 인자로 자기자신을 입력받기만 하고 실제로는 쓰지 않습니다.
     def __init__(self, args, database, network_cls):
+        self.max_length = 38
+        # @ vocab_size를 설정해주시기 바랍니다. 코드가 동작하지 않습니다.
+        self.vocab_size = 73051
+        self.tokenizer = database.load_tokenizer()
+        # @ 아래 두 path 수정 '+' -> os.path.join
+        self.clean_descriptions_path = os.path.join(database.train_address, "ms_coco_2014_kr_train_token_clean.txt")
+        self.image_filename_path = os.path.join(database.train_address, "ms_coco_2014_kr_train_images.txt")
+        # @ 아래 path, train_imgs에 self. 누락 - 수정함
+        self.train_imgs = database.load_photos(self.image_filename_path)
+        self.train_descriptions = database.load_clean_descriptions(self.clean_descriptions_path, self.train_imgs) 
+        self.train_features = database.load_feature()
         
+        # @ Learning Class 
         super(ImageCaptioningModel, self).__init__(
             args,
             database,
             network_cls
             )
-        
-        self.max_length = 38
-        # @ vocab_size를 설정해주시기 바랍니다. 코드가 동작하지 않습니다.
-        self.vocab_size = ???
-        self.tokenizer = database.load_tokenizer()
-        # @ 아래 두 path의 text file이 없습니다. 
-        self.clean_descriptions_path = database.train_address + "/ms_coco_2014_kr_train_token_clean.txt"
-        self.image_filename_path = database.train_address + "/ms_coco_2014_kr_train_images.txt"
-        self.train_imgs = database.load_photos(image_filename_path)
-        self.train_descriptions = database.load_clean_descriptions(clean_descriptions_path, train_imgs) 
-        self.train_features = database.load_feature()
-        
+
         self.epochs = args.epochs
         self.iterations = args.iterations
 
     # @ ??? 의 값을 지정해줄 것
-    def train(self, epoch=10, iterations=???):
+    def train(self, epoch=10, iterations=82783):
         model = self.define_model(self.vocab_size, self.max_length)
         
         for i in tqdm(range(epochs), desc = "train epoch"):
@@ -77,7 +78,7 @@ class ImageCaptioningModel(Learning):
         
     def evaluate(self):
         test_image_path = "dataset/data/MSCOCOKR/test/test_images"
-        token_split = pd.read_csv("dataset/data/MSCOCOKR/test/token_dataframe.csv', encoding='cp949')
+        token_split = pd.read_csv("dataset/data/MSCOCOKR/test/token_dataframe.csv", encoding='cp949')
         
         inception_model = Xception(include_top=False, pooling="avg")
         test_image_name = os.listdir(test_image_path)

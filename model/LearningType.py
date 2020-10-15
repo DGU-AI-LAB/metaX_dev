@@ -4,7 +4,7 @@ import os
 # 일반적인 딥러닝 모델 학습을 위해 기본적으로 정의되어야 할 함수들을 정의해 놓은 추상화 클래스 입니다.
 class Learning(ABC):
     @abstractmethod
-    def __init__(self, database, network_cls):
+    def __init__(self, args, database, network_cls): # args 누락된 것 수정
         self.args = args     # argument parser를 통해 받은 hyperparameter 집합
 
         # Get train/val/test dataset from database using self.get_*_dataset()

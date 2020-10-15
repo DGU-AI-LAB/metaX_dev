@@ -2,12 +2,14 @@ from abc import ABC
 from PIL import Image
 from pickle import load
 from tqdm import tqdm
+import os # @ package added
 
 class MSCOCOKRDatabase(ABC):
 
     def __init__(self, train_address, test_address):
-        self.train_address = train_address
-        self.test_address = test_address
+        # @ 상대경로 -> 절대경로 수정
+        self.train_address = os.path.join(os.getcwd(), train_address)
+        self.test_address = os.path.join(os.getcwd(), test_address)
       
     def preview_image(self, image_path):
         image = Image.open(image_path)
@@ -52,5 +54,11 @@ class MSCOCOKRDatabase(ABC):
         file = self.load_doc(filename)
         photos = file.split("\n")[:-1]
         return photos
-
+    # @ 20.10.15. 2세부 추가 발송본 수정 부분
+    def load_feature(self, photos, feature_path):
+        #loading all features
+        all_features = load(open(feature_path,"rb"))
+        #selecting only needed features
+        features = {k:all_features[k] for k in tqdm(photos, desc = "load photo features")}
+        return features
 
