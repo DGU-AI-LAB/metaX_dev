@@ -117,14 +117,6 @@ if __name__ == '__main__':
     print("Step4 args are saved")
 
 
-    # Check & Load the existance of *.pkl database file
-    base_path_step1 = os.path.join(os.getcwd(),
-     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
-    os.makedirs(base_path_step1, exist_ok=True)
-    save_path_step1 = os.path.join(base_path_step1, '{}.pkl'.format(args.benchmark_dataset))
-
-
-
     # Setup paths
     # 1. Step2's database.pkl path
     base_path_step2 = os.path.join(maml_path, 'step2')

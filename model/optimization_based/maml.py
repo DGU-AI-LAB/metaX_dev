@@ -129,7 +129,6 @@ class ModelAgnosticMetaLearning(MetaLearning):
         self.report_validation_frequency = args.report_validation_frequency           # type : int
 
         # self._root = self.get_root()                                                         # type : string
-        # self._root = os.path.join(os.getcwd(), 'dataset/data/ui_output', 'maml_{}'.format(self.args.benchmark_dataset), 'step3')
         self._root = base_dataset_path
         print(self._root)
         self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'train') # type : string
