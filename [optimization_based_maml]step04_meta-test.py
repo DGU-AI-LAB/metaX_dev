@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     # Config File Load : Step 2 Config file
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args') 
     step3_args_path = os.path.join(args_path, 'step2.ini')
     config_parser.read(step3_args_path)
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     # Load latest args_{config}.ini
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args', '*') 
     list_of_args_ini_files = glob.glob(args_path)
     print(list_of_args_ini_files)
@@ -116,14 +116,6 @@ if __name__ == '__main__':
     print("Step4 args are saved")
 
 
-    # Check & Load the existance of *.pkl database file
-    base_path_step1 = os.path.join(os.getcwd(),
-     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
-    os.makedirs(base_path_step1, exist_ok=True)
-    save_path_step1 = os.path.join(base_path_step1, '{}.pkl'.format(args.benchmark_dataset))
-
-
-
     # Setup paths
     # 1. Step2's database.pkl path
     base_path_step2 = os.path.join(maml_path, 'step2')
@@ -187,10 +179,9 @@ if __name__ == '__main__':
     
     # 모델 불러오기 위해 checkpoint의 경로를 step3의 경로로 변경
     maml.checkpoint_dir = os.path.join(base_dataset_path_step3, maml.get_config_info(), 'saved_models')
-    print(maml.checkpoint_dir)
 
-    epoch_count = maml.load_model(epochs = args.epochs)
-    print("Load the {}th epoch model".format(epoch_count))
+    # epoch_count = maml.load_model(epochs = args.epochs)
+    # print("Load the {}th epoch model".format(epoch_count))
 
     # meta_test 시 입력받은 파라미터를 통해 fine turning할 횟수 만큼 수행합니다.
     maml.meta_test(iterations = args.iterations)
