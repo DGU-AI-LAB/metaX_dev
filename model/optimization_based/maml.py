@@ -752,10 +752,150 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
         return predict_result
 
-    def meta_predict(self, save_path, step2_task_json_path, iterations = 5, epochs_to_load_from=None):
+    # def meta_predict(self, save_path, step2_task_json_path, iterations = 5, epochs_to_load_from=None):
+
+    #     import json
+        
+    #     with open(step2_task_json_path, 'rb') as json_file:
+    #         load_json = json.load(json_file)
+
+    #         supports_path_list = []
+    #         query_path_list = []
+    #         support_label = []
+    #         query_label = []
+
+    #         task_list = []
+    #         class_name_list = []
+    #         json_file = {}
+
+    #         # json read & support, query path and per labels list
+    #         for task_num in load_json.keys():
+    #             task_list.append(task_num)
+    #             supports_path_list_temp = []
+    #             query_path_list_temp = []
+
+    #             support_label_temp = []
+    #             query_label_temp = []
+
+    #             class_name_temp = []
+
+    #             for label, class_name in enumerate(load_json[task_num]['supports'].keys()):
+    #                 class_name_temp.append(class_name)
+    #                 for k in range(len(load_json[task_num]['supports'][class_name])):
+    #                     supports_image_path = load_json[task_num]['supports'][class_name][k]['path']
+    #                     query_image_path = load_json[task_num]['query'][class_name][k]['path']
+
+    #                     supports_path_list_temp.append(supports_image_path)
+    #                     query_path_list_temp.append(query_image_path)
+    #                     support_label_temp.append(label)
+    #                     query_label_temp.append(label)
+
+    #             supports_path_list.append(supports_path_list_temp)
+    #             query_path_list.append(query_path_list_temp)
+
+    #             support_label.append(support_label_temp)
+    #             query_label.append(query_label_temp)
+
+    #             class_name_list.append(class_name_temp)
+
+    #         # one_hot_support_label
+    #         # one_hot_query_label
+    #         one_hot_support_label = tf.one_hot(support_label, depth=self.n)
+    #         # one_hot_query_label = tf.one_hot(query_label, depth=self.n)
+
+
+    #         # create support set image vector
+    #         for i, task in enumerate(supports_path_list):
+    #             task_support_image_vector_temp = ''
+    #             for j, support_image_path in enumerate(task):
+    #                 image = self.database._get_parse_function()(support_image_path)
+    #                 image = tf.expand_dims(image, axis=0)
+
+    #                 if j >= 1:
+    #                     task_support_image_vector_temp = tf.concat([task_support_image_vector_temp, image], axis=0)
+    #                 else:
+    #                     task_support_image_vector_temp = image
+
+    #             task_support_image_vector_temp = tf.expand_dims(task_support_image_vector_temp, axis=0)
+    #             if i >= 1:
+    #                 task_support_image_vector = tf.concat([task_support_image_vector, task_support_image_vector_temp], axis=0)
+    #             else:
+    #                 task_support_image_vector = task_support_image_vector_temp
+    #         # create query set image vector
+    #         for i, task in enumerate(query_path_list):
+    #             task_query_image_vector_temp = ''
+    #             for j, query_image_path in enumerate(task):
+    #                 image = self.database._get_parse_function()(query_image_path)
+    #                 image = tf.expand_dims(image, axis=0)
+
+    #                 if j >= 1:
+    #                     task_query_image_vector_temp = tf.concat([task_query_image_vector_temp, image], axis=0)
+    #                 else:
+    #                     task_query_image_vector_temp = image
+
+    #             task_query_image_vector_temp = tf.expand_dims(task_query_image_vector_temp, axis=0)
+    #             if i >=1:
+    #                 task_query_image_vector = tf.concat([task_query_image_vector, task_query_image_vector_temp], axis=0)
+    #             else:
+    #                 task_query_image_vector = task_query_image_vector_temp
+
+
+    #         for i in range(len(task_support_image_vector)):
+    #             copied_model = self.network_cls(num_classes=self.n)
+    #             checkpoint_path = tf.train.latest_checkpoint(self.checkpoint_dir)
+    #             copied_model.load_weights(checkpoint_path)
+
+    #             with tf.GradientTape() as fine_tuning_tape:
+    #                 fine_tuning_tape.watch(copied_model.trainable_variables)
+    #                 logits = copied_model(task_support_image_vector[i])
+    #                 loss = tf.losses.categorical_crossentropy(one_hot_support_label[0], logits, from_logits=True)
+    #             grdients = fine_tuning_tape.gradient(loss, copied_model.trainable_variables)
+    #             self.optimizer.apply_gradients(zip(grdients, copied_model.trainable_variables))
+
+    #             query_predict = copied_model(task_query_image_vector[i])
+
+    #             task_name = "task{}".format(str(i + 1).zfill(3))
+    #             save_path_base = os.path.join(save_path, self.get_config_info(), 'output')
+    #             os.makedirs(save_path_base, exist_ok=True)
+    #             save_path_task = os.path.join(save_path_base, '{}'.format(task_name))
+    #             json_file[task_name] = {'supports': {},
+    #                                     "query": {}}
+                                        
+    #             for a in range(len(task_support_image_vector[i])):
+    #                 support_img = task_support_image_vector[i][a]
+    #                 query_img = task_query_image_vector[i][a]
+    #                 os.makedirs(save_path_task, exist_ok=True)
+    #                 save_path_support_img = os.path.join(save_path_task, "[support_set]{}_{}".format(support_label[i][a], supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
+    #                 tf.keras.preprocessing.image.save_img(save_path_support_img, support_img, data_format='channels_last', file_format=None, scale=True)
+
+    #                 save_path_query_img = os.path.join(save_path_task, "[query_set]{}_{}_{}".format(query_label[i][a], tf.argmax(query_predict, axis=-1)[a].numpy(), query_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
+    #                 tf.keras.preprocessing.image.save_img(save_path_query_img, query_img, data_format='channels_last', file_format=None, scale=True)
+                    
+    #                 print(supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1])
+    #                 print(len(supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
+    #                 print(i, a)
+
+    #                 json_file[task_name]['supports'][str(class_name_list[i][a])] = [
+    #                     {'name': supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1],
+    #                      'path': save_path_support_img,
+    #                      }
+    #                 ]
+
+    #                 json_file[task_name]['query'][class_name_list[i][a]] = [
+    #                     {'name': query_path_list[i][a].split('.jpg')[0].split(os.sep)[-1],
+    #                      'path': save_path_query_img,
+    #                      'prediction': str(tf.argmax(query_predict, axis=-1)[a].numpy())
+    #                      }
+    #                 ]
+
+    #     with open(os.path.join(save_path_base, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset)), 'w', encoding='utf-8') as save_path:
+    #         json.dump(json_file, save_path, indent='\t')
+
+
+    def meta_predict(self, save_path, step2_task_json_path, iterations=5, epochs_to_load_from=None):
 
         import json
-        
+
         with open(step2_task_json_path, 'rb') as json_file:
             load_json = json.load(json_file)
 
@@ -803,7 +943,6 @@ class ModelAgnosticMetaLearning(MetaLearning):
             one_hot_support_label = tf.one_hot(support_label, depth=self.n)
             # one_hot_query_label = tf.one_hot(query_label, depth=self.n)
 
-
             # create support set image vector
             for i, task in enumerate(supports_path_list):
                 task_support_image_vector_temp = ''
@@ -818,7 +957,8 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
                 task_support_image_vector_temp = tf.expand_dims(task_support_image_vector_temp, axis=0)
                 if i >= 1:
-                    task_support_image_vector = tf.concat([task_support_image_vector, task_support_image_vector_temp], axis=0)
+                    task_support_image_vector = tf.concat([task_support_image_vector, task_support_image_vector_temp],
+                                                          axis=0)
                 else:
                     task_support_image_vector = task_support_image_vector_temp
             # create query set image vector
@@ -834,12 +974,23 @@ class ModelAgnosticMetaLearning(MetaLearning):
                         task_query_image_vector_temp = image
 
                 task_query_image_vector_temp = tf.expand_dims(task_query_image_vector_temp, axis=0)
-                if i >=1:
+                if i >= 1:
                     task_query_image_vector = tf.concat([task_query_image_vector, task_query_image_vector_temp], axis=0)
                 else:
                     task_query_image_vector = task_query_image_vector_temp
 
+            #
+            # # print(task_support_image_vector.shape)
+            # # # print(supports_path_list)
+            # # # print(len(supports_path_list))
+            # # # print(len(supports_path_list[0]))
+            # #
+            # print(class_name_list)
+            # print(len(class_name_list))
+            # print(len(class_name_list[0]))
+            # exit()
 
+            # print("len(task_support_image_vector) : ", len(task_support_image_vector))
             for i in range(len(task_support_image_vector)):
                 copied_model = self.network_cls(num_classes=self.n)
                 checkpoint_path = tf.train.latest_checkpoint(self.checkpoint_dir)
@@ -860,33 +1011,74 @@ class ModelAgnosticMetaLearning(MetaLearning):
                 save_path_task = os.path.join(save_path_base, '{}'.format(task_name))
                 json_file[task_name] = {'supports': {},
                                         "query": {}}
-                                        
-                for a in range(len(task_support_image_vector[i])):
+                for a in range(len(task_support_image_vector[i])): # n * k
+                    # print("-"*109)
+                    # print("i : {} / a : {}".format(i, a) )
+                    # print("Length of task_support_image_vector[i] : {}".format(len(task_support_image_vector[i])) )
                     support_img = task_support_image_vector[i][a]
                     query_img = task_query_image_vector[i][a]
                     os.makedirs(save_path_task, exist_ok=True)
-                    save_path_support_img = os.path.join(save_path_task, "[support_set]{}_{}".format(support_label[i][a], supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
+                    save_path_support_img = os.path.join(save_path_task,"[support_set]{}_{}".format(support_label[i][a], supports_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1]))
                     tf.keras.preprocessing.image.save_img(save_path_support_img, support_img, data_format='channels_last', file_format=None, scale=True)
 
-                    save_path_query_img = os.path.join(save_path_task, "[query_set]{}_{}_{}".format(query_label[i][a], tf.argmax(query_predict, axis=-1)[a].numpy(), query_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
-                    tf.keras.preprocessing.image.save_img(save_path_query_img, query_img, data_format='channels_last', file_format=None, scale=True)
-                    
-                    print(supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1])
-                    print(len(supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1]))
-                    print(i, a)
+                    save_path_query_img = os.path.join(save_path_task, "[query_set]{}_{}_{}".format(query_label[i][a],tf.argmax(query_predict, axis=-1)[a].numpy(), query_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1]))
+                    tf.keras.preprocessing.image.save_img(save_path_query_img, query_img, data_format='channels_last',file_format=None, scale=True)
 
-                    json_file[task_name]['supports'][str(class_name_list[i][a])] = [
-                        {'name': supports_path_list[i][a].split('.jpg')[0].split(os.sep)[-1],
-                         'path': save_path_support_img,
-                         }
-                    ]
 
-                    json_file[task_name]['query'][class_name_list[i][a]] = [
-                        {'name': query_path_list[i][a].split('.jpg')[0].split(os.sep)[-1],
-                         'path': save_path_query_img,
-                         'prediction': str(tf.argmax(query_predict, axis=-1)[a].numpy())
-                         }
-                    ]
 
-        with open(os.path.join(save_path_base, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset)), 'w', encoding='utf-8') as save_path:
+                    if self.k != 1:
+                        # if a % self.k != 1:
+                        if a % self.k == 0:
+                            a_ = a
+                            a = a // self.k
+                            # print(supports_path_list[i])
+                            # print("Start new class ")
+                            # print("len(supports_path_list[i]) : ",len(supports_path_list[i]))
+                            # print(a_)
+                            self.support_temp_list = []
+                            self.query_temp_list = []
+                            self.support_temp_list.append({'name': supports_path_list[i][a_].split(os.sep)[-1].split(os.sep)[-1],
+                                              'path': save_path_support_img,
+                                              })
+
+                            self.query_temp_list.append({'name': query_path_list[i][a_].split(os.sep)[-1].split(os.sep)[-1],
+                             'path': save_path_query_img,
+                             'prediction': str(tf.argmax(query_predict, axis=-1)[a_].numpy())
+                             })
+
+                        else:
+                            a_ = a
+                            a = a // self.k
+                            # print("len(supports_path_list[i]) : ",len(supports_path_list[i]))
+                            # print(a_)
+
+                            self.support_temp_list.append(
+                                {'name': supports_path_list[i][a_].split(os.sep)[-1].split(os.sep)[-1],
+                                 'path': save_path_support_img,
+                                 })
+                            json_file[task_name]['supports'][class_name_list[i][a]] = self.support_temp_list # 
+
+                            self.query_temp_list.append({'name': query_path_list[i][a_].split(os.sep)[-1].split(os.sep)[-1],
+                                                    'path': save_path_query_img,
+                                                    'prediction': str(tf.argmax(query_predict, axis=-1)[a_].numpy())
+                                                    })
+
+                            json_file[task_name]['query'][class_name_list[i][a]] = self.query_temp_list #
+
+                    else:
+                        json_file[task_name]['supports'][class_name_list[i][a]] = [
+                            {'name': supports_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1],
+                             'path': save_path_support_img,
+                             }
+                        ]
+
+                        json_file[task_name]['query'][class_name_list[i][a]] = [
+                            {'name': query_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1],
+                             'path': save_path_query_img,
+                             'prediction': str(tf.argmax(query_predict, axis=-1)[a].numpy())
+                             }
+                        ]
+
+        with open(os.path.join(save_path_base, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset)), 'w',
+                  encoding='utf-8') as save_path:
             json.dump(json_file, save_path, indent='\t')

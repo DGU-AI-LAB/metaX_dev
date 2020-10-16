@@ -210,14 +210,10 @@ class Hetero(Learning):
             self.loss_func = losses.SparseCategoricalCrossentropy(from_logits=True)
         
         # @ Log and model file path
-        # 3세부에서 UI 출력 화면을 위한 데이터를 쉽게 받아올 수 있도록
-        # 'dataset/data/ui_output/mcnn/' 내에 Step 별로 저장하도록 수정 부탁드립니다.
-        # 아래는 예시를 위해 csv log path만 수정해보았습니다.
-        # e.g. 학습 기록 출력 - Train Step -> mcnn/step3/log.csv
-        # self.csv_log_cb = tf.keras.callbacks.CSVLogger(
-        #     os.path.join('dataset/data/ui_output/mcnn/',config["csv_path"],"log.csv"))
-ㄴ
-        # @ Changed path to dataset/data/ui_output/mcnn/
+        # 3세부에서 UI 출력 화면을 위한 데이터를 쉽게 받아올 수 있도록 1세부는
+        # 'dataset/data/ui_output/maml/[데이터셋이름]/' 내에 Step 별로 저장하였습니다.
+        # 3세부와 데모 제작 협의시 참고하시면 좋을 것 같습니다.
+        
         self.ckpt_cb = tf.keras.callbacks.ModelCheckpoint(
             os.path.join(config["model_path"],config["log_path"],config["ckpt_path"],f"{args.encoder_name}.ckpt"))
         self.csv_log_cb = tf.keras.callbacks.CSVLogger(
@@ -286,13 +282,6 @@ class Hetero(Learning):
         preset_model.compile(**kwargs)
         preset_model.fit(dataset,epochs=epochs,validation_data = eval_dataset)
         
-
-        # 학습된 모델이 저장되는 부분을 
-        # dataset/data/ui_output/[모델명]/[모델이 저장되는 Step]
-        # 으로 통일하고자 합니다.
-        # 예를 들어 step3가 model training 이면 아래 경로에 학습한 모델 및 pretrained model을 저장합니다.
-        # e.g. dataset/data/ui_output/mcnn/step3/  
-         
         path,_dict = preset_model.save_by_ckpt(
             os.path.join(config["model_path"],config["pretrain_path"],encoder_name,"ck.ckpt"),
             mask_layers=[3]) #mask_layers should be determined more flexibly, for example, mask_layers can be set

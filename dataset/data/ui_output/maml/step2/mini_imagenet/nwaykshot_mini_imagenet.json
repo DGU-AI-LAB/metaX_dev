@@ -1,0 +1,586 @@
+{
+	"task1": {
+		"supports": {
+			"class16": [
+				{
+					"name": "n0414981300000427.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000427.jpg"
+				},
+				{
+					"name": "n0414981300001262.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300001262.jpg"
+				},
+				{
+					"name": "n0414981300000516.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000516.jpg"
+				}
+			],
+			"class10": [
+				{
+					"name": "n0312792500000346.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000346.jpg"
+				},
+				{
+					"name": "n0312792500000115.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000115.jpg"
+				},
+				{
+					"name": "n0312792500000872.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000872.jpg"
+				}
+			],
+			"class15": [
+				{
+					"name": "n0414661400000989.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000989.jpg"
+				},
+				{
+					"name": "n0414661400001243.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400001243.jpg"
+				},
+				{
+					"name": "n0414661400001011.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400001011.jpg"
+				}
+			],
+			"class14": [
+				{
+					"name": "n0377554600001199.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600001199.jpg"
+				},
+				{
+					"name": "n0377554600001079.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600001079.jpg"
+				},
+				{
+					"name": "n0377554600000448.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000448.jpg"
+				}
+			],
+			"class11": [
+				{
+					"name": "n0314621900001205.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001205.jpg"
+				},
+				{
+					"name": "n0314621900000418.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000418.jpg"
+				},
+				{
+					"name": "n0314621900001182.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001182.jpg"
+				}
+			]
+		},
+		"query": {
+			"class16": [
+				{
+					"name": "n0414981300000374.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000374.jpg"
+				},
+				{
+					"name": "n0414981300000098.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000098.jpg"
+				},
+				{
+					"name": "n0414981300001130.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300001130.jpg"
+				}
+			],
+			"class10": [
+				{
+					"name": "n0312792500000060.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000060.jpg"
+				},
+				{
+					"name": "n0312792500001058.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500001058.jpg"
+				},
+				{
+					"name": "n0312792500000063.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000063.jpg"
+				}
+			],
+			"class15": [
+				{
+					"name": "n0414661400000592.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000592.jpg"
+				},
+				{
+					"name": "n0414661400000916.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000916.jpg"
+				},
+				{
+					"name": "n0414661400000985.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000985.jpg"
+				}
+			],
+			"class14": [
+				{
+					"name": "n0377554600000774.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000774.jpg"
+				},
+				{
+					"name": "n0377554600000241.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000241.jpg"
+				},
+				{
+					"name": "n0377554600000867.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000867.jpg"
+				}
+			],
+			"class11": [
+				{
+					"name": "n0314621900000498.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000498.jpg"
+				},
+				{
+					"name": "n0314621900000187.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000187.jpg"
+				},
+				{
+					"name": "n0314621900001224.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001224.jpg"
+				}
+			]
+		}
+	},
+	"task2": {
+		"supports": {
+			"class4": [
+				{
+					"name": "n0211034100001145.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100001145.jpg"
+				},
+				{
+					"name": "n0211034100000408.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000408.jpg"
+				},
+				{
+					"name": "n0211034100000201.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000201.jpg"
+				}
+			],
+			"class13": [
+				{
+					"name": "n0354414300000596.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000596.jpg"
+				},
+				{
+					"name": "n0354414300000681.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000681.jpg"
+				},
+				{
+					"name": "n0354414300000224.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000224.jpg"
+				}
+			],
+			"class19": [
+				{
+					"name": "n0761348000000377.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000377.jpg"
+				},
+				{
+					"name": "n0761348000000382.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000382.jpg"
+				},
+				{
+					"name": "n0761348000000772.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000772.jpg"
+				}
+			],
+			"class17": [
+				{
+					"name": "n0441835700001122.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700001122.jpg"
+				},
+				{
+					"name": "n0441835700000121.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000121.jpg"
+				},
+				{
+					"name": "n0441835700000974.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000974.jpg"
+				}
+			],
+			"class1": [
+				{
+					"name": "n0198127600000947.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000947.jpg"
+				},
+				{
+					"name": "n0198127600000891.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000891.jpg"
+				},
+				{
+					"name": "n0198127600001023.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600001023.jpg"
+				}
+			]
+		},
+		"query": {
+			"class4": [
+				{
+					"name": "n0211034100001296.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100001296.jpg"
+				},
+				{
+					"name": "n0211034100000667.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000667.jpg"
+				},
+				{
+					"name": "n0211034100000193.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000193.jpg"
+				}
+			],
+			"class13": [
+				{
+					"name": "n0354414300000359.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000359.jpg"
+				},
+				{
+					"name": "n0354414300001022.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300001022.jpg"
+				},
+				{
+					"name": "n0354414300001107.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300001107.jpg"
+				}
+			],
+			"class19": [
+				{
+					"name": "n0761348000001234.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000001234.jpg"
+				},
+				{
+					"name": "n0761348000000300.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000300.jpg"
+				},
+				{
+					"name": "n0761348000000299.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000299.jpg"
+				}
+			],
+			"class17": [
+				{
+					"name": "n0441835700000748.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000748.jpg"
+				},
+				{
+					"name": "n0441835700000765.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000765.jpg"
+				},
+				{
+					"name": "n0441835700000071.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000071.jpg"
+				}
+			],
+			"class1": [
+				{
+					"name": "n0198127600000268.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000268.jpg"
+				},
+				{
+					"name": "n0198127600000739.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000739.jpg"
+				},
+				{
+					"name": "n0198127600000991.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000991.jpg"
+				}
+			]
+		}
+	},
+	"task3": {
+		"supports": {
+			"class18": [
+				{
+					"name": "n0452216800000814.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000814.jpg"
+				},
+				{
+					"name": "n0452216800000549.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000549.jpg"
+				},
+				{
+					"name": "n0452216800000024.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000024.jpg"
+				}
+			],
+			"class12": [
+				{
+					"name": "n0327201000000494.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000494.jpg"
+				},
+				{
+					"name": "n0327201000000498.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000498.jpg"
+				},
+				{
+					"name": "n0327201000000858.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000858.jpg"
+				}
+			],
+			"class0": [
+				{
+					"name": "n0193011200001226.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200001226.jpg"
+				},
+				{
+					"name": "n0193011200000213.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000213.jpg"
+				},
+				{
+					"name": "n0193011200001231.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200001231.jpg"
+				}
+			],
+			"class3": [
+				{
+					"name": "n0211006300001143.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001143.jpg"
+				},
+				{
+					"name": "n0211006300000095.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000095.jpg"
+				},
+				{
+					"name": "n0211006300000586.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000586.jpg"
+				}
+			],
+			"class9": [
+				{
+					"name": "n0287152500001025.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500001025.jpg"
+				},
+				{
+					"name": "n0287152500000706.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000706.jpg"
+				},
+				{
+					"name": "n0287152500000776.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000776.jpg"
+				}
+			]
+		},
+		"query": {
+			"class18": [
+				{
+					"name": "n0452216800000325.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000325.jpg"
+				},
+				{
+					"name": "n0452216800001254.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800001254.jpg"
+				},
+				{
+					"name": "n0452216800001116.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800001116.jpg"
+				}
+			],
+			"class12": [
+				{
+					"name": "n0327201000000970.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000970.jpg"
+				},
+				{
+					"name": "n0327201000000386.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000386.jpg"
+				},
+				{
+					"name": "n0327201000000560.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000560.jpg"
+				}
+			],
+			"class0": [
+				{
+					"name": "n0193011200000011.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000011.jpg"
+				},
+				{
+					"name": "n0193011200000307.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000307.jpg"
+				},
+				{
+					"name": "n0193011200000388.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000388.jpg"
+				}
+			],
+			"class3": [
+				{
+					"name": "n0211006300001102.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001102.jpg"
+				},
+				{
+					"name": "n0211006300001238.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001238.jpg"
+				},
+				{
+					"name": "n0211006300000034.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000034.jpg"
+				}
+			],
+			"class9": [
+				{
+					"name": "n0287152500000124.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000124.jpg"
+				},
+				{
+					"name": "n0287152500000655.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000655.jpg"
+				},
+				{
+					"name": "n0287152500001102.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500001102.jpg"
+				}
+			]
+		}
+	},
+	"task4": {
+		"supports": {
+			"class8": [
+				{
+					"name": "n0244348400001247.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400001247.jpg"
+				},
+				{
+					"name": "n0244348400000909.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000909.jpg"
+				},
+				{
+					"name": "n0244348400000049.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000049.jpg"
+				}
+			],
+			"class7": [
+				{
+					"name": "n0221948600001001.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600001001.jpg"
+				},
+				{
+					"name": "n0221948600000184.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000184.jpg"
+				},
+				{
+					"name": "n0221948600000200.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000200.jpg"
+				}
+			],
+			"class5": [
+				{
+					"name": "n0211673800000454.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000454.jpg"
+				},
+				{
+					"name": "n0211673800000725.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000725.jpg"
+				},
+				{
+					"name": "n0211673800001115.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800001115.jpg"
+				}
+			],
+			"class6": [
+				{
+					"name": "n0212916500000456.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000456.jpg"
+				},
+				{
+					"name": "n0212916500000237.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000237.jpg"
+				},
+				{
+					"name": "n0212916500001014.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500001014.jpg"
+				}
+			],
+			"class2": [
+				{
+					"name": "n0209960100001077.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100001077.jpg"
+				},
+				{
+					"name": "n0209960100000245.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000245.jpg"
+				},
+				{
+					"name": "n0209960100001297.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100001297.jpg"
+				}
+			]
+		},
+		"query": {
+			"class8": [
+				{
+					"name": "n0244348400000260.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000260.jpg"
+				},
+				{
+					"name": "n0244348400001125.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400001125.jpg"
+				},
+				{
+					"name": "n0244348400000922.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000922.jpg"
+				}
+			],
+			"class7": [
+				{
+					"name": "n0221948600000781.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000781.jpg"
+				},
+				{
+					"name": "n0221948600000923.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000923.jpg"
+				},
+				{
+					"name": "n0221948600000735.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000735.jpg"
+				}
+			],
+			"class5": [
+				{
+					"name": "n0211673800000558.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000558.jpg"
+				},
+				{
+					"name": "n0211673800000013.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000013.jpg"
+				},
+				{
+					"name": "n0211673800000434.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000434.jpg"
+				}
+			],
+			"class6": [
+				{
+					"name": "n0212916500000192.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000192.jpg"
+				},
+				{
+					"name": "n0212916500000820.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000820.jpg"
+				},
+				{
+					"name": "n0212916500000989.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000989.jpg"
+				}
+			],
+			"class2": [
+				{
+					"name": "n0209960100000166.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000166.jpg"
+				},
+				{
+					"name": "n0209960100000781.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000781.jpg"
+				},
+				{
+					"name": "n0209960100000187.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000187.jpg"
+				}
+			]
+		}
+	}
+}

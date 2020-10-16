@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # Config File Writing and save : Step 2 Config file
     parser.add_argument('--benchmark_dataset', type=str, default=config_parser['common_DL']['benchmark_dataset'])       # 20.09.03
     parser.add_argument('--n', type=int, default=5)
-    parser.add_argument('--k', type=int, default=2)
+    parser.add_argument('--k', type=int, default=3)
     parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
     args = parser.parse_args()
 
