@@ -114,9 +114,4 @@ if __name__ == '__main__':
     
     # Save the N-way K-shot task json file (for tarin set)
     json_save_path = os.path.join(base_dataset_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
-    if args.benchmark_dataset == 'omniglot':
-        save_nwaykshot(train_dataset, json_save_path, class2num)
-    elif args.benchmark_dataset == 'mini_imagenet':
-        # To change the class code to name
-        save_nwaykshot(train_dataset, json_save_path, class2num, change_mini_imagenet_cls_name=True)
-    
+    save_nwaykshot(train_dataset, json_save_path, class2num)
