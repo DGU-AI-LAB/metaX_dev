@@ -1,792 +1,584 @@
 {
 	"task1": {
 		"supports": {
-			"class62": [
+			"class16": [
 				{
-					"name": "prayer_rug",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400001138.jpg"
+					"name": "n0414981300000427.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000427.jpg"
+				},
+				{
+					"name": "n0414981300001262.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300001262.jpg"
+				},
+				{
+					"name": "n0414981300000516.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000516.jpg"
 				}
 			],
-			"class35": [
+			"class10": [
 				{
-					"name": "Newfoundland",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700001185.jpg"
+					"name": "n0312792500000346.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000346.jpg"
+				},
+				{
+					"name": "n0312792500000115.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000115.jpg"
+				},
+				{
+					"name": "n0312792500000872.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000872.jpg"
 				}
 			],
-			"class61": [
+			"class15": [
 				{
-					"name": "photocopier",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900000841.jpg"
+					"name": "n0414661400000989.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000989.jpg"
+				},
+				{
+					"name": "n0414661400001243.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400001243.jpg"
+				},
+				{
+					"name": "n0414661400001011.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400001011.jpg"
 				}
 			],
-			"class74": [
+			"class14": [
 				{
-					"name": "wok",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200000255.jpg"
+					"name": "n0377554600001199.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600001199.jpg"
+				},
+				{
+					"name": "n0377554600001079.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600001079.jpg"
+				},
+				{
+					"name": "n0377554600000448.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000448.jpg"
 				}
 			],
-			"class66": [
+			"class11": [
 				{
-					"name": "solar_dish",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800000546.jpg"
+					"name": "n0314621900001205.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001205.jpg"
+				},
+				{
+					"name": "n0314621900000418.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000418.jpg"
+				},
+				{
+					"name": "n0314621900001182.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001182.jpg"
 				}
 			]
 		},
 		"query": {
-			"class62": [
+			"class16": [
 				{
-					"name": "prayer_rug",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03998194\\n0399819400000406.jpg"
+					"name": "n0414981300000374.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000374.jpg"
+				},
+				{
+					"name": "n0414981300000098.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300000098.jpg"
+				},
+				{
+					"name": "n0414981300001130.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04149813\\n0414981300001130.jpg"
 				}
 			],
-			"class35": [
+			"class10": [
 				{
-					"name": "Newfoundland",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02111277\\n0211127700000708.jpg"
+					"name": "n0312792500000060.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000060.jpg"
+				},
+				{
+					"name": "n0312792500001058.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500001058.jpg"
+				},
+				{
+					"name": "n0312792500000063.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03127925\\n0312792500000063.jpg"
 				}
 			],
-			"class61": [
+			"class15": [
 				{
-					"name": "photocopier",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03924679\\n0392467900000017.jpg"
+					"name": "n0414661400000592.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000592.jpg"
+				},
+				{
+					"name": "n0414661400000916.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000916.jpg"
+				},
+				{
+					"name": "n0414661400000985.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04146614\\n0414661400000985.jpg"
 				}
 			],
-			"class74": [
+			"class14": [
 				{
-					"name": "wok",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04596742\\n0459674200001206.jpg"
+					"name": "n0377554600000774.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000774.jpg"
+				},
+				{
+					"name": "n0377554600000241.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000241.jpg"
+				},
+				{
+					"name": "n0377554600000867.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03775546\\n0377554600000867.jpg"
 				}
 			],
-			"class66": [
+			"class11": [
 				{
-					"name": "solar_dish",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04258138\\n0425813800000147.jpg"
+					"name": "n0314621900000498.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000498.jpg"
+				},
+				{
+					"name": "n0314621900000187.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900000187.jpg"
+				},
+				{
+					"name": "n0314621900001224.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03146219\\n0314621900001224.jpg"
 				}
 			]
 		}
 	},
 	"task2": {
 		"supports": {
-			"class71": [
+			"class4": [
 				{
-					"name": "tobacco_shop",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700001034.jpg"
+					"name": "n0211034100001145.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100001145.jpg"
+				},
+				{
+					"name": "n0211034100000408.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000408.jpg"
+				},
+				{
+					"name": "n0211034100000201.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000201.jpg"
 				}
 			],
-			"class41": [
+			"class13": [
 				{
-					"name": "aircraft_carrier",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02687172\\n0268717200000319.jpg"
+					"name": "n0354414300000596.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000596.jpg"
+				},
+				{
+					"name": "n0354414300000681.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000681.jpg"
+				},
+				{
+					"name": "n0354414300000224.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000224.jpg"
 				}
 			],
-			"class72": [
+			"class19": [
 				{
-					"name": "unicycle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000532.jpg"
+					"name": "n0761348000000377.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000377.jpg"
+				},
+				{
+					"name": "n0761348000000382.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000382.jpg"
+				},
+				{
+					"name": "n0761348000000772.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000772.jpg"
 				}
 			],
-			"class38": [
+			"class17": [
 				{
-					"name": "ladybug",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600000631.jpg"
+					"name": "n0441835700001122.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700001122.jpg"
+				},
+				{
+					"name": "n0441835700000121.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000121.jpg"
+				},
+				{
+					"name": "n0441835700000974.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000974.jpg"
 				}
 			],
-			"class70": [
+			"class1": [
 				{
-					"name": "tile_roof",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300000011.jpg"
+					"name": "n0198127600000947.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000947.jpg"
+				},
+				{
+					"name": "n0198127600000891.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000891.jpg"
+				},
+				{
+					"name": "n0198127600001023.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600001023.jpg"
 				}
 			]
 		},
 		"query": {
-			"class71": [
+			"class4": [
 				{
-					"name": "tobacco_shop",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04443257\\n0444325700000958.jpg"
+					"name": "n0211034100001296.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100001296.jpg"
+				},
+				{
+					"name": "n0211034100000667.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000667.jpg"
+				},
+				{
+					"name": "n0211034100000193.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110341\\n0211034100000193.jpg"
 				}
 			],
-			"class41": [
+			"class13": [
 				{
-					"name": "aircraft_carrier",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02687172\\n0268717200000022.jpg"
+					"name": "n0354414300000359.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300000359.jpg"
+				},
+				{
+					"name": "n0354414300001022.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300001022.jpg"
+				},
+				{
+					"name": "n0354414300001107.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03544143\\n0354414300001107.jpg"
 				}
 			],
-			"class72": [
+			"class19": [
 				{
-					"name": "unicycle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04509417\\n0450941700000855.jpg"
+					"name": "n0761348000001234.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000001234.jpg"
+				},
+				{
+					"name": "n0761348000000300.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000300.jpg"
+				},
+				{
+					"name": "n0761348000000299.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n07613480\\n0761348000000299.jpg"
 				}
 			],
-			"class38": [
+			"class17": [
 				{
-					"name": "ladybug",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02165456\\n0216545600000828.jpg"
+					"name": "n0441835700000748.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000748.jpg"
+				},
+				{
+					"name": "n0441835700000765.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000765.jpg"
+				},
+				{
+					"name": "n0441835700000071.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04418357\\n0441835700000071.jpg"
 				}
 			],
-			"class70": [
+			"class1": [
 				{
-					"name": "tile_roof",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04435653\\n0443565300000845.jpg"
+					"name": "n0198127600000268.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000268.jpg"
+				},
+				{
+					"name": "n0198127600000739.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000739.jpg"
+				},
+				{
+					"name": "n0198127600000991.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01981276\\n0198127600000991.jpg"
 				}
 			]
 		}
 	},
 	"task3": {
 		"supports": {
-			"class82": [
+			"class18": [
 				{
-					"name": "bolete",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000001229.jpg"
+					"name": "n0452216800000814.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000814.jpg"
+				},
+				{
+					"name": "n0452216800000549.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000549.jpg"
+				},
+				{
+					"name": "n0452216800000024.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000024.jpg"
 				}
 			],
-			"class65": [
+			"class12": [
 				{
-					"name": "snorkel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000110.jpg"
+					"name": "n0327201000000494.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000494.jpg"
+				},
+				{
+					"name": "n0327201000000498.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000498.jpg"
+				},
+				{
+					"name": "n0327201000000858.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000858.jpg"
 				}
 			],
-			"class67": [
+			"class0": [
 				{
-					"name": "spider_web",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800001073.jpg"
+					"name": "n0193011200001226.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200001226.jpg"
+				},
+				{
+					"name": "n0193011200000213.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000213.jpg"
+				},
+				{
+					"name": "n0193011200001231.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200001231.jpg"
 				}
 			],
-			"class77": [
+			"class3": [
 				{
-					"name": "street_sign",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000001000.jpg"
+					"name": "n0211006300001143.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001143.jpg"
+				},
+				{
+					"name": "n0211006300000095.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000095.jpg"
+				},
+				{
+					"name": "n0211006300000586.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000586.jpg"
 				}
 			],
-			"class54": [
+			"class9": [
 				{
-					"name": "hair_slide",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400000253.jpg"
+					"name": "n0287152500001025.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500001025.jpg"
+				},
+				{
+					"name": "n0287152500000706.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000706.jpg"
+				},
+				{
+					"name": "n0287152500000776.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000776.jpg"
 				}
 			]
 		},
 		"query": {
-			"class82": [
+			"class18": [
 				{
-					"name": "bolete",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13054560\\n1305456000001013.jpg"
+					"name": "n0452216800000325.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800000325.jpg"
+				},
+				{
+					"name": "n0452216800001254.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800001254.jpg"
+				},
+				{
+					"name": "n0452216800001116.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n04522168\\n0452216800001116.jpg"
 				}
 			],
-			"class65": [
+			"class12": [
 				{
-					"name": "snorkel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04251144\\n0425114400000256.jpg"
+					"name": "n0327201000000970.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000970.jpg"
+				},
+				{
+					"name": "n0327201000000386.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000386.jpg"
+				},
+				{
+					"name": "n0327201000000560.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n03272010\\n0327201000000560.jpg"
 				}
 			],
-			"class67": [
+			"class0": [
 				{
-					"name": "spider_web",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04275548\\n0427554800001150.jpg"
+					"name": "n0193011200000011.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000011.jpg"
+				},
+				{
+					"name": "n0193011200000307.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000307.jpg"
+				},
+				{
+					"name": "n0193011200000388.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n01930112\\n0193011200000388.jpg"
 				}
 			],
-			"class77": [
+			"class3": [
 				{
-					"name": "street_sign",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n06794110\\n0679411000000152.jpg"
+					"name": "n0211006300001102.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001102.jpg"
+				},
+				{
+					"name": "n0211006300001238.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300001238.jpg"
+				},
+				{
+					"name": "n0211006300000034.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02110063\\n0211006300000034.jpg"
 				}
 			],
-			"class54": [
+			"class9": [
 				{
-					"name": "hair_slide",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03476684\\n0347668400000158.jpg"
+					"name": "n0287152500000124.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000124.jpg"
+				},
+				{
+					"name": "n0287152500000655.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500000655.jpg"
+				},
+				{
+					"name": "n0287152500001102.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02871525\\n0287152500001102.jpg"
 				}
 			]
 		}
 	},
 	"task4": {
 		"supports": {
-			"class28": [
+			"class8": [
 				{
-					"name": "Walker_hound",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000678.jpg"
+					"name": "n0244348400001247.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400001247.jpg"
+				},
+				{
+					"name": "n0244348400000909.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000909.jpg"
+				},
+				{
+					"name": "n0244348400000049.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000049.jpg"
 				}
 			],
-			"class39": [
+			"class7": [
 				{
-					"name": "three-toed_sloth",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800000622.jpg"
+					"name": "n0221948600001001.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600001001.jpg"
+				},
+				{
+					"name": "n0221948600000184.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000184.jpg"
+				},
+				{
+					"name": "n0221948600000200.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000200.jpg"
 				}
 			],
-			"class42": [
+			"class5": [
 				{
-					"name": "ashcan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000940.jpg"
+					"name": "n0211673800000454.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000454.jpg"
+				},
+				{
+					"name": "n0211673800000725.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000725.jpg"
+				},
+				{
+					"name": "n0211673800001115.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800001115.jpg"
 				}
 			],
-			"class47": [
+			"class6": [
 				{
-					"name": "clog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03047690\\n0304769000000205.jpg"
+					"name": "n0212916500000456.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000456.jpg"
+				},
+				{
+					"name": "n0212916500000237.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000237.jpg"
+				},
+				{
+					"name": "n0212916500001014.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500001014.jpg"
 				}
 			],
-			"class46": [
+			"class2": [
 				{
-					"name": "chime",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000729.jpg"
-				}
-			]
-		},
-		"query": {
-			"class28": [
+					"name": "n0209960100001077.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100001077.jpg"
+				},
 				{
-					"name": "Walker_hound",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02089867\\n0208986700000569.jpg"
-				}
-			],
-			"class39": [
+					"name": "n0209960100000245.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000245.jpg"
+				},
 				{
-					"name": "three-toed_sloth",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02457408\\n0245740800000051.jpg"
-				}
-			],
-			"class42": [
-				{
-					"name": "ashcan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02747177\\n0274717700000636.jpg"
-				}
-			],
-			"class47": [
-				{
-					"name": "clog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03047690\\n0304769000001135.jpg"
-				}
-			],
-			"class46": [
-				{
-					"name": "chime",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03017168\\n0301716800000265.jpg"
-				}
-			]
-		}
-	},
-	"task5": {
-		"supports": {
-			"class25": [
-				{
-					"name": "toucan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300001249.jpg"
-				}
-			],
-			"class78": [
-				{
-					"name": "consomme",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000001004.jpg"
-				}
-			],
-			"class27": [
-				{
-					"name": "dugong",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700000336.jpg"
-				}
-			],
-			"class63": [
-				{
-					"name": "reel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000296.jpg"
-				}
-			],
-			"class30": [
-				{
-					"name": "Gordon_setter",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600001159.jpg"
+					"name": "n0209960100001297.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100001297.jpg"
 				}
 			]
 		},
 		"query": {
-			"class25": [
+			"class8": [
 				{
-					"name": "toucan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01843383\\n0184338300000676.jpg"
+					"name": "n0244348400000260.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000260.jpg"
+				},
+				{
+					"name": "n0244348400001125.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400001125.jpg"
+				},
+				{
+					"name": "n0244348400000922.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02443484\\n0244348400000922.jpg"
 				}
 			],
-			"class78": [
+			"class7": [
 				{
-					"name": "consomme",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07584110\\n0758411000001061.jpg"
+					"name": "n0221948600000781.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000781.jpg"
+				},
+				{
+					"name": "n0221948600000923.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000923.jpg"
+				},
+				{
+					"name": "n0221948600000735.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02219486\\n0221948600000735.jpg"
 				}
 			],
-			"class27": [
+			"class5": [
 				{
-					"name": "dugong",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02074367\\n0207436700001261.jpg"
+					"name": "n0211673800000558.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000558.jpg"
+				},
+				{
+					"name": "n0211673800000013.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000013.jpg"
+				},
+				{
+					"name": "n0211673800000434.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02116738\\n0211673800000434.jpg"
 				}
 			],
-			"class63": [
+			"class6": [
 				{
-					"name": "reel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04067472\\n0406747200000853.jpg"
+					"name": "n0212916500000192.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000192.jpg"
+				},
+				{
+					"name": "n0212916500000820.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000820.jpg"
+				},
+				{
+					"name": "n0212916500000989.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02129165\\n0212916500000989.jpg"
 				}
 			],
-			"class30": [
+			"class2": [
 				{
-					"name": "Gordon_setter",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02101006\\n0210100600001182.jpg"
-				}
-			]
-		}
-	},
-	"task6": {
-		"supports": {
-			"class64": [
+					"name": "n0209960100000166.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000166.jpg"
+				},
 				{
-					"name": "slot",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600000446.jpg"
-				}
-			],
-			"class44": [
+					"name": "n0209960100000781.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000781.jpg"
+				},
 				{
-					"name": "beer_bottle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800001287.jpg"
-				}
-			],
-			"class60": [
-				{
-					"name": "pencil_box",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800001277.jpg"
-				}
-			],
-			"class83": [
-				{
-					"name": "ear",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13133613\\n1313361300000654.jpg"
-				}
-			],
-			"class75": [
-				{
-					"name": "worm_fence",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400000543.jpg"
-				}
-			]
-		},
-		"query": {
-			"class64": [
-				{
-					"name": "slot",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04243546\\n0424354600001180.jpg"
-				}
-			],
-			"class44": [
-				{
-					"name": "beer_bottle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02823428\\n0282342800000781.jpg"
-				}
-			],
-			"class60": [
-				{
-					"name": "pencil_box",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03908618\\n0390861800000362.jpg"
-				}
-			],
-			"class83": [
-				{
-					"name": "ear",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n13133613\\n1313361300000732.jpg"
-				}
-			],
-			"class75": [
-				{
-					"name": "worm_fence",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04604644\\n0460464400000620.jpg"
-				}
-			]
-		}
-	},
-	"task7": {
-		"supports": {
-			"class36": [
-				{
-					"name": "miniature_poodle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000770.jpg"
-				}
-			],
-			"class79": [
-				{
-					"name": "hotdog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700000394.jpg"
-				}
-			],
-			"class69": [
-				{
-					"name": "tank",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300000153.jpg"
-				}
-			],
-			"class20": [
-				{
-					"name": "house_finch",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900000537.jpg"
-				}
-			],
-			"class31": [
-				{
-					"name": "komondor",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02105505\\n0210550500000398.jpg"
-				}
-			]
-		},
-		"query": {
-			"class36": [
-				{
-					"name": "miniature_poodle",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02113712\\n0211371200000026.jpg"
-				}
-			],
-			"class79": [
-				{
-					"name": "hotdog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07697537\\n0769753700000844.jpg"
-				}
-			],
-			"class69": [
-				{
-					"name": "tank",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04389033\\n0438903300000266.jpg"
-				}
-			],
-			"class20": [
-				{
-					"name": "house_finch",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01532829\\n0153282900001086.jpg"
-				}
-			],
-			"class31": [
-				{
-					"name": "komondor",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02105505\\n0210550500000043.jpg"
-				}
-			]
-		}
-	},
-	"task8": {
-		"supports": {
-			"class56": [
-				{
-					"name": "lipstick",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300000191.jpg"
-				}
-			],
-			"class57": [
-				{
-					"name": "oboe",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900000562.jpg"
-				}
-			],
-			"class76": [
-				{
-					"name": "yawl",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400000501.jpg"
-				}
-			],
-			"class32": [
-				{
-					"name": "boxer",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900000866.jpg"
-				}
-			],
-			"class51": [
-				{
-					"name": "file",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000700.jpg"
-				}
-			]
-		},
-		"query": {
-			"class56": [
-				{
-					"name": "lipstick",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03676483\\n0367648300000968.jpg"
-				}
-			],
-			"class57": [
-				{
-					"name": "oboe",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03838899\\n0383889900001002.jpg"
-				}
-			],
-			"class76": [
-				{
-					"name": "yawl",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04612504\\n0461250400000079.jpg"
-				}
-			],
-			"class32": [
-				{
-					"name": "boxer",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108089\\n0210808900001284.jpg"
-				}
-			],
-			"class51": [
-				{
-					"name": "file",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03337140\\n0333714000000536.jpg"
-				}
-			]
-		}
-	},
-	"task9": {
-		"supports": {
-			"class53": [
-				{
-					"name": "frying_pan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100001165.jpg"
-				}
-			],
-			"class43": [
-				{
-					"name": "barrel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02795169\\n0279516900000818.jpg"
-				}
-			],
-			"class37": [
-				{
-					"name": "Arctic_fox",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02120079\\n0212007900000745.jpg"
-				}
-			],
-			"class33": [
-				{
-					"name": "Tibetan_mastiff",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100000731.jpg"
-				}
-			],
-			"class81": [
-				{
-					"name": "cliff",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000854.jpg"
-				}
-			]
-		},
-		"query": {
-			"class53": [
-				{
-					"name": "frying_pan",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03400231\\n0340023100000199.jpg"
-				}
-			],
-			"class43": [
-				{
-					"name": "barrel",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02795169\\n0279516900000778.jpg"
-				}
-			],
-			"class37": [
-				{
-					"name": "Arctic_fox",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02120079\\n0212007900001239.jpg"
-				}
-			],
-			"class33": [
-				{
-					"name": "Tibetan_mastiff",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108551\\n0210855100000866.jpg"
-				}
-			],
-			"class81": [
-				{
-					"name": "cliff",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n09246464\\n0924646400000732.jpg"
-				}
-			]
-		}
-	},
-	"task10": {
-		"supports": {
-			"class55": [
-				{
-					"name": "holster",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400000885.jpg"
-				}
-			],
-			"class80": [
-				{
-					"name": "orange",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700000819.jpg"
-				}
-			],
-			"class29": [
-				{
-					"name": "Saluki",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100001194.jpg"
-				}
-			],
-			"class21": [
-				{
-					"name": "robin",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01558993\\n0155899300000241.jpg"
-				}
-			],
-			"class49": [
-				{
-					"name": "dishrag",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300000903.jpg"
-				}
-			]
-		},
-		"query": {
-			"class55": [
-				{
-					"name": "holster",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03527444\\n0352744400000867.jpg"
-				}
-			],
-			"class80": [
-				{
-					"name": "orange",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n07747607\\n0774760700000686.jpg"
-				}
-			],
-			"class29": [
-				{
-					"name": "Saluki",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02091831\\n0209183100000115.jpg"
-				}
-			],
-			"class21": [
-				{
-					"name": "robin",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01558993\\n0155899300000292.jpg"
-				}
-			],
-			"class49": [
-				{
-					"name": "dishrag",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03207743\\n0320774300000026.jpg"
-				}
-			]
-		}
-	},
-	"task11": {
-		"supports": {
-			"class73": [
-				{
-					"name": "upright",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300000471.jpg"
-				}
-			],
-			"class58": [
-				{
-					"name": "organ",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500000272.jpg"
-				}
-			],
-			"class59": [
-				{
-					"name": "parallel_bars",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03888605\\n0388860500001288.jpg"
-				}
-			],
-			"class23": [
-				{
-					"name": "green_mamba",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000256.jpg"
-				}
-			],
-			"class34": [
-				{
-					"name": "French_bulldog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500001148.jpg"
-				}
-			]
-		},
-		"query": {
-			"class73": [
-				{
-					"name": "upright",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n04515003\\n0451500300000061.jpg"
-				}
-			],
-			"class58": [
-				{
-					"name": "organ",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03854065\\n0385406500000875.jpg"
-				}
-			],
-			"class59": [
-				{
-					"name": "parallel_bars",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03888605\\n0388860500000802.jpg"
-				}
-			],
-			"class23": [
-				{
-					"name": "green_mamba",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01749939\\n0174993900000388.jpg"
-				}
-			],
-			"class34": [
-				{
-					"name": "French_bulldog",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n02108915\\n0210891500000624.jpg"
-				}
-			]
-		}
-	},
-	"task12": {
-		"supports": {
-			"class52": [
-				{
-					"name": "fire_screen",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700000191.jpg"
-				}
-			],
-			"class50": [
-				{
-					"name": "dome",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300000600.jpg"
-				}
-			],
-			"class26": [
-				{
-					"name": "jellyfish",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000707.jpg"
-				}
-			],
-			"class22": [
-				{
-					"name": "triceratops",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300000864.jpg"
-				}
-			],
-			"class48": [
-				{
-					"name": "cocktail_shaker",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500000335.jpg"
-				}
-			]
-		},
-		"query": {
-			"class52": [
-				{
-					"name": "fire_screen",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03347037\\n0334703700000449.jpg"
-				}
-			],
-			"class50": [
-				{
-					"name": "dome",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03220513\\n0322051300001035.jpg"
-				}
-			],
-			"class26": [
-				{
-					"name": "jellyfish",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01910747\\n0191074700000965.jpg"
-				}
-			],
-			"class22": [
-				{
-					"name": "triceratops",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n01704323\\n0170432300000277.jpg"
-				}
-			],
-			"class48": [
-				{
-					"name": "cocktail_shaker",
-					"path": "D:\\3\uc138\ubd80 \uc1a1\ubd80\uc6a9 metaX\\metaX_dev\\dataset\\data\\mini_imagenet\\train\\n03062245\\n0306224500000862.jpg"
+					"name": "n0209960100000187.jpg",
+					"path": "C:\\Users\\dwkim\\Documents\\GitHub\\metaX_dev\\dataset\\data\\mini_imagenet\\test\\n02099601\\n0209960100000187.jpg"
 				}
 			]
 		}

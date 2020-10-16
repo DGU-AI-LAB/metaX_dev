@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     # Config File Load : Step 2 Config file
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args') 
     step3_args_path = os.path.join(args_path, 'step2.ini')
     config_parser.read(step3_args_path)
@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     # Load latest step4_{config}.ini
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args', '*') 
     list_of_args_ini_files = glob.glob(args_path)
     print(list_of_args_ini_files)
@@ -117,14 +117,6 @@ if __name__ == '__main__':
     print("Step4 args are saved")
 
 
-    # Check & Load the existance of *.pkl database file
-    base_path_step1 = os.path.join(os.getcwd(),
-     'dataset/data/ui_output','maml_{}'.format(args.benchmark_dataset), 'step1')
-    os.makedirs(base_path_step1, exist_ok=True)
-    save_path_step1 = os.path.join(base_path_step1, '{}.pkl'.format(args.benchmark_dataset))
-
-
-
     # Setup paths
     # 1. Step2's database.pkl path
     base_path_step2 = os.path.join(maml_path, 'step2')
@@ -132,6 +124,7 @@ if __name__ == '__main__':
     base_dataset_path_step2 = os.path.join(base_path_step2, args.benchmark_dataset)
     os.makedirs(base_dataset_path_step2, exist_ok=True)
     save_path_step2 = os.path.join(base_dataset_path_step2, '{}.pkl'.format(args.benchmark_dataset))
+    save_path_json_step2 = os.path.join(base_dataset_path_step2, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
 
     # 2. Step3's path : to load the model
     base_path_step3 = os.path.join(maml_path, 'step3')
@@ -160,7 +153,7 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/omniglot",
+                raw_data_address="dataset/raw_data/omniglot".replace('/', os.sep),
                 random_seed=47,
                 num_train_classes=1200,
                 num_val_classes=100)
@@ -168,7 +161,7 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/mini_imagenet",
+                raw_data_address="dataset/raw_data/mini_imagenet".replace('/', os.sep),
                 random_seed=-1)
 
     # Save the database file
@@ -204,7 +197,11 @@ if __name__ == '__main__':
 
 
     # 예측한 결과를 보여줍니다.
-    maml.predict_with_support(save_path=base_dataset_path, meta_test_path=os.path.join('dataset','data','mini_imagenet','test'))
+    # maml.predict_with_support(save_path=base_dataset_path, meta_test_path=os.path.join('dataset','data','mini_imagenet','test'))
     # meta_test_path 예측할 데이터의 경로               type : string
     # epochs_to_load_from 몇번 학습한 모델을 볼러올지   type : int  None일 시 최종 학습한 모델을 불러옵니다.
     # iterations fine turning 횟수                    type : int
+    # print(base_dataset_path)
+    # print(save_path_json_step2)
+
+    maml.meta_predict(save_path=base_dataset_path, step2_task_json_path=save_path_json_step2)

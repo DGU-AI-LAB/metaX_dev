@@ -42,7 +42,7 @@ if __name__ == '__main__':
     # It take user input & It also have default values
     parser.add_argument('--benchmark_dataset', type=str, default=config_parser['common_DL']['benchmark_dataset'])
     parser.add_argument('--network_cls', type=str, default=config_parser['common_DL']['benchmark_dataset']) # User Input STEP3
-    parser.add_argument('--epochs', type=int, default=4)          # User Input STEP3
+    parser.add_argument('--epochs', type=int, default=2)          # User Input STEP3
     parser.add_argument('--meta_learning_rate', type=float, default=0.001) # User Input STEP3
 
     # Argument for Meta-Learning
@@ -156,7 +156,7 @@ if __name__ == '__main__':
         if args.benchmark_dataset == "omniglot":
             database = OmniglotDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/raw_data/omniglot",
+                raw_data_address="dataset/raw_data/omniglot".replace('/', os.sep),
                 random_seed=47,
                 num_train_classes=1200,
                 num_val_classes=100)
@@ -164,7 +164,7 @@ if __name__ == '__main__':
         elif args.benchmark_dataset == "mini_imagenet":
             database=MiniImagenetDatabase(
                 # 200831 changed path, add raw_data folder
-                raw_data_address="dataset/aw_data/mini_imagenet",
+                raw_data_address="dataset/aw_data/mini_imagenet".replace('/', os.sep),
                 random_seed=-1)
 
     # Save the database file

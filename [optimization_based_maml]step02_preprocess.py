@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # Config File Writing and save : Step 2 Config file
     parser.add_argument('--benchmark_dataset', type=str, default=config_parser['common_DL']['benchmark_dataset'])       # 20.09.03
     parser.add_argument('--n', type=int, default=5)
-    parser.add_argument('--k', type=int, default=1)
+    parser.add_argument('--k', type=int, default=3)
     parser.add_argument('--meta_batch_size', type=int, default=2)  # 20.09.03
     args = parser.parse_args()
 
@@ -90,12 +90,12 @@ if __name__ == '__main__':
     # -> To laod this file in the next step
 
 
-    # Saving N-way K-shot JSON
+    # Saving N-way K-shot JSON for Test dataset
 
     database.is_preview = True
-
-    train_dataset = database.get_supervised_meta_learning_dataset(
-        database.train_folders,
+    # [TODO] Train folder -> Test folder
+    test_dataset = database.get_supervised_meta_learning_dataset(
+        database.test_folders,
         n = args.n,
         k = args.k,
         meta_batch_size = args.meta_batch_size
@@ -114,9 +114,4 @@ if __name__ == '__main__':
     
     # Save the N-way K-shot task json file (for tarin set)
     json_save_path = os.path.join(base_dataset_path, 'nwaykshot_{}.json'.format(args.benchmark_dataset))
-    if args.benchmark_dataset == 'omniglot':
-        save_nwaykshot(train_dataset, json_save_path, class2num)
-    elif args.benchmark_dataset == 'mini_imagenet':
-        # To change the class code to name
-        save_nwaykshot(train_dataset, json_save_path, class2num, change_mini_imagenet_cls_name=True)
-    
+    save_nwaykshot(test_dataset, json_save_path, class2num)
