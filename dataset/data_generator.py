@@ -102,7 +102,8 @@ class Database(ABC):
 
         classes = [class_name + '/*' for class_name in folders]
         steps_per_epoch = len(classes) // n // meta_batch_size
-
+        # Error check
+        assert steps_per_epoch != 0 "The number of classes that can be drawn is insufficient., Please reduce meta_batch_size or N."
         labels_dataset = self.make_labels_dataset(n, k, meta_batch_size, steps_per_epoch, one_hot_labels)
 
         dataset = tf.data.Dataset.from_tensor_slices(classes)
@@ -143,7 +144,6 @@ class Database(ABC):
                 f' {class_name} are: {len(os.listdir(class_name))}'
 
         classes = [class_name + '/*' for class_name in folders]
-        steps_per_epoch = len(classes) // n // meta_batch_size
 
         labels_dataset = self.make_labels_dataset(n, k, meta_batch_size, steps_per_epoch, one_hot_labels)
 
