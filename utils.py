@@ -42,29 +42,7 @@ def save_nwaykshot(dataset, save_path, class2num, change_mini_imagenet_cls_name=
 
     # Select only data part
     # (N of meta-batch(steps_per_epoch), meta-batch, support&query, N, K)
-    print(dataset.shape)
-    print(dataset)
     dataset = dataset[:,0,:,:,:, :]
-    '''
-    File "c:\Users\dwkim\Documents\GitHub\metaX_dev\utils.py", line 47, in save_nwaykshot
-        dataset = dataset[:,0,:,:,:, :]
-    IndexError: too many indices for array
-
-    #  - 한 meta-batch당 샘플 수 - 4*2*5*3 = 120개
-    #  - steps_per_epoch는 class 중복 없이 구성된 meta-batch의 개수를 말함
-    #  - steps_per_epoch = Number of Classes // N // Meta-Batch  이므로
-    #    mini_imagenet 의 경우 20 // 5 // 5 = 0 이 되면서 에러 발생
-    # meta-batch = 4
-    # (Iter,  N_of_MB,  MB, S&Q, N, K)
-    # (1, 2, 4, 2, 5, 3)
-    # meta-batch = 3
-    # (1, 2, 3, 2, 5, 3)
-    # meta-batch = 2
-    # (2, 2, 2, 2, 5, 3)
-    # meta-batch = 1
-    # (4, 2, 1, 2, 5, 3)
-    '''
-
     # Flatten the meta-batches
     # (N of meta-batch * meta-batch, support&query, N, K)
     dataset = dataset.reshape(-1, *dataset.shape[2:])
