@@ -602,13 +602,11 @@ class ModelAgnosticMetaLearning(MetaLearning):
                     tf.summary.scalar('Accuracy', acc, step=epoch_count)
                 
                 if self.skip_load_first_epoch_writing_train:
-                    print("Write")
                     # If it’s to continue training from the loaded model,
                     # Need to skip writing first epoch's result 
                     with open(self.train_csv_path, 'a', encoding='utf-8') as f:
                         f.write("{}, {}, {}\n".format(epoch_count, acc, loss))
                 else:
-                    print("Pass")
                     self.skip_load_first_epoch_writing_train = True
 
                     
