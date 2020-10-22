@@ -19,9 +19,9 @@ if __name__ == '__main__':
     # meta_learning_rate : outer loop learning rate
 
     # meta_batch_size : N of tasks in one meta-batch
-    # num_steps_ml : N of inner steps
+    # num_steps_ml : Training시 inner loop에서의 gradient update steps 횟수
     # lr_inner_ml : Inner loop의 learning rate. type : float
-    # num_steps_validation : validation set에 대한  fine tuning 스텝수
+    # num_steps_validation : validation set에 대한 evaluation시 inner loop에서의 gradient update steps 횟수
 
     # save_after_epochs : 모델 저장 주기(1인 경우 매 epoch마다 저장)
     # report_validation_frequency : validation set에 대한 evaluation 결과 프린트 주기

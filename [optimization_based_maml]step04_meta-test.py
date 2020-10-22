@@ -19,23 +19,11 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-
-    # Config File Load : Step 2 Config file
-    config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
-    args_path = os.path.join(maml_path, 'args') 
-    step3_args_path = os.path.join(args_path, 'step2.ini')
-    config_parser.read(step3_args_path)
-    print("Load Step3 arguments from : {}".format(step3_args_path))
-
-
-
     # Load latest args_{config}.ini
     config_parser = ConfigParser()
     maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
     args_path = os.path.join(maml_path, 'args', '*') 
     list_of_args_ini_files = glob.glob(args_path)
-    print(list_of_args_ini_files)
     list_of_args_ini_files = [i for i in list_of_args_ini_files if 'step3_' in i]
     latest_file = max(list_of_args_ini_files, key=os.path.getctime)
     print("Load Step3 arguments from : {}".format(latest_file))
@@ -47,10 +35,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # User Input of STEP4 
     # The default values are the values of step3
-    # 1. num_steps_ml         : int : The number of inner steps 
-    # 2. iterations           : int : inner loop의 gradient update 횟수
-    # 3. num_steps_validation : int : validation set에 대한  fine tuning 스텝수
-    # Othre arguments are loaded from args_###.ini file that has saved in the step3
+    # 1. iterations : int : Test 시 inner loop에서의 gradient update steps 횟수(기본값 : num_steps_ml)
+    # Other arguments are loaded from args_###.ini file that has saved in the step3
  
     # Argument for Common Deep Learning
     # It take user input & It also have default values
@@ -64,10 +50,10 @@ if __name__ == '__main__':
     parser.add_argument('--n', type=int, default=config_parser['MetaLearning']['n']) 
     parser.add_argument('--k', type=int, default=config_parser['MetaLearning']['k'])
     parser.add_argument('--meta_batch_size', type=int, default=config_parser['MetaLearning']['meta_batch_size'])
-    parser.add_argument('--num_steps_ml', type=int, default=config_parser['MetaLearning']['num_steps_ml'])                 # User Input of STEP4
+    parser.add_argument('--num_steps_ml', type=int, default=config_parser['MetaLearning']['num_steps_ml'])
     parser.add_argument('--lr_inner_ml', type=float, default=config_parser['MetaLearning']['lr_inner_ml'])
-    parser.add_argument('--iterations', type=int, default=1)     # User Input of STEP4
-    parser.add_argument('--num_steps_validation', type=int, default=config_parser['MetaLearning']['num_steps_validation']) # User Input of STEP4
+    parser.add_argument('--iterations', type=int, default=config_parser['MetaLearning']['num_steps_ml'])     # User Input of STEP4
+    parser.add_argument('--num_steps_validation', type=int, default=config_parser['MetaLearning']['num_steps_validation'])
     
     # Argument for wrting log & save file
     # It take user input & It also have default values
