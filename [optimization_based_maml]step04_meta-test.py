@@ -19,16 +19,26 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    # Load latest args_{config}.ini
+    # Load latest step3_{config}.ini
     config_parser = ConfigParser()
     maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
-    args_path = os.path.join(maml_path, 'args', '*') 
-    list_of_args_ini_files = glob.glob(args_path)
-    list_of_args_ini_files = [i for i in list_of_args_ini_files if 'step3_' in i]
-    latest_file = max(list_of_args_ini_files, key=os.path.getctime)
-    print("Load Step3 arguments from : {}".format(latest_file))
-    config_parser.read(latest_file)
-
+    
+    # 학습이 이미 완료된 모델을 강제로 불러오는 코드
+    manually_load_file = None
+    # 아래를 이용해 불러오고자하는 모델의 setp3_[모델세팅].ini 파일을 불러옵니다.
+    # manually_load_file = os.path.join(maml_path, 'args', 'step4_model-omniglot_mbs-2_n-5_k-3_stp-1.ini')
+    
+    if not manually_load_file:
+        # 이전 스텝의 args를 기본값으로 갖도록 등록
+        args_path = os.path.join(maml_path, 'args', '*') 
+        list_of_args_ini_files = glob.glob(args_path)
+        list_of_args_ini_files = [i for i in list_of_args_ini_files if 'step3_' in i]
+        latest_file = max(list_of_args_ini_files, key=os.path.getctime)
+        print("Load Step3 arguments from : {}".format(latest_file))
+        config_parser.read(latest_file)
+    else:
+        print("Load Step3 arguments from : {}".format(manually_load_file))
+        config_parser.read(manually_load_file)
 
     # 학습에 필요한 인자를 입력으로 받습니다.
     # 아래 인자들은 메타러닝 세팅에 대한 것으로 일반 학습에 대한 세팅은 다를 수 있습니다.

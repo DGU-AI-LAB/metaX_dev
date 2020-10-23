@@ -2,7 +2,7 @@ from model.optimization_based.maml import OmniglotModel, MiniImagenetModel, Mode
 from dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
 import argparse
 
-import logging, os
+import logging, os, glob
 import pickle
 from configparser import ConfigParser
 
@@ -29,20 +29,34 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    # Config File Load : Step 2 Config file
+    # Load latest step2_{config}.ini
     config_parser = ConfigParser()
-    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output','maml')
-    args_path = os.path.join(maml_path, 'args') 
-    step2_args_path = os.path.join(args_path, 'step2.ini')
-    config_parser.read(step2_args_path)
-    print("Load Step2 arguments from : {}".format(step2_args_path))
+    maml_path = os.path.join(os.getcwd(), 'dataset/data/ui_output'.replace('/', os.sep),'maml')
+    
+    # 학습이 이미 완료된 모델을 강제로 불러오는 코드
+    manually_load_file = None
+    # 아래를 이용해 불러오고자하는 모델의 setp3_[모델세팅].ini 파일을 불러옵니다.
+    # manually_load_file = os.path.join(maml_path, 'args', 'step3_model-omniglot_mbs-2_n-5_k-3_stp-1.ini')
+    
+    if not manually_load_file:
+        # 이전 스텝의 args를 기본값으로 갖도록 등록
+        args_path = os.path.join(maml_path, 'args', '*') 
+        list_of_args_ini_files = glob.glob(args_path)
+        list_of_args_ini_files = [i for i in list_of_args_ini_files if 'step3_' in i]
+        latest_file = max(list_of_args_ini_files, key=os.path.getctime)
+        print("Load Step2 arguments from : {}".format(latest_file))
+        config_parser.read(latest_file)
+    else:
+        print("Load Step3 arguments from : {}".format(manually_load_file))
+        config_parser.read(manually_load_file)
+    
 
     # 빠른 테스트를 위한 세팅
     # Argument for Common Deep Learning
     # It take user input & It also have default values
     parser.add_argument('--benchmark_dataset', type=str, default=config_parser['common_DL']['benchmark_dataset'])
     parser.add_argument('--network_cls', type=str, default=config_parser['common_DL']['benchmark_dataset']) # User Input STEP3
-    parser.add_argument('--epochs', type=int, default=2)          # User Input STEP3
+    parser.add_argument('--epochs', type=int, default=20)          # User Input STEP3
     parser.add_argument('--meta_learning_rate', type=float, default=0.001) # User Input STEP3
 
     # Argument for Meta-Learning

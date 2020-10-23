@@ -16,6 +16,9 @@ dataset/data/oxfordflower/pretrained/
 dataset/data/oxfordflower/texts/
 dataset/data/oxfordflower/tfrecord/
 dataset/data/oxfordflower/*.json
+
+pretrained_maml/
+
 *.pkl
 *.whl
 *.v2

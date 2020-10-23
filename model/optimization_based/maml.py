@@ -130,7 +130,6 @@ class ModelAgnosticMetaLearning(MetaLearning):
 
         # self._root = self.get_root()                                                         # type : string
         self._root = base_dataset_path
-        print(self._root)
         self.train_log_dir = os.path.join(self._root, self.get_config_info(), 'train') # type : string
         os.makedirs(self.train_log_dir, exist_ok=True)
 
@@ -906,6 +905,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
             json_file = {}
 
             # json read & support, query path and per labels list
+            print("Load JSON files....")
             for task_num in load_json.keys():
                 task_list.append(task_num)
                 supports_path_list_temp = []
@@ -941,6 +941,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
             # one_hot_query_label = tf.one_hot(query_label, depth=self.n)
 
             # create support set image vector
+            print("Preparing the support set....")
             for i, task in enumerate(supports_path_list):
                 task_support_image_vector_temp = ''
                 for j, support_image_path in enumerate(task):
@@ -959,6 +960,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
                 else:
                     task_support_image_vector = task_support_image_vector_temp
             # create query set image vector
+            print("Preparing the query set....")
             for i, task in enumerate(query_path_list):
                 task_query_image_vector_temp = ''
                 for j, query_image_path in enumerate(task):
@@ -988,6 +990,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
             # exit()
 
             # print("len(task_support_image_vector) : ", len(task_support_image_vector))
+            print("Start Predict....")
             for i in range(len(task_support_image_vector)):
                 copied_model = self.network_cls(num_classes=self.n)
                 checkpoint_path = tf.train.latest_checkpoint(self.checkpoint_dir)
@@ -999,9 +1002,10 @@ class ModelAgnosticMetaLearning(MetaLearning):
                     loss = tf.losses.categorical_crossentropy(one_hot_support_label[0], logits, from_logits=True)
                 grdients = fine_tuning_tape.gradient(loss, copied_model.trainable_variables)
                 self.optimizer.apply_gradients(zip(grdients, copied_model.trainable_variables))
-
+                  
                 query_predict = copied_model(task_query_image_vector[i])
 
+                
                 task_name = "task{}".format(str(i + 1).zfill(3))
                 save_path_base = os.path.join(save_path, self.get_config_info(), 'output')
                 os.makedirs(save_path_base, exist_ok=True)
@@ -1018,10 +1022,13 @@ class ModelAgnosticMetaLearning(MetaLearning):
                     save_path_support_img = os.path.join(save_path_task,"[support_set]{}_{}".format(support_label[i][a], supports_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1]))
                     tf.keras.preprocessing.image.save_img(save_path_support_img, support_img, data_format='channels_last', file_format=None, scale=True)
 
-                    save_path_query_img = os.path.join(save_path_task, "[query_set]{}_{}_{}".format(query_label[i][a],tf.argmax(query_predict, axis=-1)[a].numpy(), query_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1]))
+                    save_path_query_img = os.path.join(save_path_task, "[query_set]{}_{}_{}".format(
+                        query_label[i][a],
+                        tf.argmax(query_predict[a], axis=-1).numpy(),
+                        # tf.argmax(query_predict, axis=-1)[a].numpy(),
+                         query_path_list[i][a].split(os.sep)[-1].split(os.sep)[-1]
+                         ))
                     tf.keras.preprocessing.image.save_img(save_path_query_img, query_img, data_format='channels_last',file_format=None, scale=True)
-
-
 
                     if self.k != 1:
                         # if a % self.k != 1:
@@ -1075,7 +1082,7 @@ class ModelAgnosticMetaLearning(MetaLearning):
                              'prediction': str(tf.argmax(query_predict, axis=-1)[a].numpy())
                              }
                         ]
-
+        print("Saving predict result nwaykshot JSON file...")
         with open(os.path.join(save_path_base, 'nwaykshot_{}.json'.format(self.args.benchmark_dataset)), 'w',
                   encoding='utf-8') as save_path:
             json.dump(json_file, save_path, indent='\t')

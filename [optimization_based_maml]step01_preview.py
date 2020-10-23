@@ -13,7 +13,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 if __name__ == '__main__':
     # User Input Argument : --benchmark_dataset : omniglot or mini_imagenet
     parser = argparse.ArgumentParser()
-    parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
+    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')
     args = parser.parse_args()
 
     # Config File Writing
