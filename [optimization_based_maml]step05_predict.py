@@ -12,10 +12,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 
 if __name__ == '__main__':
-      # User Input Argument
-    # - num_steps_ml : The number of inner steps 
-    # - iterations : Inner loop의 gradient update 횟수
-    # - num_steps_validation : validation set에 대한  fine tuning 스텝수
+    # No User Input of STEP5
 
     parser = argparse.ArgumentParser()
 
@@ -40,16 +37,8 @@ if __name__ == '__main__':
         print("Load Step4 arguments from : {}".format(manually_load_file))
         config_parser.read(manually_load_file)
 
-    # 학습에 필요한 인자를 입력으로 받습니다.
-    # 아래 인자들은 메타러닝 세팅에 대한 것으로 일반 학습에 대한 세팅은 다를 수 있습니다.
     parser = argparse.ArgumentParser()
 
-    # User Input of STEP4 
-    # The default values are the values of step3
-    # 1. num_steps_ml         : int : The number of inner steps 
-    # 2. iterations           : int : inner loop의 gradi                         ent update 횟수
-    # 3. num_steps_validation : int : validation set에 대한  fine tuning 스텝수
-    # Othre arguments are loaded from args_###.ini file that has saved in the step3
 
     # Argument for Common Deep Learning
     # It take user input & It also have default values

@@ -13,19 +13,18 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 
 if __name__ == '__main__':
-    # User Input Argument
-    # epochs : 학습시 전체 데이터셋 반복 횟수
-    # network_cls : 메타러닝으로 학습될 모델 기본값 : step2에서 저장된 값
-    # meta_learning_rate : outer loop learning rate
+    # User Input of STEP3
+    # 1. epochs : 학습시 전체 데이터셋 반복 횟수
+    # 2. network_cls : 메타러닝으로 학습될 모델 기본값 : step2에서 저장된 값
+    # 3. meta_learning_rate : Outer loop learning rate
 
-    # meta_batch_size : N of tasks in one meta-batch
-    # num_steps_ml : Training시 inner loop에서의 gradient update steps 횟수
-    # lr_inner_ml : Inner loop의 learning rate. type : float
-    # num_steps_validation : validation set에 대한 evaluation시 inner loop에서의 gradient update steps 횟수
+    # 4. meta_batch_size : N of tasks in one meta-batch (2단계에서 저장된 값을 무시하고 재설정가능)
+    # 5. num_steps_ml : Training set에 대한 inner loop gradient update step 횟수
+    # 6. lr_inner_ml : Inner loop의 learning rate
+    # 7. num_steps_validation : Validation set에 대한  inner loop gradient update step 횟수
 
-    # save_after_epochs : 모델 저장 주기(1인 경우 매 epoch마다 저장)
-    # report_validation_frequency : validation set에 대한 evaluation 결과 프린트 주기
-    # log_train_images_after_iteration : 분류된 이미지를 텐서보드에 기록하는 주기(1인 경우 매 meta batch 마다 기록)
+    # 8. save_after_epochs : 모델 저장 주기(1인 경우 매 epoch마다 저장)
+    # 9. report_validation_frequency : validation set에 대한 evaluation 결과 프린트 주기
 
     parser = argparse.ArgumentParser()
 
@@ -74,7 +73,7 @@ if __name__ == '__main__':
     # It take user input & It also have default values
     parser.add_argument('--save_after_epochs', type=int, default=1) # User Input STEP3
     parser.add_argument('--report_validation_frequency', type=int, default=1) # User Input STEP3
-    parser.add_argument('--log_train_images_after_iteration', type=int, default=1) # User Input STEP3
+    parser.add_argument('--log_train_images_after_iteration', type=int, default=-1) # No Record
 
 
     # # 학습에 필요한 인자를 입력으로 받습니다.
