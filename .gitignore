@@ -1,6 +1,6 @@
 dataset/raw_data/
 dataset/data/cache/
-dataset/data/MSCOCOKR/
+dataset/data/MSCOCOKR/*
 dataset/data/omniglot/
 dataset/data/mini_imagenet/
 
@@ -15,7 +15,7 @@ dataset/data/oxfordflower/images/
 dataset/data/oxfordflower/pretrained/
 dataset/data/oxfordflower/texts/
 dataset/data/oxfordflower/tfrecord/
-dataset/data/oxfordflower/*.json
+dataset/raw_data/oxfordflower/data.tar
 
 pretrained_maml/
 

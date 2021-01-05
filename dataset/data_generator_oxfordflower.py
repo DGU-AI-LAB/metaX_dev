@@ -293,19 +293,19 @@ class OxfordFlower(Database):
         """
         Save Train, Evaluation, Test datasets as tfrecord files.
         """
-        raw_image_path = "./dataset/raw_data/oxfordflower/images"
-        raw_text_path = "./dataset/raw_data/oxfordflower/texts"
-        tar_data_path = "./dataset/raw_data/oxfordflower/data.tar.gz"
+        raw_image_path = "./dataset/raw_data/oxfordflower/images".replace("/", os.sep)
+        raw_text_path = "./dataset/raw_data/oxfordflower/texts".replace("/", os.sep)
+        tar_data_path = "./dataset/raw_data/oxfordflower/data.tar.gz".replace("/", os.sep)
         if os.path.exists(raw_image_path) and os.path.exists(raw_text_path):
             pass
         elif os.path.isfile(tar_data_path):
             print("Extract raw_data files...")
-            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower")
+            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower".replace("/", os.sep))
         else:
             print("Downdload raw_data files...")
             download_oxford_from_ggd(tar_data_path)
             print("Extract raw_data files...")
-            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower")
+            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower".replace("/", os.sep))
         
         config = self.config        
         # Create directories if not exists
