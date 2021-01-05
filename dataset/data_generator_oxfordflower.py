@@ -8,10 +8,12 @@ import tensorflow as tf
 from collections import defaultdict
 from glob import glob
 from PIL import Image
+import tarfile
 
 # Utilities functions for OxfordFlower
-from dataset.data.oxfordflower.data_utils import parse_config, tokenizer,build_vocab,txt2Token,img2Raw,load_json,save_json,match_and_write
-from dataset.data.oxfordflower.tf_utils import config_wrapper_parse_funcs
+from dataset.raw_data.oxfordflower.data_utils import parse_config, tokenizer,build_vocab,txt2Token,img2Raw,load_json,save_json,match_and_write\
+     ,download_oxford_from_ggd,extract_tar
+from dataset.raw_data.oxfordflower.tf_utils import config_wrapper_parse_funcs
 
 class Database(ABC):
     def __init__(self, raw_database_address, database_address, random_seed=-1):
@@ -280,7 +282,7 @@ class OxfordFlower(Database):
         
         self.raw_database_address = self.config["base_path"]
         self.database_address = self.config["data_path"]
-        
+        # Run the self.prepare_database() -> download the dataset
         super(OxfordFlower,self).__init__(
             self.raw_database_address,
             self.database_address,
@@ -291,6 +293,20 @@ class OxfordFlower(Database):
         """
         Save Train, Evaluation, Test datasets as tfrecord files.
         """
+        raw_image_path = "./dataset/raw_data/oxfordflower/images"
+        raw_text_path = "./dataset/raw_data/oxfordflower/texts"
+        tar_data_path = "./dataset/raw_data/oxfordflower/data.tar.gz"
+        if os.path.exists(raw_image_path) and os.path.exists(raw_text_path):
+            pass
+        elif os.path.isfile(tar_data_path):
+            print("Extract raw_data files...")
+            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower")
+        else:
+            print("Downdload raw_data files...")
+            download_oxford_from_ggd(tar_data_path)
+            print("Extract raw_data files...")
+            extract_tar(tar_data_path,"./dataset/raw_data/oxfordflower")
+        
         config = self.config        
         # Create directories if not exists
         #if not os.path.exists(os.path.join(config["data_path"],config["tfrecord_path"])):
@@ -314,15 +330,9 @@ class OxfordFlower(Database):
         _tokenizer = tokenizer("Okt") # argparser로 줄것 
         
         # build and save vocab
-        # 20.10.08. modified : before build vocab, check whether there is the vocab.pkl or not.
-        vocab_path = os.path.join(config["data_path"],config["vocab"])
-        if os.path.isfile(vocab_path):
-            with open(vocab_path,"rb") as f:
-                vocab = pickle.load(f)
-        else:
-            vocab=build_vocab(config,_tokenizer)
-            with open(vocab_path,"wb") as f:
-                vocab = pickle.dump(vocab, f)
+        vocab=build_vocab(config,_tokenizer)
+        with open(os.path.join(config["data_path"],config["vocab"]),"wb") as f:
+            pickle.dump(vocab,f)
         
         # Tokenize according to a vocab
         name2token = txt2Token(config,_tokenizer,vocab)
@@ -388,7 +398,6 @@ class OxfordFlower(Database):
             pass
         else:
             return trn_dict,eval_dict,test_dict  
-         
         img_path = os.path.join(self.raw_database_address,"images")
         txt_path = os.path.join(self.raw_database_address,"texts")
         

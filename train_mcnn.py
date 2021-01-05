@@ -17,7 +17,7 @@ if __name__ == '__main__':
     parser.add_argument('--benchmark_dataset', type=str, default='oxford_flower')
     parser.add_argument('--network_cls', type=str, default='modified_mcnn')
     # parser.add_argument('--n', type=int, default=5) # 필요없음
-    parser.add_argument('--epochs', type=int, default=5) # 중복됌
+    parser.add_argument('--epochs', type=int, default=1) # 중복됌
     # parser.add_argument('--iterations', type=int, default=5) # 필요없음
     # parser.add_argument('--k', type=int, default=1) # 필요없음
     # parser.add_argument('--meta_batch_size', type=int, default=32)
@@ -75,11 +75,14 @@ if __name__ == '__main__':
         network_cls=Modified_m_CNN
         
     if network_cls in [OmniglotModel,MiniImagenetModel]:
-        maml = ModelAgnosticMetaLearning(args, database, network_cls)
+        # TODO : Setup the last args (cf. [optimization_based_maml]step03...)
+        maml = ModelAgnosticMetaLearning(args, database, network_cls, None)
         maml.meta_train(epochs = args.epochs)
+
     elif network_cls in [Modified_m_CNN]:
         hetero = Hetero(args,"./dataset/data/oxfordflower/args.ini",database,network_cls)
         hetero.train()
+        hetero.evaluate()
 
     # 4. Test (Evaluation)
     # Model Load : [TODO] Load from ckpt is required...
