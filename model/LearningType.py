@@ -23,12 +23,13 @@ class Learning(ABC):
         self.clip_gradients                 : Applying gradient cliping or not 
         self.optimizer                      : optimizer 
         '''
-        self.network_cls = networks_cls                                                  # type : tf.keras.Model Class
-        self.model = self.network_cls(num_classes=self.n)                                # type : tf.keras.Model
+        # Deactivated by Dept2 Line 28, 31, 32, 50-80
+        self.network_cls = network_cls                                                  # type : tf.keras.Model Class
+        # self.model = self.network_cls(num_classes=self.n)                                # type : tf.keras.Model
         
         self.learning_rate = args.learning_rate                                          # type : float
-        self.least_number_of_tasks_val_test = least_number_of_tasks_val_test             # type : int
-        self.clip_gradients = clip_gradients                                             # type : bool
+        # self.least_number_of_tasks_val_test = least_number_of_tasks_val_test             # type : int
+        # self.clip_gradients = clip_gradients                                             # type : bool
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=self.learning_rate) # type : tf.keras.optimizer.Adam()
 
 
@@ -45,7 +46,7 @@ class Learning(ABC):
         self.val_loss_metric = tf.metrics.Mean()           # type : tf.metrics.Mean object
 
 
-        # Loging and Model Saving setting
+        # Loging and Model Saving setting : Dept2 don't need this.
         '''
         self.save_after_epochs                : Interval epoch for saving the model
         self.log_train_images_after_iteration : Interval iteration for writting the classified image on Tensorboard
@@ -53,6 +54,8 @@ class Learning(ABC):
 
         self._root                            : Root path
         self.train_log_dir                    : Train log path 
+        '''
+        
         '''
         self.save_after_epochs = args.save_after_epochs                               # type : int
         self.log_train_images_after_iteration = args.log_train_images_after_iteration # type : int
@@ -74,7 +77,8 @@ class Learning(ABC):
             self.val_summary_writer = tf.summary.create_file_writer(self.val_log_dir)
 
         self.checkpoint_dir = os.path.join(self._root, self.get_config_info(), 'saved_models/')
-
+        '''
+        
     @abstractmethod
     def train(self):
         '''

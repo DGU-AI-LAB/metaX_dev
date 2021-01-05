@@ -1,8 +1,8 @@
 from model.optimization_based.maml import OmniglotModel, MiniImagenetModel, ModelAgnosticMetaLearning
-from dataset.data_generator import OmniglotDatabase, MiniImagenetDatabase
-
-from model.hetero.ImageCaptioningModel import ImageCaptioningModel
 from dataset.data_generator_MSCOCOKR import MSCOCOKRDatabase
+
+from model.hetero.ImageCaptioningModel import ImageCaptioningModel, MSCOCOKRModel
+
 import argparse
 
 import logging, os
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet')
     # parser.add_argument('--network_cls', type=str, default='mini_imagenet')
-    parser.add_argument('--benchmark_dataset', type=str, default='MSKOKOKR')
+    parser.add_argument('--benchmark_dataset', type=str, default='MSCOCOKR')
     parser.add_argument('--network_cls', type=str, default='mscoco_kor')
     # parser.add_argument('--n', type=int, default=5)
     parser.add_argument('--epochs', type=int, default=5)
@@ -44,18 +44,23 @@ if __name__ == '__main__':
     # 타입 : tf.data.Dataset
     if args.benchmark_dataset == "omniglot":
         database = OmniglotDatabase(
-            raw_data_address="dataset/raw_data/omniglot",
+            raw_data_address="dataset/raw_data/omniglot".replace("/", os.sep),
             random_seed=47,
             num_train_classes=1200,
             num_val_classes=100)
     elif args.benchmark_dataset == "mini_imagenet":
         database=MiniImagenetDatabase(
-            raw_data_address="dataset/raw_data/mini_imagenet",
+            raw_data_address="dataset/raw_data/mini_imagenet".replace("/", os.sep),
             random_seed=-1)
-    elif args.benchmark_dataset == "MSKOKOKR":
+    elif args.benchmark_dataset == "MSCOCOKR":
         database = MSCOCOKRDatabase(
-            train_address = "dataset/data/MSCOCOKR/train",
-            test_address = "dataset/data/MSCOCOKR/test")
+            train_address = "dataset/data/MSCOCOKR/train".replace("/", os.sep),
+            val_address = "dataset/data/MSCOCOKR/val".replace("/", os.sep),
+            test_address = "dataset/data/MSCOCOKR/test".replace("/", os.sep))
+            # train_address = "C:\\Users\\user\\Anaconda3\\envs\\py37\\Lib\\site-packages\\metaX\\dataset\\MSCOCOKR_data\\train",
+            # val_address = "C:\\Users\\user\\Anaconda3\\envs\\py37\\Lib\\site-packages\\metaX\\dataset\\MSCOCOKR_data\\val",
+            # test_address = "C:\\Users\\user\\Anaconda3\\envs\\py37\\Lib\\site-packages\\metaX\\dataset\\MSCOCOKR_data\\test")
+
 
     # 모델 객체를 생성합니다.
     if args.network_cls == "omniglot":
@@ -63,7 +68,7 @@ if __name__ == '__main__':
     elif args.network_cls == "mini_imagenet":
         network_cls=MiniImagenetModel
     elif args.network_cls == "mscoco_kor":
-        network_cls = None # ImageCaptioningModel
+        network_cls = MSCOCOKRModel
 
     # 학습을 위한 클래스를 생성합니다.
     #maml = ModelAgnosticMetaLearning(args, database, network_cls)
@@ -71,28 +76,31 @@ if __name__ == '__main__':
     # database : 데이터셋  type : database
     # network_cls : 모델   type : MetaLearning
     
+    # TO CHECK : 
     # @ 학습을 하는 모델(network_cls)을 다시 자기 자신에게 집어넣는다는게 이상합니다.
     # @ network_cls는 학습하는 모델이고, 이를 감싸는 class는 학습을 스케쥴링하는 클래스입니다.
     # @ 1세부 코드를 다시 한 번 참조 부탁드립니다.
     imgcap = ImageCaptioningModel(args, database, network_cls)
-    print(imgcap.clean_descriptions_path)
-    print(imgcap.image_filename_path)
+    
     
     # print("=======================meta TRAIN")
     # 학습을 위한 클래스를 사용하여 입력받은 파라미터를 통해 meta_train을 수행합니다.
     # maml.meta_train(epochs = args.epochs)
     # epochs : 반복 횟수 type : int
-    
-    print("=========================TRAIN")
-    imgcap.train(epochs = args.epochs, iterations = args.iterations)
 
+    print("=========================TRAIN")
+    # imgcap.train()
+
+    print("=========================EVALUATE")
+    # TO CHECK : 
     # @ 각 단계별로 분리하기위해 저장한 모델을 load하는 imcap.load_model(epochs=args.epochs)가 필요합니다.
     #   2세부에서 evaluate 로 통일을 해주셨는데 1세부의 meta_test와 메서드 이름을 통일하고자 메서드 명을 test() 로 변경부탁드립니다. 
-    imgcap.evaluate()
-    
+    # imgcap.evaluate()
+
+    # TO CHECK : 
     # @ predict를 하기 위한 데이터의 path를 인자로 받아야 할 것 같습니다.
+    print("=========================PREDICT")
     imgcap.predict()
-    
     
     # # meta_test 시 입력받은 파라미터를 통해 fine turning할 횟수 만큼 수행합니다.
     # maml.meta_test(iterations = args.iterations)
