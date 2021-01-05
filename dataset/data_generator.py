@@ -258,6 +258,10 @@ class OmniglotDatabase(Database):
         return parse_function
 
     def prepare_database(self):
+        # Download the dataset
+        
+
+        # 
         for item in ('images_background', 'images_evaluation'):
             alphabets = os.listdir(os.path.join(self.raw_database_address, item))
             for alphabet in alphabets:

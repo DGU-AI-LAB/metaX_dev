@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
     # 5. Prediction
     # [TODO] input으로 path를 받도록 변경 (현재는 dictionary)
-    hetero.predict()
+    # hetero.predict()
 
 
 """

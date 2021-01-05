@@ -220,7 +220,7 @@ class Hetero(Learning):
             os.path.join(config["model_path"],config["log_path"],config["csv_path"],"log.csv"))
         self.tb_cb = tf.keras.callbacks.TensorBoard(
             os.path.join(config["model_path"],config["log_path"],config["tb_path"]))    
-        super(Hetero,self).__init__(args) # 아직 구현하지 못했는데, 여러상황들 고려해서 다시 구성할 예정입니다.
+        # super(Hetero,self).__init__(args) # 아직 구현하지 못했는데, 여러상황들 고려해서 다시 구성할 예정입니다.
         
     def get_train_dataset(self):
         return self.database.data_loader("train","both",self.args.batch_size,self.args.batch_size*10)
