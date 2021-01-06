@@ -1,10 +1,14 @@
 import tensorflow as tf
-import os
+import os, glob
 import json
 import tqdm
 import logging
 
 import numpy as np
+
+from io import BytesIO
+from urllib.request import urlopen
+from zipfile import ZipFile
 
 def combine_first_two_axes(tensor):
     shape = tensor.shape
@@ -26,6 +30,14 @@ def createFolder(directory):
             os.makedirs(directory)
     except OSError:
         print('OS Error')
+
+def download_zip(url, extract_dir):
+    # https://svaderia.github.io/articles/downloading-and-unzipping-a-zipfile/
+    # TODO : Fix this code to check the file existence
+    if len(glob.glob(os.path.join(extract_dir, "*"))) <= 1:
+        with urlopen(url) as zipresp:
+            with ZipFile(BytesIO(zipresp.read())) as zfile:
+                zfile.extractall(extract_dir)
 
 def save_nwaykshot(dataset, save_path, class2num, change_mini_imagenet_cls_name=False):
     if change_mini_imagenet_cls_name:

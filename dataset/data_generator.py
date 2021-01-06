@@ -10,6 +10,8 @@ from collections import defaultdict
 from glob import glob
 from PIL import Image
 
+from utils import download_zip
+
 class Database(ABC):
     def __init__(self, raw_database_address, database_address, random_seed=-1):
         if random_seed != -1:
@@ -259,9 +261,15 @@ class OmniglotDatabase(Database):
 
     def prepare_database(self):
         # Download the dataset
+        print("Download the omniglot dataset")
+        images_background_url = "https://github.com/brendenlake/omniglot/raw/master/python/images_background.zip" 
+        images_evaluation_url = "https://github.com/brendenlake/omniglot/raw/master/python/images_evaluation.zip"
         
-
-        # 
+        print("Downloading & extracting images_background.zip...")
+        download_zip(images_background_url, self.raw_database_address)
+        print("Downloading & extracting images_evaluation.zip...")
+        download_zip(images_evaluation_url, self.raw_database_address)
+        print("Arranging data files...")
         for item in ('images_background', 'images_evaluation'):
             alphabets = os.listdir(os.path.join(self.raw_database_address, item))
             for alphabet in alphabets:
