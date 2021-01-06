@@ -14,10 +14,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     # Argument for Common Deep Learning
     # It take user input & It also have default values
-    #parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet') # 20.09.03
-    #parser.add_argument('--network_cls', type=str, default='mini_imagenet')       # 20.09.03
-    parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
-    parser.add_argument('--network_cls', type=str, default='omniglot')             # 20.09.03
+    parser.add_argument('--benchmark_dataset', type=str, default='mini_imagenet') # 20.09.03
+    parser.add_argument('--network_cls', type=str, default='mini_imagenet')       # 20.09.03
+    # parser.add_argument('--benchmark_dataset', type=str, default='omniglot')       # 20.09.03
+    # parser.add_argument('--network_cls', type=str, default='omniglot')             # 20.09.03
     parser.add_argument('--epochs', type=int, default=3) # 5
     parser.add_argument('--meta_learning_rate', type=float, default=0.001)
 

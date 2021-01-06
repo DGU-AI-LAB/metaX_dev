@@ -1,0 +1,16 @@
+n01855672 goose
+n02174001 rhinoceros_beetle
+n02981792 catamaran
+n03075370 combination_lock
+n03584254 iPod
+n03773504 missile
+n03980874 poncho
+n03535780 horizontal_bar
+n03770439 miniskirt
+n02138441 meerkat
+n02091244 Ibizan_hound
+n03417042 garbage_truck
+n02114548 white_wolf
+n02971356 carton
+n09256479 coral_reef
+n02950826 cannon
