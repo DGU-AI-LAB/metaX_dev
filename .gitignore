@@ -1,4 +1,5 @@
 dataset/raw_data/
+dataset/data/.cache/
 dataset/data/cache/
 dataset/data/MSCOCOKR/*
 dataset/data/omniglot/
