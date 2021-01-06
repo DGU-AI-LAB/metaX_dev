@@ -10,6 +10,8 @@ from collections import defaultdict
 from glob import glob
 from PIL import Image
 
+from utils import download_zip, download_from_ggd, extract_tar
+
 class Database(ABC):
     def __init__(self, raw_database_address, database_address, random_seed=-1):
         if random_seed != -1:
@@ -259,9 +261,15 @@ class OmniglotDatabase(Database):
 
     def prepare_database(self):
         # Download the dataset
+        print("Download the omniglot dataset")
+        images_background_url = "https://github.com/brendenlake/omniglot/raw/master/python/images_background.zip" 
+        images_evaluation_url = "https://github.com/brendenlake/omniglot/raw/master/python/images_evaluation.zip"
         
-
-        # 
+        print("Downloading & extracting images_background.zip...")
+        download_zip(images_background_url, self.raw_database_address)
+        print("Downloading & extracting images_evaluation.zip...")
+        download_zip(images_evaluation_url, self.raw_database_address)
+        print("Arranging data files...")
         for item in ('images_background', 'images_evaluation'):
             alphabets = os.listdir(os.path.join(self.raw_database_address, item))
             for alphabet in alphabets:
@@ -397,6 +405,7 @@ class MiniImagenetDatabase(Database):
         dataset_folders = list()
         for dataset_type in ('train', 'val', 'test'):
             dataset_base_address = os.path.join(self.database_address, dataset_type)
+            os.makedirs(dataset_base_address, exist_ok=True)
             folders = [
                 os.path.join(dataset_base_address, class_name) for class_name in os.listdir(dataset_base_address)
             ]
@@ -423,8 +432,40 @@ class MiniImagenetDatabase(Database):
         return parse_function
 
     def prepare_database(self):
+        tar_train_data_path = os.path.join(self.raw_database_address, "train.tar")
+        tar_val_data_path = os.path.join(self.raw_database_address, "val.tar")
+        tar_test_data_path = os.path.join(self.raw_database_address, "test.tar")
+
+        raw_train_path = os.path.join(self.raw_database_address, "train")
+        raw_val_path = os.path.join(self.raw_database_address, "val")
+        raw_test_path = os.path.join(self.raw_database_address, "test")
+
+        train_path = os.path.join(self.database_address, "train")
+        val_path = os.path.join(self.database_address, "val")
+        test_path = os.path.join(self.database_address, "test")
+
+        print("Download the mini ImageNet dataset")
+        def _check_down(path, dir_path, split):
+            if os.path.exists(dir_path):
+                print("{} already exists".format(dir_path))
+                return
+
+            if os.path.isfile(path):
+                print("Extracting : ", path)
+                extract_tar(path, self.raw_database_address)
+            else:
+                print("Downloading : ", path)
+                download_from_ggd(path, split)
+                print("Extracting : ", path)
+                extract_tar(path, self.raw_database_address)
+
+        _check_down(tar_train_data_path, raw_train_path, 'mini_imagenet_train')
+        _check_down(tar_val_data_path, raw_val_path, 'mini_imagenet_val')
+        _check_down(tar_test_data_path, raw_test_path, 'mini_imagenet_test')
+
         if not os.path.exists(self.database_address):
-            shutil.copytree(self.raw_database_address, self.database_address)
+            print("Arranging the datatset")
+            shutil.copytree(self.raw_database_address, self.database_address, ignore=shutil.ignore_patterns('*.tar'))
 
     def get_statistic(self, base_path):
 

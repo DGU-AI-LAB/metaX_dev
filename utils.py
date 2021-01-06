@@ -1,10 +1,16 @@
 import tensorflow as tf
-import os
+import os, glob
 import json
 import tqdm
 import logging
+import requests
+import tarfile
 
 import numpy as np
+
+from io import BytesIO
+from urllib.request import urlopen
+from zipfile import ZipFile
 
 def combine_first_two_axes(tensor):
     shape = tensor.shape
@@ -26,6 +32,75 @@ def createFolder(directory):
             os.makedirs(directory)
     except OSError:
         print('OS Error')
+
+def download_zip(url, extract_dir):
+    # https://svaderia.github.io/articles/downloading-and-unzipping-a-zipfile/
+    # TODO : Fix this code to check the file existence
+    if len(glob.glob(os.path.join(extract_dir, "*"))) <= 1:
+        with urlopen(url) as zipresp:
+            with ZipFile(BytesIO(zipresp.read())) as zfile:
+                zfile.extractall(extract_dir)
+
+def download_from_ggd(destination, data):
+    """
+    https://stackoverflow.com/questions/38511444/python-download-files-from-google-drive-using-url
+    """
+    def _get_confirm_token(response):
+        for key, value in response.cookies.items():
+            if key.startswith('download_warning'):
+                return value
+    def _down(_id, destination, data):
+        if data=="mini_imagenet":
+            if _id == "107FTosYIeBn5QbynR46YG91nHcJ70whs":
+                total_size = 126255104.0
+            elif _id == "1hSMUMj5IRpf-nQs1OwgiQLmGZCN0KDWl":
+                total_size = 30801920.0
+            else:
+                total_size = 39288832.0
+        elif data=='oxford':
+            total_size = 346.3 * (1024*1024) # In chunk size
+            
+        URL = "https://docs.google.com/uc?export=download"
+
+        session = requests.Session()
+
+        response = session.get(URL, params = { 'id' : _id }, stream = True)
+        token = _get_confirm_token(response)
+
+        if token:
+            params = { 'id' : _id, 'confirm' : token }
+            response = session.get(URL, params = params, stream = True)
+        
+        CHUNK_SIZE = 32768
+        current_size = 0.0
+        
+        print(destination)
+        print(os.getcwd())
+        with open(destination, "wb") as f:
+            pbar = tqdm.tqdm(response.iter_content(CHUNK_SIZE))
+            for chunk in pbar:
+                if chunk: # filter out keep-alive new chunks
+                    f.write(chunk)
+                    current_size += CHUNK_SIZE
+                    pbar.set_description(f"{current_size:.1f}/{total_size:.1f}")
+            pbar.set_description(f"{total_size:.1f}/{total_size:.1f}")     
+    
+    if data=="mini_imagenet_train":
+        _ids = "107FTosYIeBn5QbynR46YG91nHcJ70whs"  # train
+    elif data=="mini_imagenet_val":
+        _ids = "1hSMUMj5IRpf-nQs1OwgiQLmGZCN0KDWl"  # val
+    elif data=="mini_imagenet_test":
+        _ids = "1yKyKgxcnGMIAnA_6Vr2ilbpHMc9COg-v"  # test
+        _down(_id, destination, data)
+
+    elif data=='oxford':
+        _id = "1MDyDgG7O4vRo29XJhanhbS2rBiax7EaZ"
+        _down(_id, destination, data)
+
+def extract_tar(tar_path,dest_path):
+    tar_file = tarfile.open(tar_path)
+    tar_file.extractall(dest_path)
+    tar_file.close()
 
 def save_nwaykshot(dataset, save_path, class2num, change_mini_imagenet_cls_name=False):
     if change_mini_imagenet_cls_name:
